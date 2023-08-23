@@ -8,13 +8,15 @@ import { ComponentTesteComponent } from './component-teste/component-teste.compo
 import { AppRoutingModule } from './app-routing.module';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ComponentTesteComponent,
     FooterComponent,
-    HeaderComponent
+    HeaderComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
