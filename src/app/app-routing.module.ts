@@ -12,7 +12,7 @@ const routes: Routes = [
   { path: 'detalhes/:id', component: DetalhesComponent },
 
   // Excluir
-  { path : 'teste', component : ComponentTesteComponent },
+  { path: 'teste', component: ComponentTesteComponent },
 ];
 
 @NgModule({

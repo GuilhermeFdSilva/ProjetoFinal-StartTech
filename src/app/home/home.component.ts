@@ -7,10 +7,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
-  
+
   constructor(private router: Router) { }
 
-  verDetalhes (produtoId: string) {
+  verDetalhes(produtoId: string) {
     this.router.navigate(['/detalhes', produtoId]);
   }
 }
