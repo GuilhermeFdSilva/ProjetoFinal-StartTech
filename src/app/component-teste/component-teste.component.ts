@@ -13,9 +13,13 @@ export class ComponentTesteComponent {
 
   textoGerado = '';
 
-  constructor (private gptService: GptService, private usuario: UsuarioService) { }
+  constructor(private gptService: GptService, private usuario: UsuarioService) {
+    usuario.eventoLogin.subscribe(resposta => {
+      alert('login com sucesso?' + resposta)
+    })
+  }
 
-  chamaGeradorDescricao (evento: any) {
+  chamaGeradorDescricao(evento: any) {
     const botaoDeEnvio = evento.target as HTMLButtonElement;
     botaoDeEnvio.setAttribute('disabled', 'true');
     this.gptService.gerarDescricao(this.teste).subscribe(
@@ -29,7 +33,34 @@ export class ComponentTesteComponent {
     )
   }
 
-  criarUsuario() {
-    this.usuario.cirarUsuario('Guilherme', 'Rua dos Alfeneiros n°4', '(11) 4002-8922', 'guilherminho@gmail.com', '123456');
+  fazerLogin(){
+    this.usuario.fazerLogin('usuarioa@example.com', 'senha123');
   }
+
+  criarUsuario() {
+    // this.usuario.cirarUsuario()
+    //   .subscribe((response) => {
+    //     console.log(true);
+    //   },
+    //   (error) => {
+    //     console.log(false + error.mesage);
+    //   });
+    
+    // this.usuario.atualizarCadastro(
+    //   {
+    //     "id": 1,
+    //     "nome": "Usuário A",
+    //     "endereco": "Rua A, 123",
+    //     "celular": "(11) 1234-5678",
+    //     "email": "usuarioa@example.com",
+    //     "senha": "funfandoComSucesso",
+    //     "seguidores": [
+    //       2,
+    //       3
+    //     ]
+    //   }
+    // ).subscribe((response) => console.log("foi"), (error) => console.log("nao foi"));
+    this.usuario.toggleSeguir(3);
+  }
+
 }
