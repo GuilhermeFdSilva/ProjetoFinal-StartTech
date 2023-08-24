@@ -38,7 +38,8 @@
         "imagens": [
           "url_da_imagem1.jpg",
           "url_da_imagem2.jpg"
-        ]
+        ],
+        "tags": ["eletrônicos", "tecnologia"]
       },
       {
         "id": 2,
@@ -48,7 +49,8 @@
         "preco": 75.00,
         "imagens": [
           "url_da_imagem3.jpg"
-        ]
+        ],
+        "tags": ["moda", "roupas"]
       },
       {
         "id": 3,
@@ -58,7 +60,30 @@
         "preco": 30.00,
         "imagens": [
           "url_da_imagem4.jpg"
-        ]
+        ],
+        "tags": ["acessórios"]
+      }
+    ],
+    "tags": [
+      {
+        "id": 1,
+        "nome": "eletrônicos"
+      },
+      {
+        "id": 2,
+        "nome": "tecnologia"
+      },
+      {
+        "id": 3,
+        "nome": "moda"
+      },
+      {
+        "id": 4,
+        "nome": "roupas"
+      },
+      {
+        "id": 5,
+        "nome": "acessórios"
       }
     ]
   }
