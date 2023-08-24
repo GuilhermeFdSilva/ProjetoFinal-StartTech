@@ -1,0 +1,102 @@
+{
+  "usuarios": [
+    {
+      "id": 1,
+      "nome": "Usuário A",
+      "endereco": "Rua A, 123",
+      "celular": "(11) 1234-5678",
+      "email": "usuarioa@example.com",
+      "senha": "senha123",
+      "seguidores": [
+        2,
+        3
+      ]
+    },
+    {
+      "id": 2,
+      "nome": "Usuário B",
+      "endereco": "Rua B, 456",
+      "celular": "(22) 9876-5432",
+      "email": "usuariob@example.com",
+      "senha": "senha456",
+      "seguidores": [
+        1
+      ]
+    },
+    {
+      "id": 3,
+      "nome": "Usuário C",
+      "endereco": "Rua C, 789",
+      "celular": "(33) 5555-1234",
+      "email": "usuarioc@example.com",
+      "senha": "senha789",
+      "seguidores": []
+    }
+  ],
+  "itens": [
+    {
+      "id": 1,
+      "usuario_id": 1,
+      "titulo": "Produto do Usuário A",
+      "descricao": "Descrição do produto do Usuário A",
+      "preco": 50,
+      "imagens": [
+        "url_da_imagem1.jpg",
+        "url_da_imagem2.jpg"
+      ],
+      "tags": [
+        "eletrônicos",
+        "tecnologia"
+      ]
+    },
+    {
+      "id": 2,
+      "usuario_id": 2,
+      "titulo": "Produto do Usuário B",
+      "descricao": "Descrição do produto do Usuário B",
+      "preco": 75,
+      "imagens": [
+        "url_da_imagem3.jpg"
+      ],
+      "tags": [
+        "moda",
+        "roupas"
+      ]
+    },
+    {
+      "id": 3,
+      "usuario_id": 3,
+      "titulo": "Produto do Usuário C",
+      "descricao": "Descrição do produto do Usuário C",
+      "preco": 30,
+      "imagens": [
+        "url_da_imagem4.jpg"
+      ],
+      "tags": [
+        "acessórios"
+      ]
+    }
+  ],
+  "tags": [
+    {
+      "id": 1,
+      "nome": "eletrônicos"
+    },
+    {
+      "id": 2,
+      "nome": "tecnologia"
+    },
+    {
+      "id": 3,
+      "nome": "moda"
+    },
+    {
+      "id": 4,
+      "nome": "roupas"
+    },
+    {
+      "id": 5,
+      "nome": "acessórios"
+    }
+  ]
+}

@@ -1,1 +1,31 @@
-<p>footer works!</p>
+<footer>
+
+  <!-- Conteiner -->
+  <div class="container row" id="conteiner-externo">
+
+    <!-- container logo -->
+    <section class="col-lg-4 col-sm-12" id="conteiner-imagem">
+      <img src="" alt="Logo">
+    </section>
+
+    <!-- Links -->
+    <section class="col-lg-4 col-sm-12" id="conteiner-navegacao">
+      <h4 id="titulo-navegacao">Navegação</h4>
+      <ul>
+        <li *ngFor="let link of links"><a [routerLink]="link">{{ link }}</a></li>
+      </ul>
+    </section>
+
+    <!-- Social -->
+    <section class="col-lg-4 col-sm-12" id="conteiner-social">
+      <article class="row" *ngFor="let social of redesSociais">
+        <a [routerLink]="social.link"><img [src]="social.imagem" [alt]="social.descricao"> - {{ social.descricao }}</a>
+      </article>
+    </section>
+  </div>
+
+  <!-- Container Copy -->
+  <div class="row">
+    <h5>Copy bla bla bla</h5>
+  </div>
+</footer>
