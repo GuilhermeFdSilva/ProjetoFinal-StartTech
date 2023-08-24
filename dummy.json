@@ -1,0 +1,53 @@
+{
+    "usuarios": [
+      {
+        "id": 1,
+        "nome": "Usuário A",
+        "seguidores": [2, 3]
+      },
+      {
+        "id": 2,
+        "nome": "Usuário B",
+        "seguidores": [1]
+      },
+      {
+        "id": 3,
+        "nome": "Usuário C",
+        "seguidores": []
+      }
+    ],
+    "itens": [
+      {
+        "id": 1,
+        "usuario_id": 1,
+        "titulo": "Produto do Usuário A",
+        "descricao": "Descrição do produto do Usuário A",
+        "preco": 50.00,
+        "imagens": [
+          "url_da_imagem1.jpg",
+          "url_da_imagem2.jpg"
+        ]
+      },
+      {
+        "id": 2,
+        "usuario_id": 2,
+        "titulo": "Produto do Usuário B",
+        "descricao": "Descrição do produto do Usuário B",
+        "preco": 75.00,
+        "imagens": [
+          "url_da_imagem3.jpg"
+        ]
+      },
+      {
+        "id": 3,
+        "usuario_id": 3,
+        "titulo": "Produto do Usuário C",
+        "descricao": "Descrição do produto do Usuário C",
+        "preco": 30.00,
+        "imagens": [
+          "url_da_imagem4.jpg"
+        ]
+      }
+    ]
+  }
+  
