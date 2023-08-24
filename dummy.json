@@ -3,16 +3,28 @@
       {
         "id": 1,
         "nome": "Usuário A",
+        "endereco": "Rua A, 123",
+        "celular": "(11) 1234-5678",
+        "email": "usuarioa@example.com",
+        "senha": "senha123",
         "seguidores": [2, 3]
       },
       {
         "id": 2,
         "nome": "Usuário B",
+        "endereco": "Rua B, 456",
+        "celular": "(22) 9876-5432",
+        "email": "usuariob@example.com",
+        "senha": "senha456",
         "seguidores": [1]
       },
       {
         "id": 3,
         "nome": "Usuário C",
+        "endereco": "Rua C, 789",
+        "celular": "(33) 5555-1234",
+        "email": "usuarioc@example.com",
+        "senha": "senha789",
         "seguidores": []
       }
     ],
