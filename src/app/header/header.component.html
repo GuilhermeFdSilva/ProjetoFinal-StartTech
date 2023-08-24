@@ -1,2 +1,43 @@
-<p>header works!</p>
-<p>teste</p>
+<header>
+
+  <!-- Inicio do navbar -->
+  <nav class="navbar navbar-expand-lg">
+
+    <!-- Container interno navbar -->
+    <div class="container-fluid">
+
+      <!-- Logo -->
+      <a class="navbar-brand" href="#">
+        <img src="/docs/5.3/assets/brand/bootstrap-logo.svg" alt="Bootstrap" width="30" height="24">
+      </a>
+
+      <!-- Botao oculto responsivo -->
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <!-- Área do menu responsiva -->
+      <div class="collapse navbar-collapse">
+        <form class="d-flex">
+          <input class="form-control" placeholder="Pesquisar">
+        </form>
+
+        <!-- Botões para cadastro ou loguin -->
+        <a class="nav-link" href="#" *ngIf="true">Entrar / Cadastrar</a>
+
+        <!-- <div class="dropdown">
+          <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+            aria-expanded="false">
+            Dropdown button
+          </button>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="#">Action</a></li>
+            <li><a class="dropdown-item" href="#">Another action</a></li>
+            <li><a class="dropdown-item" href="#">Something else here</a></li>
+          </ul>
+        </div> -->
+      </div>
+    </div>
+  </nav>
+</header>
