@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { QuemSomosComponent } from './quem-somos/quem-somos.component';
 import { DetalhesComponent } from './detalhes/detalhes.component';
 import { PerfilClienteComponent } from './perfil-cliente/perfil-cliente.component';
+import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PerfilClienteComponent } from './perfil-cliente/perfil-cliente.componen
     HomeComponent,
     QuemSomosComponent,
     DetalhesComponent,
-    PerfilClienteComponent
+    PerfilClienteComponent,
+    CadastroClienteComponent
   ],
   imports: [
     BrowserModule,
