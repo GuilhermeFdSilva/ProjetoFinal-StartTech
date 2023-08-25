@@ -17,3 +17,16 @@ $tamanho-fonte-normal: 16px;
 $tamanho-fonte-grande: 18px;
 $tamanho-fonte-muito-grande: 24px;
 $tamanho-fonte-enorme: 36px;
+
+html {
+    margin: 0;
+    padding: 0;
+
+    a {
+        text-decoration: none;
+    }
+
+    li {
+        list-style-type: none;
+    }
+}
