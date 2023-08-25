@@ -1,9 +1,52 @@
 @import "../../styles.scss";
 
 footer {
-    padding: 20px;
-    text-align: center;
-    margin-top: 600px;
-    background-color: $cor-secundaria;
-    color: white;
+  padding: 20px;
+  background-color: $cor-secundaria;
+  color: white;
+
+  #conteiner-externo {
+    margin: auto;
+    width: 1140px;
+
+    section {
+      margin: 20px 0 30px 0;
+
+      img {
+        width: 100%;
+      }
+
+      h4 {
+        font-family: $fonte-secundaria;
+      }
+
+      ul {
+        padding: 0;
+
+        li {
+          height: $tamanho-fonte-enorme;
+
+          a {
+            transition: all 0.5s;
+
+            &:hover {
+              color: $cor-terciaria;
+            }
+          }
+        }
+      }
+
+      article {
+        height: $tamanho-fonte-enorme;
+
+        a {
+          transition: all 0.5s;
+
+          &:hover {
+            color: $cor-terciaria;
+          }
+        }
+      }
+    }
+  }
 }
