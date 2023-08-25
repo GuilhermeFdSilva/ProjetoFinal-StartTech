@@ -3,7 +3,13 @@
 
 <p>{{ textoGerado }}</p>
 
-<h1 *ngIf="this.usuarioService.getLogado()">{{ this.usuario.getNome() }}</h1>
+<h1 *ngIf="this.usuarioService.getLogado()">{{ this.usuarioPrincipal.getNome() }}</h1>
+
+<h2 *ngIf="this.usuarioService.getLogado()">{{ usuarioAlvo.getNome() }}</h2>
+
+<div *ngIf="this.usuarioService.getLogado()">
+    <p *ngFor="let usuario of todosUsuarios">{{ usuario.getNome() }}</p>
+</div>
 
 <button (click)="fazerLogin()">Logar</button>
 <button (click)="criarUsuario()">Criar</button>
