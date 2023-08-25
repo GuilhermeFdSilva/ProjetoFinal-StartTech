@@ -13,17 +13,23 @@ export class ComponentTesteComponent {
 
   textoGerado = '';
 
-  usuario: Usuario;
+  usuarioPrincipal: Usuario;
 
   usuarioService: UsuarioService;
 
+  todosUsuarios: Array<Usuario>;
+
+  usuarioAlvo: Usuario;
+
   constructor(private gptService: GptService, usuarioService: UsuarioService) {  
-    this.usuario = usuarioService.getUsuario();
     this.usuarioService = usuarioService;
-    usuarioService.eventoLogin.subscribe((evento) => {
-      this.usuario = usuarioService.getUsuario();
+    this.usuarioPrincipal = usuarioService.getUsuarioPrincipal();
+    this.todosUsuarios = usuarioService.getUsuarios();
+    this.usuarioService.eventoLogin.subscribe((evento) => {
+      this.usuarioPrincipal = usuarioService.getUsuarioPrincipal();
+      this.usuarioAlvo = this.todosUsuarios[0];
       alert(evento);
-    })
+    });
   }
 
   chamaGeradorDescricao(evento: any) {

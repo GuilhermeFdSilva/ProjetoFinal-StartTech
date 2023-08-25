@@ -6,17 +6,22 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private usuario: Usuario = new Usuario;
+  private usuarioPincipal: Usuario = new Usuario;
   private logado: boolean = false;
+  private todosUsuarios: Array<Usuario> = []
   eventoLogin = new Subject<string>;
   erroServidor = new Subject<string>;
 
-  getUsuario(): Usuario {
-    return this.usuario;
+  getUsuarioPrincipal(): Usuario {
+    return this.usuarioPincipal;
   }
 
   getLogado(): boolean {
     return this.logado;
+  }
+
+  getUsuarios(): Array<Usuario> {
+    return this.todosUsuarios;
   }
 
   criarUsuario(objeto: Object): Observable<any> {
@@ -33,9 +38,9 @@ export class UsuarioService {
             return objectUsuario.getEmail() === email;
           }));
         if (usuarioLogin && usuarioLogin.getSenha() === senha) {
-          this.usuario = usuarioLogin;
+          this.usuarioPincipal = usuarioLogin;
           this.logado = true;
-          this.eventoLogin.next(`Bem-vindo ${this.usuario.getNome()}`);
+          this.eventoLogin.next(`Bem-vindo ${this.usuarioPincipal.getNome()}`);
         } else {
           this.eventoLogin.next("E-mail e/ou senha incorretos");
         }
@@ -46,7 +51,7 @@ export class UsuarioService {
   }
 
   fazerLogout(): void {
-    this.usuario = new Usuario();
+    this.usuarioPincipal = new Usuario();
     this.logado = false;
     this.eventoLogin.next('Até logo');
   }
@@ -56,12 +61,12 @@ export class UsuarioService {
     return this.atualizaDadosPessoais(usuarioAtualizado);
   }
 
-  async toggleSeguir(idUsuarioAlvo: number) {
+  toggleSeguir(idUsuarioAlvo: number): void {
     if (!this.logado) {
       return;
     }
     let usuarioAlvo: Usuario | undefined;
-    let seguindo: boolean = this.usuario.getSeguindo().includes(idUsuarioAlvo);
+    let seguindo: boolean = this.usuarioPincipal.getSeguindo().includes(idUsuarioAlvo);
     Object.assign(new Usuario, this.getDados().subscribe((response) => {
       usuarioAlvo = Object.assign(response.find((object: Usuario) => {
         object = Object.assign(new Usuario, object);
@@ -76,11 +81,11 @@ export class UsuarioService {
     }));
   }
 
-  deixarDeSeguir(alvo: Object): void {
-    let alvoUsuario:Usuario = Object.assign(new Usuario, alvo);
-    this.usuario.pararDeSeguir(alvoUsuario.getId());
-    alvoUsuario.removerSeguidor(this.usuario.getId());
-    this.atualizarSeguidores(this.usuario).subscribe((response) => {
+  private deixarDeSeguir(alvo: Object): void {
+    let alvoUsuario: Usuario = Object.assign(new Usuario, alvo);
+    this.usuarioPincipal.pararDeSeguir(alvoUsuario.getId());
+    alvoUsuario.removerSeguidor(this.usuarioPincipal.getId());
+    this.atualizarSeguidores(this.usuarioPincipal).subscribe((response) => {
       this.eventoLogin.next('Deixou de seguir');
       this.atualizarSeguidores(alvoUsuario).subscribe();
     },
@@ -89,11 +94,11 @@ export class UsuarioService {
       });
   }
 
-  seguir(alvo: Object): void {
-    let alvoUsuario:Usuario = Object.assign(new Usuario, alvo);
-    this.usuario.seguirUsuario(alvoUsuario.getId());
-    alvoUsuario.adicionarSeguidor(this.usuario.getId());
-    this.atualizarSeguidores(this.usuario).subscribe((response) => {
+  private seguir(alvo: Object): void {
+    let alvoUsuario: Usuario = Object.assign(new Usuario, alvo);
+    this.usuarioPincipal.seguirUsuario(alvoUsuario.getId());
+    alvoUsuario.adicionarSeguidor(this.usuarioPincipal.getId());
+    this.atualizarSeguidores(this.usuarioPincipal).subscribe((response) => {
       this.eventoLogin.next('Seguindo');
       this.atualizarSeguidores(alvoUsuario).subscribe();
     },
@@ -126,7 +131,16 @@ export class UsuarioService {
       });
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+    this.getDados().subscribe((response: Array<Usuario>) => {
+      response.forEach(objeto =>{
+        this.todosUsuarios.push(Object.assign(new Usuario, objeto))
+      })
+    },
+    (error) => {
+      this.erroServidor.next(error);
+    });
+  }
 
 }
 
