@@ -1,5 +1,9 @@
 @import '../../styles.scss';
 
+.container{
+    background-color: $cinza;
+    padding: 15px;  
+}
 
 h2{
     font-family: $fonte-principal;
@@ -16,7 +20,13 @@ p, label{
     margin: 0;
     padding: 0;
 }
-    
+
 .btn{
     background-color: $cor-secundaria;
+    transition: background-color 0.3s ease;
+    padding: 20px;
+}
+
+.btn:hover {
+    background-color: $cor-terciaria;
 }
