@@ -1,4 +1,4 @@
-import { UsuarioService } from 'src/assets/services/usuario/usuario.service';
+import { Usuario, UsuarioService } from 'src/assets/services/usuario/usuario.service';
 import { GptService } from '../../assets/services/openai/gpt.service';
 import { Component } from '@angular/core';
 
@@ -13,9 +13,16 @@ export class ComponentTesteComponent {
 
   textoGerado = '';
 
-  constructor(private gptService: GptService, private usuario: UsuarioService) {
-    usuario.eventoLogin.subscribe(resposta => {
-      alert('login com sucesso?' + resposta)
+  usuario: Usuario;
+
+  usuarioService: UsuarioService;
+
+  constructor(private gptService: GptService, usuarioService: UsuarioService) {  
+    this.usuario = usuarioService.getUsuario();
+    this.usuarioService = usuarioService;
+    usuarioService.eventoLogin.subscribe((evento) => {
+      this.usuario = usuarioService.getUsuario();
+      alert(evento);
     })
   }
 
@@ -34,11 +41,11 @@ export class ComponentTesteComponent {
   }
 
   fazerLogin(){
-    this.usuario.fazerLogin('usuarioa@example.com', 'senha123');
+    this.usuarioService.fazerLogin('usuarioa@example.com', 'senha123');
   }
 
   criarUsuario() {
-    // this.usuario.cirarUsuario()
+    // this.usuarioService.cirarUsuario()
     //   .subscribe((response) => {
     //     console.log(true);
     //   },
@@ -46,7 +53,7 @@ export class ComponentTesteComponent {
     //     console.log(false + error.mesage);
     //   });
     
-    // this.usuario.atualizarCadastro(
+    // this.usuarioService.atualizarCadastro(
     //   {
     //     "id": 1,
     //     "nome": "Usuário A",
@@ -60,7 +67,7 @@ export class ComponentTesteComponent {
     //     ]
     //   }
     // ).subscribe((response) => console.log("foi"), (error) => console.log("nao foi"));
-    this.usuario.toggleSeguir(3);
+    this.usuarioService.toggleSeguir(3);
   }
 
 }

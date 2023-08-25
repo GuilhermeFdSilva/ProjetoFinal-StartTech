@@ -6,13 +6,17 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private usuario: Usuario;
+  private usuario: Usuario = new Usuario;
   private logado: boolean = false;
-  eventoLogin = new Subject<boolean>;
+  eventoLogin = new Subject<string>;
   erroServidor = new Subject<string>;
 
-  getUsuario(): Object {
-    return Object.assign(new Object, this.usuario);
+  getUsuario(): Usuario {
+    return this.usuario;
+  }
+
+  getLogado(): boolean {
+    return this.logado;
   }
 
   criarUsuario(objeto: Object): Observable<any> {
@@ -31,9 +35,9 @@ export class UsuarioService {
         if (usuarioLogin && usuarioLogin.getSenha() === senha) {
           this.usuario = usuarioLogin;
           this.logado = true;
-          this.eventoLogin.next(true);
+          this.eventoLogin.next(`Bem-vindo ${this.usuario.getNome()}`);
         } else {
-          this.eventoLogin.next(false);
+          this.eventoLogin.next("E-mail e/ou senha incorretos");
         }
       },
       (error) => {
@@ -44,7 +48,7 @@ export class UsuarioService {
   fazerLogout(): void {
     this.usuario = new Usuario();
     this.logado = false;
-    this.eventoLogin.next(false);
+    this.eventoLogin.next('Até logo');
   }
 
   atualizarCadastro(objetoAtualizado: Object): Observable<any> {
@@ -77,7 +81,7 @@ export class UsuarioService {
     this.usuario.pararDeSeguir(alvoUsuario.getId());
     alvoUsuario.removerSeguidor(this.usuario.getId());
     this.atualizarSeguidores(this.usuario).subscribe((response) => {
-      this.eventoLogin.next(true);
+      this.eventoLogin.next('Deixou de seguir');
       this.atualizarSeguidores(alvoUsuario).subscribe();
     },
       (error) => {
@@ -90,7 +94,7 @@ export class UsuarioService {
     this.usuario.seguirUsuario(alvoUsuario.getId());
     alvoUsuario.adicionarSeguidor(this.usuario.getId());
     this.atualizarSeguidores(this.usuario).subscribe((response) => {
-      this.eventoLogin.next(true);
+      this.eventoLogin.next('Seguindo');
       this.atualizarSeguidores(alvoUsuario).subscribe();
     },
       (error) => {
@@ -126,7 +130,7 @@ export class UsuarioService {
 
 }
 
-class Usuario {
+export class Usuario {
   private id: number;
   private nome: string;
   private endereco: string;
