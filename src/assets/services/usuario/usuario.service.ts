@@ -52,23 +52,46 @@ export class UsuarioService {
     return this.atualizaDadosPessoais(usuarioAtualizado);
   }
 
-  toggleSeguir(idUsuarioAlvo: number): void {
+  async toggleSeguir(idUsuarioAlvo: number) {
     if (!this.logado) {
       return;
     }
-    this.usuario.seguirUsuario(idUsuarioAlvo);
+    let usuarioAlvo: Usuario | undefined;
+    let seguindo: boolean = this.usuario.getSeguindo().includes(idUsuarioAlvo);
+    Object.assign(new Usuario, this.getDados().subscribe((response) => {
+      usuarioAlvo = Object.assign(response.find((object: Usuario) => {
+        object = Object.assign(new Usuario, object);
+        return object.getId() === idUsuarioAlvo;
+      }));
+      if (seguindo && usuarioAlvo) {
+        this.deixarDeSeguir(usuarioAlvo);
+      }
+      if (!seguindo && usuarioAlvo) {
+        this.seguir(usuarioAlvo);
+      }
+    }));
+  }
+
+  deixarDeSeguir(alvo: Object): void {
+    let alvoUsuario:Usuario = Object.assign(new Usuario, alvo);
+    this.usuario.pararDeSeguir(alvoUsuario.getId());
+    alvoUsuario.removerSeguidor(this.usuario.getId());
     this.atualizarSeguidores(this.usuario).subscribe((response) => {
       this.eventoLogin.next(true);
+      this.atualizarSeguidores(alvoUsuario).subscribe();
     },
-    (error) => {
-      this.erroServidor.next(error);
-    });
-    this.getDados().subscribe((response) => {
-      this.atualizarSeguidores(Object.assign(new Usuario(),
-        response.find((objectUsuario: Usuario) => {
-          objectUsuario = Object.assign(new Usuario, objectUsuario);
-          return objectUsuario.getId() === idUsuarioAlvo;
-        })));
+      (error) => {
+        this.erroServidor.next(error);
+      });
+  }
+
+  seguir(alvo: Object): void {
+    let alvoUsuario:Usuario = Object.assign(new Usuario, alvo);
+    this.usuario.seguirUsuario(alvoUsuario.getId());
+    alvoUsuario.adicionarSeguidor(this.usuario.getId());
+    this.atualizarSeguidores(this.usuario).subscribe((response) => {
+      this.eventoLogin.next(true);
+      this.atualizarSeguidores(alvoUsuario).subscribe();
     },
       (error) => {
         this.erroServidor.next(error);
