@@ -27,7 +27,7 @@ export class ComponentTesteComponent {
     this.todosUsuarios = usuarioService.getUsuarios();
     this.usuarioService.eventoLogin.subscribe((evento) => {
       this.usuarioPrincipal = usuarioService.getUsuarioPrincipal();
-      this.usuarioAlvo = this.todosUsuarios[0];
+      this.usuarioAlvo = this.todosUsuarios[2];
       alert(evento);
     });
   }
