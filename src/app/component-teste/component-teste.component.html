@@ -3,4 +3,7 @@
 
 <p>{{ textoGerado }}</p>
 
+<h1 *ngIf="this.usuarioService.getLogado()">{{ this.usuario.getNome() }}</h1>
+
+<button (click)="fazerLogin()">Logar</button>
 <button (click)="criarUsuario()">Criar</button>

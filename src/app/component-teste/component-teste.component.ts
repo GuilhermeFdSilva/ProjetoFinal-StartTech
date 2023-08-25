@@ -1,4 +1,4 @@
-import { UsuarioService } from 'src/assets/services/usuario/usuario.service';
+import { Usuario, UsuarioService } from 'src/assets/services/usuario/usuario.service';
 import { GptService } from '../../assets/services/openai/gpt.service';
 import { Component } from '@angular/core';
 
@@ -13,9 +13,20 @@ export class ComponentTesteComponent {
 
   textoGerado = '';
 
-  constructor (private gptService: GptService, private usuario: UsuarioService) { }
+  usuario: Usuario;
 
-  chamaGeradorDescricao (evento: any) {
+  usuarioService: UsuarioService;
+
+  constructor(private gptService: GptService, usuarioService: UsuarioService) {  
+    this.usuario = usuarioService.getUsuario();
+    this.usuarioService = usuarioService;
+    usuarioService.eventoLogin.subscribe((evento) => {
+      this.usuario = usuarioService.getUsuario();
+      alert(evento);
+    })
+  }
+
+  chamaGeradorDescricao(evento: any) {
     const botaoDeEnvio = evento.target as HTMLButtonElement;
     botaoDeEnvio.setAttribute('disabled', 'true');
     this.gptService.gerarDescricao(this.teste).subscribe(
@@ -29,7 +40,34 @@ export class ComponentTesteComponent {
     )
   }
 
-  criarUsuario() {
-    this.usuario.cirarUsuario('Guilherme', 'Rua dos Alfeneiros n°4', '(11) 4002-8922', 'guilherminho@gmail.com', '123456');
+  fazerLogin(){
+    this.usuarioService.fazerLogin('usuarioa@example.com', 'senha123');
   }
+
+  criarUsuario() {
+    // this.usuarioService.cirarUsuario()
+    //   .subscribe((response) => {
+    //     console.log(true);
+    //   },
+    //   (error) => {
+    //     console.log(false + error.mesage);
+    //   });
+    
+    // this.usuarioService.atualizarCadastro(
+    //   {
+    //     "id": 1,
+    //     "nome": "Usuário A",
+    //     "endereco": "Rua A, 123",
+    //     "celular": "(11) 1234-5678",
+    //     "email": "usuarioa@example.com",
+    //     "senha": "funfandoComSucesso",
+    //     "seguidores": [
+    //       2,
+    //       3
+    //     ]
+    //   }
+    // ).subscribe((response) => console.log("foi"), (error) => console.log("nao foi"));
+    this.usuarioService.toggleSeguir(3);
+  }
+
 }
