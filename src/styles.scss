@@ -23,7 +23,13 @@ html {
     padding: 0;
 
     a {
+        color: white;
         text-decoration: none;
+
+        &:hover {
+            color: white;
+            text-decoration: none;
+        }
     }
 
     li {
