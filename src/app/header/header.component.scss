@@ -2,14 +2,26 @@
 
 header {
     width: 100%;
-    padding: 12px 5%;
     display: flex;
     align-items: center;
     background-color: $cor-principal;
 
-    .navbar-brand {
-        // aqui deixarei em aberto para a logo da nossa pagina
+    nav {
+        margin: auto;
+        width: 1140px;
+
+        #conteiner-interno {
+
+            #nav-bar {
+                display: flex;
+                justify-content: space-evenly;
+            }
+
+            .form-control {
+                width: 460px;
+            }
+        }
+
+
     }
-
-
 }
