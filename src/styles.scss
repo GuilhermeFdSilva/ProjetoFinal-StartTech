@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+@import '~typeface-roboto/index.css';
+@import '~typeface-open-sans/index.css';
+
+// Cores
+$cor-principal: #7a1b0c;
+$cor-secundaria: #112d3b;
+$cor-terciaria: #b8860b;
+
+// Fontes
+$fonte-principal: 'Roboto', sans-serif;
+$fonte-secundaria: 'Open Sans', sans-serif;
+
+// Tamanhos de Fonte
+$tamanho-fonte-pequena: 14px;
+$tamanho-fonte-normal: 16px;
+$tamanho-fonte-grande: 18px;
+$tamanho-fonte-muito-grande: 24px;
+$tamanho-fonte-enorme: 36px;
