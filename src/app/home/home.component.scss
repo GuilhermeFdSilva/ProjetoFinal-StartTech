@@ -1,1 +1,16 @@
 @import '../../styles.scss';
+
+.card-img-container {
+    height: 0;
+    padding-bottom: 133.33%; /* Proporção 3:4 */
+    position: relative;
+  }
+  
+  .card-img-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }

@@ -1,20 +1,27 @@
 <div class="container">
-  <div class="row">
-    <div class="col-md-4" *ngFor="let item of itens">
-      <div class="card mb-4">
-        <img class="card-img-top" [src]="item.imagens[0]" [alt]="item.titulo" />
-        <div class="card-body">
-          <h5 class="card-title">{{ item.titulo }}</h5>
-          <p class="card-text">
-            Vendedor: {{ getNomeUsuario(item.usuario_id) }}
-          </p>
-        </div>
-        <div class="card-footer">
-          <button class="btn btn-primary" (click)="verDetalhes(item.id)">
-            Mais detalhes
-          </button>
+    <div class="row">
+      <div class="col-md-4" *ngFor="let item of itens">
+        <div class="card mb-4">
+          <div class="card-img-container">
+            <img class="card-img-top" [src]="item.imagens[0]" [alt]="item.titulo" />
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">{{ item.titulo }}</h5>
+            <p class="card-text">
+              Vendedor: {{ getNomeUsuario(item.usuario_id) }}
+            </p>
+          </div>
+          <div class="card-footer">
+            <button class="btn btn-primary" (click)="verDetalhes(item.id)">
+              Mais detalhes
+            </button>
+            <button class="btn btn-success ml-2"> <!-- Colar dentro do botão (click)="copiarCelular(item.usuario_id) -->
+              Copiar Celular
+            </button>
+            <p class="mt-2"></p> <!-- Colar dentro do P *ngIf="celularCopiado">Celular copiado!-->
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+  
