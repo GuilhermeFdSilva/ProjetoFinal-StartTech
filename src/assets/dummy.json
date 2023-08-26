@@ -14,7 +14,7 @@
     },
     {
       "id": 2,
-      "nome": "Usuário B",
+      "nome": "Juliano",
       "endereco": "Rua B, 456",
       "celular": "(22) 9876-5432",
       "email": "usuariob@example.com",
@@ -52,11 +52,12 @@
     {
       "id": 2,
       "usuario_id": 2,
-      "titulo": "Produto do Usuário B",
+      "titulo": "Catioro",
       "descricao": "Descrição do produto do Usuário B",
       "preco": 75,
       "imagens": [
-        "url_da_imagem3.jpg"
+        "data:image/jpeg;base64,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"
+      ,"https://publish.purewow.net/wp-content/uploads/sites/2/2021/06/smallest-dog-breeds-biewer-terrier.jpg?fit=728%2C524"
       ],
       "tags": [
         "moda",
@@ -71,6 +72,72 @@
       "preco": 30,
       "imagens": [
         "url_da_imagem4.jpg"
+      ],
+      "tags": [
+        "acessórios"
+      ]
+    },
+    {
+      "id": 3,
+      "usuario_id": 3,
+      "titulo": "Produto do Usuário C",
+      "descricao": "Descrição do produto do Usuário C",
+      "preco": 30,
+      "imagens": [
+        "url_da_imagem4.jpg"
+      ],
+      "tags": [
+        "acessórios"
+      ]
+    },
+    {
+      "id": 3,
+      "usuario_id": 3,
+      "titulo": "Produto do Usuário C",
+      "descricao": "Descrição do produto do Usuário C",
+      "preco": 30,
+      "imagens": [
+        "url_da_imagem4.jpg"
+      ],
+      "tags": [
+        "acessórios"
+      ]
+    },
+    {
+      "id": 3,
+      "usuario_id": 3,
+      "titulo": "Produto do Usuário C",
+      "descricao": "Descrição do produto do Usuário C",
+      "preco": 30,
+      "imagens": [
+        "url_da_imagem4.jpg"
+      ],
+      "tags": [
+        "acessórios"
+      ]
+    },
+    {
+      "id": 3,
+      "usuario_id": 3,
+      "titulo": "Produto do Usuário C",
+      "descricao": "Descrição do produto do Usuário C",
+      "preco": 30,
+      "imagens": [
+        "url_da_imagem4.jpg"
+      ],
+      "tags": [
+        "acessórios"
+      ]
+    },
+    {
+      "id": 3,
+      "usuario_id": 3,
+      "titulo": "Produto do Usuário C",
+      "descricao": "Descrição do produto do Usuário C",
+      "preco": 30,
+      "imagens": [
+        "https://publish.purewow.net/wp-content/uploads/sites/2/2021/06/smallest-dog-breeds-biewer-terrier.jpg?fit=728%2C524",
+        "https://publish.purewow.net/wp-content/uploads/sites/2/2021/06/smallest-dog-breeds-biewer-terrier.jpg?fit=728%2C524"
       ],
       "tags": [
         "acessórios"
