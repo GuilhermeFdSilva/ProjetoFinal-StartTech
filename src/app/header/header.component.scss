@@ -27,6 +27,10 @@ header {
       &:focus {
         color: $cor-terciaria;
       }
+
+      i {
+        font-size: $tamanho-fonte-muito-grande;
+      }
     }
 
     #navbar {
@@ -83,6 +87,10 @@ header {
 
               &:focus {
                 border: 1px solid $cor-terciaria;
+              }
+
+              i {
+                font-size: $tamanho-fonte-grande;
               }
             }
 
