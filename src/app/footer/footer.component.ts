@@ -23,7 +23,7 @@ export class FooterComponent {
   redesSociais: Array<any> = [
     {
       nome: 'Instagram',
-      link: 'https://www.instagram.com/antiquary02/?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D',
+      link: 'https://www.instagram.com/antiquary02/',
       icone: 'bi bi-instagram'
     },
     {
