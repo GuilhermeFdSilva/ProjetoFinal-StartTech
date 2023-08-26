@@ -10,6 +10,12 @@ header {
     margin: auto;
     width: 1140px;
 
+    a {
+      img {
+        height: 40px;
+      }
+    }
+
     button {
       color: white;
       transition: all 0.5s;
