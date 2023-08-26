@@ -1,24 +1,35 @@
 @import "../../styles.scss";
 
 footer {
-  padding: 20px;
   background-color: $cor-secundaria;
   color: white;
 
 
-  #conteiner-externo {
+  #container-externo {
     margin: auto;
     width: 1140px;
 
     section {
-      margin: 20px 0 30px 0;
+      margin-top: 30px;
+    }
 
+    @media (max-width: 990px) {
+      section {
+        text-align: center;
+      }
+    }
+
+    #container-imagem {
       img {
         width: 100%;
+        max-width: 310px;
       }
+    }
 
+    #container-navegacao {
       h4 {
         font-family: $fonte-secundaria;
+        margin-bottom: 20px;
       }
 
       ul {
@@ -36,6 +47,13 @@ footer {
           }
         }
       }
+    }
+
+    #container-social {
+      h4 {
+        font-family: $fonte-secundaria;
+        margin-bottom: 20px;
+      }
 
       article {
         height: $tamanho-fonte-enorme;
@@ -46,7 +64,32 @@ footer {
           &:hover {
             color: $cor-terciaria;
           }
+
+          i {
+            font-size: $tamanho-fonte-grande;
+          }
         }
+      }
+    }
+  }
+
+  @media (max-width: 1170px) {
+    #container-externo {
+      width: 100%;
+    }
+  }
+
+  #container-copy {
+    margin-top: 20px;
+    width: 100%;
+    background-color: darken($color: $cor-secundaria, $amount: 3);
+    padding: 15px;
+
+    article {
+      text-align: center;
+
+      h6 {
+        margin: 0;
       }
     }
   }

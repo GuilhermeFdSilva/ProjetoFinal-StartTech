@@ -1,32 +1,37 @@
-<footer class="">
+<footer>
 
-  <!-- Conteiner -->
-  <div class="row d-flex justify-content-center" id="conteiner-externo">
+  <!-- Container -->
+  <div class="row d-flex justify-content-center" id="container-externo">
 
     <!-- container logo -->
-    <section class="col-lg-4 col-sm-12" id="conteiner-imagem">
-      <img src="" alt="Logo">
+    <section class="col-lg-4 col-sm-12" id="container-imagem">
+      <img src="https://i.ibb.co/yyp5gDm/Logo-1.png" alt="Logo Antiquary - Artigos antigos">
     </section>
 
     <!-- Links -->
-    <section class="col-lg-4 col-sm-12" id="conteiner-navegacao">
-      <h4 id="titulo-navegacao">Navegação</h4>
+    <section class="col-lg-4 col-sm-12" id="container-navegacao">
+      <h4>Navegação</h4>
       <ul>
-        <li *ngFor="let link of links"><a [routerLink]="link">{{ link }}</a></li>
+        <li *ngFor="let link of links"><a [routerLink]="link.rota">{{ link.pagina }}</a></li>
       </ul>
     </section>
 
     <!-- Social -->
-    <section class="col-lg-4 col-sm-12" id="conteiner-social">
+    <section class="col-lg-4 col-sm-12" id="container-social">
+      <h4>Nossas redes sociais</h4>
       <article class="row" *ngFor="let social of redesSociais">
-        <a [routerLink]="social.link">
-          {{ social.icone }} {{ social.nome }}</a>
+        <a [href]="social.link" target="_blank">
+          <i [class]="social.icone"></i>
+          &nbsp;{{ social.nome }}
+        </a>
       </article>
     </section>
   </div>
 
   <!-- Container Copy -->
-  <div class="row">
-    <h5>Copy bla bla bla</h5>
+  <div id="container-copy">
+    <article>
+      <h6>&copy; [Empresa] 2023. Todos os direitos reservados.</h6>
+    </article>
   </div>
 </footer>

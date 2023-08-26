@@ -6,22 +6,35 @@ import { Component } from '@angular/core';
   styleUrls: ['./footer.component.scss']
 })
 export class FooterComponent {
-  links: Array<any> = ['pedra', 'papel', 'tesoura'];
-  redesSociais: Array<any> = [
+  links: Array<any> = [
     {
-      nome: 'Facebook',
-      link: 'http://www.facebook.com',
-      icone: ''
+      rota: 'home',
+      pagina: 'Home'
     },
     {
+      rota: 'cadastro',
+      pagina: 'Cadastro'
+    },
+    {
+      rota: 'quem-somos',
+      pagina: 'Quem somos'
+    },
+  ];
+  redesSociais: Array<any> = [
+    {
       nome: 'Instagram',
-      link: 'http://www.instagram.com',
-      icone: ''
+      link: 'https://www.instagram.com/antiquary02/?utm_source=qr&igshid=MzNlNGNkZWQ4Mg%3D%3D',
+      icone: 'bi bi-instagram'
     },
     {
       nome: 'LinkedIn',
       link: 'http://www.linkedin.com',
-      icone: ''
+      icone: 'bi bi-linkedin'
+    },
+    {
+      nome: 'Email',
+      link: 'mailto:antiquary507@gmail.com',
+      icone: 'bi bi-envelope-fill'
     }
   ];
 }
