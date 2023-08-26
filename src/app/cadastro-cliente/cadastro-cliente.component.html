@@ -1,93 +1,31 @@
-<!-- Deixei este botão aqui em cima para saber identificar qual é o de cadastro e o de login, 
-este seria o lado esquerdo -->
+<div id="container">
 
-<div class="row justify-content-center mt-5">
-    <button type="submit" class="btn btn-primary">Cadastre-se</button>
+    <form id="cadastroForm">
+        <h2>Cadastro</h2>
+        <!-- Dados Pessoais -->
+        <div class="form-group">
+            <label for="nome">Nome:</label>
+            <input type="text" class="form-control" id="nome" placeholder="Ex:Fulano da Silva">
+        </div>
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" class="form-control" id="email" placeholder="Ex:fulano.silva89@gmail.com" required>
+        </div>
+
+        <!-- Verificação se as duas senhas estão digitadas corretamente -->
+        <div class="form-group">
+            <label for="senha">Crie sua senha:</label>
+            <input type="password" class="form-control" id="senha" placeholder="De 8 a 14 caracteres" required>
+        </div>
+
+        <div class="form-group">
+            <label for="senha2">Confirme sua senha:</label>
+            <input type="password" class="form-control" id="senha" placeholder="De 8 a 14 caracteres" required>
+        </div>
+
+        <button type="button" class="btn btn-outline-danger">Entrar</button>
+
+        <!-- ao clicar aqui,o campo mudará para um campo de Login -->
+        <button id="changeModeBtn" class="btn btn-link">Já possuo Cadastro</button>
+    </form>
 </div>
-
-<form>
-    <div class="form-row row">
-        <div class="form-group col-md-3">
-            <label for="inputName">Nome</label>
-            <input type="name" class="form-control" id="inputName" placeholder="Nome/Sobrenome">
-        </div>
-
-        <div class="form-group col-md-4">
-            <label for="inputCity">Endereço</label>
-            <input type="text" class="form-control" id="inputCity">
-        </div>
-
-        <div class="form-row row">
-            <div class="form-group col-md-5">
-                <label for="inputEmail">E-mail</label>
-                <input type="text" class="form-control" id="inputEmail" placeholder="nomeSobrenome13@gmail.com">
-            </div>
-        </div>
-
-        <!-- Realização de uma verificação para ver se as senhas estão iguais (se possível) -->
-        <div class="form-row row">
-            <div class="form-group col-md-4">
-                <label for="inputPassword">Senha</label>
-                <input type="password" class="form-control" id="inputPassword" placeholder="De 8 a 14 caracteres">
-            </div>
-
-            <div class="form-group col-md-4">
-                <label for="inputPassword2">Confirme sua Senha</label>
-                <input type="password" class="form-control" id="inputPassword2">
-            </div>
-
-            <!-- se quiser retirar este botão,é para que a senha fique salva dentro da plataforma  -->
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Lembrar-me
-                    </label>
-                </div>
-            </div>
-
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">Realizar login</button>
-</form>
-
-<!-- Lado direito do formulario -->
-
-<div class="row justify-content-center mt-5">
-    <button type="submit" class="btn btn-primary">Entrar</button>
-</div>
-<form>
-    <div class="form-row row">
-        <div class="form-group col-md-3">
-            <label for="inputName">Nome</label>
-            <input type="name" class="form-control" id="inputName">
-        </div>
-
-        <div class="form-row row">
-            <div class="form-group col-md-5">
-                <label for="inputEmail">E-mail</label>
-                <input type="text" class="form-control" id="inputEmail">
-            </div>
-        </div>
-
-        <div class="form-row row">
-            <div class="form-group col-md-4">
-                <label for="inputPassword">Senha</label>
-                <input type="password" class="form-control" id="inputPassword">
-            </div>
-
-
-            <div class="form-group">
-                <div class="form-check">
-                    <input class="form-check-input" type="checkbox" id="gridCheck">
-                    <label class="form-check-label" for="gridCheck">
-                        Lembrar-me
-                    </label>
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <button type="submit" class="btn btn-primary">Entrar</button>
-</form>
