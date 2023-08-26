@@ -18,6 +18,7 @@ import { PerfilClienteComponent } from './perfil-cliente/perfil-cliente.componen
 import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.component';
 import { VizualizacaoPerfilComponent } from './vizualizacao-perfil/vizualizacao-perfil.component';
 import { registerLocaleData } from '@angular/common';
+import { LoginComponent } from './login/login.component';
 
 registerLocaleData(ptBr);
 
@@ -32,7 +33,8 @@ registerLocaleData(ptBr);
     DetalhesComponent,
     PerfilClienteComponent,
     CadastroClienteComponent,
-    VizualizacaoPerfilComponent
+    VizualizacaoPerfilComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,

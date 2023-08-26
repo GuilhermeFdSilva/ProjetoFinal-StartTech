@@ -1,0 +1,23 @@
+<div id="container">
+
+    <form id="cadastroForm">
+        <h2>Login</h2>
+        <!-- Dados Pessoais -->
+        <div class="form-group">
+            <label for="email">E-mail:</label>
+            <input type="email" class="form-control" id="email" placeholder="Ex:fulano.silva89@gmail.com" required>
+        </div>
+
+        <!-- Verificação se as duas senhas estão digitadas corretamente -->
+        <div class="form-group">
+            <label for="senha">Senha:</label>
+            <input type="password" class="form-control" id="senha" placeholder="De 8 a 14 caracteres" required>
+        </div>
+
+
+        <button type="button" class="btn btn-outline-danger">Entrar</button>
+
+        <!-- ao clicar aqui,o campo mudará para um campo de Login -->
+        <button id="changeModeBtn" class="btn btn-link" routerLink="cadastro">Não possuo Cadastro</button>
+    </form>
+</div>
