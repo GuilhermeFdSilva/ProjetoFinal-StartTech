@@ -1,27 +1,20 @@
 <div class="container">
     <!-- Foto de perfil do Vendedor -->
     <div class="container-md-4" id="img-perfil">
-        <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-person-square" id="svg-icon"
-            viewBox="0 0 16 16">
-            <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-            <path
-                d="M2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2zm12 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1v-1c0-1-1-4-6-4s-6 3-6 4v1a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12z" />
-        </svg>
         <!-- Nome do vendedor a ser apresentado na tela que será puxado conforme ele cadastrar um item  -->
-        <h2>Isabella</h2>
-            <!-- Aqui é o botão de seguir o vendedor,não se é possível quando o cliente clicar ele aparecer seguindo -->
+        <h2 id="name">Isabella</h2>
+        <!-- Aqui é o botão de seguir o vendedor,não se é possível quando o cliente clicar ele aparecer seguindo -->
         <button type="button" class="btn btn-outline-danger" id="btn-follow">
             <!-- Não estou conseguindo fazer com que o botão siga as cores padrões do nosso site -->
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box2-heart" viewBox="0 0 16 16">
-                <path d="M8 7.982C9.664 6.309 13.825 9.236 8 13 2.175 9.236 6.336 6.31 8 7.982Z"></path>
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart"
+                viewBox="0 0 16 16">
                 <path
-                    d="M3.75 0a1 1 0 0 0-.8.4L.1 4.2a.5.5 0 0 0-.1.3V15a1 1 0 0 0 1 1h14a1 1 0 0 0 1-1V4.5a.5.5 0 0 0-.1-.3L13.05.4a1 1 0 0 0-.8-.4h-8.5Zm0 1H7.5v3h-6l2.25-3ZM8.5 4V1h3.75l2.25 3h-6ZM15 5v10H1V5h14Z">
-                </path>
+                    d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z" />
             </svg>
             Seguir
         </button>
     </div>
-   
+
 
     <!-- Aqui é o card que está servindo para teste  -->
     <div class="container">

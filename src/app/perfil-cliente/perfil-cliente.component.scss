@@ -1,2 +1,39 @@
+@import "../../styles.scss";
 
-  
+.container {
+    display: flex;
+
+    .container-info {
+        height: 270px;
+        background: $cinza;
+        border-radius: 10px;
+        margin: 20px;
+        padding: $tamanho-fonte-muito-grande;
+        flex-direction: column;
+        width: calc(50% - 20px);
+
+        // &:first-of-type {
+
+
+        h2 {
+            text-align: center;
+             margin-bottom: 40px;
+             font-size: $tamanho-fonte-muito-grande;
+            font-family: $fonte-secundaria;
+            color: black;
+        }
+
+        h3 {
+            color: black;
+            font-family: $fonte-secundaria;
+            font-size: $tamanho-fonte-normal;
+            line-height: $tamanho-fonte-enorme;
+        }
+
+        .form-group {
+            color: black;
+            font-family: $fonte-terciaria;
+            margin-bottom: 20px;
+        }
+    }
+}
