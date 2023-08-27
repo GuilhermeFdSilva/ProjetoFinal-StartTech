@@ -1,1 +1,62 @@
-<p>detalhes works!</p>
+<div id="container">
+
+  <!-- Inicio do card -->
+  <article class="card" id="card">
+    <div class="row g-0">
+
+      <!-- Carrossel card -->
+      <section id="imagens-item" class="carousel slide col-lg-6 col-md-12 p-0">
+        <div class="carousel-inner">
+
+          <!-- Primeira imagem do carrossel -->
+          <article class="carousel-item active">
+            <img [src]="produto.imagens[0]" class="d-block fundo" [alt]="produto.titulo">
+            <img [src]="produto.imagens[0]" class="d-block" [alt]="produto.titulo">
+          </article>
+
+          <!-- Outras imagens -->
+          <article class="carousel-item" *ngFor="let imagem of produto.imagens.slice(1)">
+            <img [src]="imagem" class="d-block fundo" [alt]="produto.titulo">
+            <img [src]="imagem" class="d-block" [alt]="produto.titulo">
+          </article>
+        </div>
+
+        <!-- Botoes para contrlar o carrossel -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#imagens-item" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#imagens-item" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </section>
+
+      <!-- Descrição do item a venda -->
+      <section class="col-lg-6 col-md-12" id="descricao-item">
+        <div class="card-body">
+          <h1>{{ produto.titulo }}</h1>
+          <p>
+            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Vero ratione, aliquam veritatis eveniet eaque fuga nihil officiis ipsum qui commodi soluta enim vitae suscipit magni fugiat eligendi nemo, praesentium reprehenderit.
+          </p>
+          <p>
+            <strong>Categorias:</strong>
+            <br>
+            {{ produto.tags }}
+          </p>
+          <p id="preco">
+            <strong>Preço:</strong>
+            <br>
+            {{ produto.preco | currency }}
+          </p>
+          <p>
+            <strong>Vendido por:</strong>
+            {{ getNomeUsuario(produto.usuario_id) }}
+          </p>
+          <button id="vendedor" class="btn btn-lg">Vendedor</button>
+          <button id="contato" class="btn btn-lg"><i class="bi bi-whatsapp"></i>&nbsp;Contato</button>
+        </div>
+      </section>
+    </div>
+  </article>
+</div>

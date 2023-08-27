@@ -1,0 +1,84 @@
+@import '../../styles.scss';
+
+#container {
+  width: 85%;
+  max-width: 1140px;
+  padding: 30px 0 30px 0;
+  margin: auto;
+
+  #card {
+    overflow: hidden;
+    min-height: 550px;
+
+    div {
+      height: 100%;
+
+      #imagens-item {
+        div {
+          article {
+            position: relative;
+            width: 100%;
+            height: 100%;
+
+            img {
+              width: 100%;
+              position: absolute;
+              top: 50%;
+              transform: translateY(-50%);
+            }
+
+            .fundo {
+              width: 100%;
+              height: 100%;
+              filter: blur(20px);
+            }
+          }
+        }
+      }
+
+      @media (max-width: 990px) {
+        #imagens-item {
+          height: 300px;
+        }
+      }
+
+      #descricao-item {
+        div {
+          h1 {
+            font-size: $tamanho-fonte-enorme;
+            font-family: $fonte-principal;
+            color: $cor-principal;
+          }
+
+          p {
+            font-family: $fonte-secundaria;
+            font-size: $tamanho-fonte-normal;
+            line-height: $tamanho-fonte-enorme;
+          }
+
+          #preco {
+            font-size: $tamanho-fonte-muito-grande;
+            color: $cor-principal;
+          }
+
+          button {
+            width: calc(50% - 10px);
+
+            &:first-of-type {
+              margin-right: 10px;
+            }
+          }
+
+          #vendedor {
+            background-color: $cor-principal;
+            color: white;
+          }
+
+          #contato {
+            background-color: $whatsapp;
+          }
+        }
+      }
+    }
+  }
+}
