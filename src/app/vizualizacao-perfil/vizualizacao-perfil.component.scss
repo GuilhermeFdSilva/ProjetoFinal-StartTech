@@ -1,0 +1,43 @@
+@import '../../styles.scss';
+
+#img-perfil {
+    display: flex;
+    align-items: center;
+    margin-left: 40px;
+    margin: 50px;
+
+    #svg-icon {
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+        /* Espaço entre o SVG e o nome */
+
+        h2 {
+            display: flex;
+            font-family: $fonte-secundaria;
+            align-items: center;
+        }
+    }
+}
+
+
+#btn-follow{
+    margin: 30px;
+
+}
+
+.card-img-container {
+    height: 0;
+    padding-bottom: 133.33%;
+    /* Proporção 3:4 */
+    position: relative;
+}
+
+.card-img-top {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
