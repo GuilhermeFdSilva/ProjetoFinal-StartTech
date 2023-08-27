@@ -1,58 +1,47 @@
-<div id="container">
+<div id="container" class="container">
 
   <!-- Lado esquerdo do campo de preenchimento -->
   <div class="container-info">
     <h2>Dados Pessoais</h2>
 
-    <section>
-      <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <article>
-        <p><strong>Nome:</strong> </p>
-      </article>
+    <div class="mb-3 d-flex align-items-center">
+      <label for="nome" class="form-label me-3">Nome:</label>
+      <input type="text" class="form-control" id="nome" name="nome">
       <button class="btn btn-link">Editar</button>
-    </section>
+    </div>
 
-    <section>
-      <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <article>
-        <p><strong>E-mail: </strong> </p>
-      </article>
+    <div class="mb-3 d-flex align-items-center">
+      <label for="email" class="form-label me-3">E-mail:</label>
+      <input type="text" class="form-control" id="email" name="email">
       <button class="btn btn-link">Editar</button>
-    </section>
+    </div>
 
-    <section>
-      <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <!-- Colocar variável da senha utilizada em cadastro e que ela não seja mostrada, só com o botão de visualizar hehehe -->
-      <article>
-        <p><strong>Senha:</strong> </p>
-      </article>
+    <div class="mb-3 d-flex align-items-center">
+      <label for="senha" class="form-label me-3">Senha:</label>
+      <input type="password" class="form-control" id="senha" name="senha">
       <button class="btn btn-link">Editar</button>
-    </section>
+    </div>
   </div>
 
   <!-- Lado direito do campo de preenchimento -->
   <div class="container-info">
     <h2>Informações de Contato</h2>
 
-    <section>
-      <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <article>
-        <p><strong>Endereço: </strong> </p>
-      </article>
+    <div class="mb-3 d-flex align-items-center">
+      <label for="endereco" class="form-label me-3">Endereço:</label>
+      <input type="text" class="form-control" id="endereco" name="endereco">
       <button class="btn btn-link">Editar</button>
-    </section>
+    </div>
 
-    <section>
-      <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <article>
-        <p><strong>Celular: </strong> </p>
-      </article>
+    <div class="mb-3 d-flex align-items-center">
+      <label for="celular" class="form-label me-3">Celular:</label>
+      <input type="text" class="form-control" id="celular" name="celular">
       <button class="btn btn-link">Editar</button>
-    </section>
+    </div>
 
     <!-- Seriam as pessoas que ele segue dentro da plataforma -->
-    <section class="rede-pessoal">
+    <div class="rede-pessoal">
 
-    </section>
+    </div>
   </div>
 </div>
