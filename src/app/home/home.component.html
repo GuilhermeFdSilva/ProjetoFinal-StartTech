@@ -10,8 +10,9 @@
             <p class="card-text">
               Vendedor: {{ getNomeUsuario(item.usuario_id) }}
             </p>
+            <h5 class="card-title">{{ item.preco | currency}}</h5>
           </div>
-          <div class="card-footer">
+          <div class="card-footer d-flex justify-content-center align-items-center">
             <button class="btn btn-primary" (click)="verDetalhes(item.id)">
               Mais detalhes
             </button>
