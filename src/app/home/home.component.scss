@@ -1,20 +1,62 @@
 @import "../../styles.scss";
 
 .container {
-  margin-top: 20px;
-}
+  margin-top: 30px;
 
-.card-img-container {
-  height: 0;
-  padding-bottom: 133.33%; /* Proporção 3:4 */
-  position: relative;
-}
+  section {
+    max-width: 1140px;
 
-.card-img-top {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+    article {
+      div {
+        .imagem-card {
+          height: 0;
+          padding-bottom: 133.33%;
+          /* Proporção 3:4 */
+          position: relative;
+
+          .imagem {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        .conteudo-card{
+          h5 {
+            color: $cor-principal;
+          }
+
+          .preco{
+            font-size: $tamanho-fonte-muito-grande;
+            color: $cor-principal;
+          }
+        }
+
+        .botoes-card {
+          width: 100%;
+
+          button {
+            width: calc(50% - 10px);
+
+            &:first-of-type {
+              margin-right: 20px;
+            }
+          }
+
+          .detalhes-produto{
+            background-color: $cor-principal;
+            color: white;
+
+          }
+
+          .contato {
+            background-color: $whatsapp;
+          }
+        }
+      }
+    }
+  }
 }
