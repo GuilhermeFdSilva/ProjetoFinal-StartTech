@@ -12,7 +12,15 @@ export class HomeComponent implements OnInit {
   itens: any[] = [];
   usuarios: any[] = [];
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) {
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 0) {
+        document.getElementById('botao-topo')?.classList.add('visivel');
+      } else {
+        document.getElementById('botao-topo')?.classList.remove('visivel');
+      }
+    });
+  }
 
   ngOnInit(): void {
     this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
@@ -34,5 +42,9 @@ export class HomeComponent implements OnInit {
   contato(usuarioId: number) {
     const usuario = this.usuarios.find(u => u.id === usuarioId);
     window.location.href = `https://wa.me/55${usuario.celular}`;
+  }
+
+  voltarAoTopo() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 }

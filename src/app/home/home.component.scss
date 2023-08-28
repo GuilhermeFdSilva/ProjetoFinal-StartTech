@@ -83,3 +83,24 @@
     width: 100%;
   }
 }
+
+#botao-voltar-topo {
+  button {
+    width: 45px;
+    height: 45px;
+    font-size: $tamanho-fonte-grande;
+    background-color: $cor-principal;
+    color: white;
+    border-radius: 50%;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1;
+    transform: translateY(100px);
+    transition: all ease 0.5s;
+  }
+
+  .visivel{
+    transform: translateY(0px);
+  }
+}
