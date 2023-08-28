@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -11,7 +12,7 @@ export class HomeComponent implements OnInit {
   itens: any[] = [];
   usuarios: any[] = [];
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) { }
 
   ngOnInit(): void {
     this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
@@ -25,7 +26,13 @@ export class HomeComponent implements OnInit {
     return usuario ? usuario.nome : 'Desconhecido';
   }
 
-  verDetalhes(itemID: number) {
-    // Implementar a lógica para ver detalhes do item
+  verDetalhes(itemId: number) {
+    this.router.navigate(['detalhes', itemId]);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  contato(usuarioId: number) {
+    const usuario = this.usuarios.find(u => u.id === usuarioId);
+    window.location.href = `https://wa.me/55${usuario.celular}`;
   }
 }
