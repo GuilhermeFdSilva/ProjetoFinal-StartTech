@@ -1,10 +1,12 @@
 @import "../../styles.scss";
 
-.container {
-  margin-top: 30px;
+#container {
+  padding-top: 30px;
+  max-width: 1140px;
+  margin: auto;
 
   section {
-    max-width: 1140px;
+    margin: auto;
 
     article {
       div {
@@ -24,12 +26,21 @@
           }
         }
 
-        .conteudo-card{
+        @media (max-width: 990px) {
+          .imagem-card{
+            padding-bottom: 99.99%;
+          }
+        }
+
+        .conteudo-card {
           h5 {
             color: $cor-principal;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
           }
 
-          .preco{
+          .preco {
             font-size: $tamanho-fonte-muito-grande;
             color: $cor-principal;
           }
@@ -46,7 +57,7 @@
             }
           }
 
-          .detalhes-produto{
+          .detalhes-produto {
             background-color: $cor-principal;
             color: white;
 
@@ -58,5 +69,17 @@
         }
       }
     }
+  }
+
+  @media (max-width: 1140px) {
+    section {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1180px){
+  #container{
+    width: 100%;
   }
 }
