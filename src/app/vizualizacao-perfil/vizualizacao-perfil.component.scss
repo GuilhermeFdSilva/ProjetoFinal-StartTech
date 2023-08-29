@@ -3,6 +3,7 @@
 #container {
   padding-top: 30px;
   max-width: 1140px;
+  margin: auto;
 
   #perfil {
     width: 85%;
@@ -10,27 +11,110 @@
     margin-bottom: 40px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
 
-    button {
-        color: $cor-principal;
+    h2 {
+      color: $cor-principal;
+      font-family: $fonte-principal;
+      margin: 0;
+    }
+
+    div {
+      button {
+        height: 52px;
+        width: 52px;
         font-size: $tamanho-fonte-muito-grande;
+      }
+
+      #contato {
+        color: $whatsapp;
+        border: 2px solid $whatsapp;
+        margin-right: 10px;
+      }
+
+      .seguir {
+        color: $cor-principal;
         border: 2px solid $cor-principal;
+      }
     }
   }
 
-  .card-img-container {
-    height: 0;
-    padding-bottom: 133.33%;
-    /* Proporção 3:4 */
-    position: relative;
+  section {
+    margin: auto;
+
+    article {
+      div {
+        .imagem-card {
+          height: 0;
+          padding-bottom: 133.33%;
+          /* Proporção 3:4 */
+          position: relative;
+
+          .imagem {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        @media (max-width: 990px) {
+          .imagem-card {
+            padding-bottom: 99.99%;
+          }
+        }
+
+        .conteudo-card {
+          h5 {
+            color: $cor-secundaria;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .preco {
+            font-size: $tamanho-fonte-muito-grande;
+            color: $cor-principal;
+            margin: 0;
+          }
+        }
+
+        .botoes-card {
+          width: 100%;
+
+          button {
+            width: calc(50% - 10px);
+
+            &:first-of-type {
+              margin-right: 20px;
+            }
+          }
+
+          .detalhes-produto {
+            background-color: $cor-principal;
+            color: white;
+
+          }
+
+          .contato {
+            background-color: $whatsapp;
+          }
+        }
+      }
+    }
   }
 
-  .card-img-top {
-    position: absolute;
-    top: 0;
-    left: 0;
+  @media (max-width: 1140px) {
+    section {
+      width: 100%;
+    }
+  }
+}
+
+@media (max-width: 1180px) {
+  #container {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
   }
 }
