@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-detalhes',
@@ -16,7 +16,7 @@ export class DetalhesComponent implements OnInit {
   produtoId: string;
 
   ngOnInit() {
-    this.router.paramMap.subscribe(params => {
+    this.activatedRouter.paramMap.subscribe(params => {
       this.produtoId = params.get('id') ?? '';
     });
     this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
@@ -33,5 +33,9 @@ export class DetalhesComponent implements OnInit {
     return usuario ? usuario.nome : 'Desconhecido';
   }
 
-  constructor(private router: ActivatedRoute, private http: HttpClient) { }
+  verVendedor(usuarioId: string){
+    this.router.navigate(['perfil', usuarioId]);
+  }
+
+  constructor(private activatedRouter: ActivatedRoute, private router: Router, private http: HttpClient) { }
 }

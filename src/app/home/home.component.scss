@@ -27,14 +27,14 @@
         }
 
         @media (max-width: 990px) {
-          .imagem-card{
+          .imagem-card {
             padding-bottom: 99.99%;
           }
         }
 
         .conteudo-card {
           h5 {
-            color: $cor-principal;
+            color: $cor-secundaria;
             white-space: nowrap;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -78,8 +78,8 @@
   }
 }
 
-@media (max-width: 1180px){
-  #container{
+@media (max-width: 1180px) {
+  #container {
     width: 100%;
   }
 }
@@ -100,7 +100,7 @@
     transition: all ease 0.5s;
   }
 
-  .visivel{
+  .visivel {
     transform: translateY(0px);
   }
 }

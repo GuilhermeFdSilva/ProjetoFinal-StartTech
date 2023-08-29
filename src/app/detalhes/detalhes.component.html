@@ -52,7 +52,7 @@
             <strong>Vendido por:</strong>
             {{ getNomeUsuario(produto.usuario_id) }}
           </p>
-          <button id="vendedor" class="btn btn-lg">Vendedor</button>
+          <button id="vendedor" class="btn btn-lg" (click)="verVendedor(produto.usuario_id)">Vendedor</button>
           <button id="contato" class="btn btn-lg"><i class="bi bi-whatsapp"></i>&nbsp;Contato</button>
         </div>
       </section>
