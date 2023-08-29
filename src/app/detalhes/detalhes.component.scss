@@ -29,7 +29,6 @@
               left: 50%;
               transform: translate(-50%, -50%);
               object-fit: contain;
-
             }
 
             .fundo {
@@ -93,6 +92,12 @@
             }
           }
         }
+      }
+    }
+
+    @media (max-width: 990px) {
+      div {
+        max-height: fit-content;
       }
     }
   }
