@@ -1,6 +1,22 @@
 <div id="container">
+  <form id="login" class="activate">
+    <h2>Login</h2>
 
-  <form id="cadastro-form">
+    <div class="form-group">
+      <label for="email">E-mail:</label>
+      <input type="email" class="form-control" id="email" placeholder="Ex: fulano.silva89@gmail.com" required>
+    </div>
+    <div class="form-group">
+      <label for="senha">Senha:</label>
+      <input type="password" class="form-control" id="senha" placeholder="De 8 a 14 caracteres" required>
+    </div>
+    <article>
+      <button class="btn btn-lg action">Login</button>
+      <button class="btn btn-link" (click)="cadastrar()">Me cadastrar</button>
+    </article>
+  </form>
+
+  <form id="cadastro">
     <h2>Cadastro</h2>
 
     <!-- Dados Pessoais -->
@@ -33,12 +49,8 @@
     </div>
 
     <article>
-        <button class="btn btn-lg">Cadastrar-se</button>
-        
-        <!-- ao clicar aqui,o campo mudará para um campo de Login -->
-        <div id="link">
-            <a>Já tenho cadastro</a>
-        </div>
+      <button class="btn btn-lg action">Cadastrar-se</button>
+      <button class="btn btn-link" (click)="login()">Já tenho cadastro</button>
     </article>
   </form>
 </div>

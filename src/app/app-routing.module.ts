@@ -11,7 +11,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'meu-perfil', component: PerfilClienteComponent },
-  { path: 'cadastro', component: CadastroClienteComponent },
+  { path: 'login', component: CadastroClienteComponent },
   { path: 'perfil/:id', component: VizualizacaoPerfilComponent },
   { path: 'quem-somos', component: QuemSomosComponent },
   { path: 'detalhes/:id', component: DetalhesComponent }
