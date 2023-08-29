@@ -17,7 +17,7 @@
           <!-- Outras imagens -->
           <article class="carousel-item" *ngFor="let imagem of produto.imagens.slice(1)">
             <img [src]="imagem" class="d-block fundo" [alt]="produto.titulo">
-            <img [src]="imagem" class="d-block" [alt]="produto.titulo">
+            <img [src]="imagem" class="d-block imagem-exibicao" [alt]="produto.titulo">
           </article>
         </div>
 
