@@ -14,7 +14,7 @@ export class HomeComponent implements OnInit {
 
   constructor(private http: HttpClient, private router: Router) {
     window.addEventListener('scroll', () => {
-      if (window.scrollY > 0) {
+      if (window.scrollY > 66) {
         document.getElementById('botao-topo')?.classList.add('visivel');
       } else {
         document.getElementById('botao-topo')?.classList.remove('visivel');
