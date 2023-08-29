@@ -10,6 +10,7 @@
     margin: auto;
     margin-bottom: 40px;
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
 
@@ -17,6 +18,12 @@
       color: $cor-principal;
       font-family: $fonte-principal;
       margin: 0;
+    }
+
+    @media (max-width: 500px) {
+      h2 {
+        margin: auto;
+      }
     }
 
     div {
@@ -36,6 +43,21 @@
         color: $cor-principal;
         border: 2px solid $cor-principal;
       }
+    }
+
+    @media (max-width: 500px) {
+      div {
+        width: 100%;
+        padding-top: 10px;
+        display: flex;
+        justify-content: space-evenly;
+      }
+    }
+  }
+
+  @media (max-width: 990px) {
+    #perfil {
+      width: 95%;
     }
   }
 
