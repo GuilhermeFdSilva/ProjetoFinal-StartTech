@@ -3,18 +3,32 @@
   <!-- Perfil do Vendedor -->
   <div id="perfil">
 
-    <h2 id="name">{{ usuario.nome }}</h2>
+    <div>
+      <h1 id="name">{{ usuario.nome }}</h1>
+      <section>
+        <button class="btn btn-lg"><i *ngIf="true" class="bi bi-heart"></i><i *ngIf="false" id="seguindo" class="bi bi-heart-fill"></i></button>
+        <button class="btn btn-lg" id="contato"><i class="bi bi-whatsapp"></i></button>
+      </section>
+    </div>
 
     <!-- Aqui é o botão de seguir o vendedor,não se é possível quando o cliente clicar ele aparecer seguindo -->
-    <div>
-      <button id="contato" class="btn" (click)="contato(usuario.id)">
-        <i class="bi bi-whatsapp"></i>
+    <div id="seguidores">
+      <button class="btn">
+        <article>
+          <p><strong><i class="bi bi-person-hearts"></i>&nbsp;123</strong></p>
+          <p>seguidores</p>
+        </article>
       </button>
-      <button class="btn seguir">
-        <i class="bi bi-heart"></i>
+      <button class="btn">
+        <article>
+          <p><strong><i class="bi bi-hearts"></i>&nbsp;232</strong></p>
+          <p>seguindo</p>
+        </article>
       </button>
     </div>
   </div>
+
+  <h2>Itens vendidos</h2>
 
   <!-- Container de cards -->
   <section class="row">

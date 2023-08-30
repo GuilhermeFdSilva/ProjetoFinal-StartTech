@@ -6,58 +6,118 @@
   margin: auto;
 
   #perfil {
-    width: 85%;
+    width: 100%;
     margin: auto;
     margin-bottom: 40px;
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-
-    h2 {
-      color: $cor-principal;
-      font-family: $fonte-principal;
-      margin: 0;
-    }
-
-    @media (max-width: 500px) {
-      h2 {
-        margin: auto;
-      }
-    }
 
     div {
-      button {
-        height: 52px;
-        width: 52px;
-        font-size: $tamanho-fonte-muito-grande;
+      display: flex;
+
+      h1 {
+        width: 100%;
+        color: $cor-secundaria;
+        font-size: $tamanho-fonte-enorme;
+        font-family: $fonte-principal;
+        margin: 0;
+      }
+      
+      @media (max-width: 410px) {
+        h1 {
+          font-size: $tamanho-fonte-muito-grande;
+        }
       }
 
-      #contato {
-        color: $whatsapp;
-        border: 2px solid $whatsapp;
-        margin-right: 10px;
+      section {
+        width: 100%;
+        display: flex;
+        justify-content: end;
+
+        button {
+          border: none;
+          color: $cor-principal;
+
+          &:focus {
+            box-shadow: none;
+          }
+        }
+
+        #contato {
+          color: $whatsapp;
+        }
       }
 
-      .seguir {
-        color: $cor-principal;
-        border: 2px solid $cor-principal;
+      @media (max-width: 990px) {
+        section {
+          justify-content: center;
+        }
       }
     }
 
-    @media (max-width: 500px) {
+    @media (max-width: 990px) {
       div {
-        width: 100%;
-        padding-top: 10px;
-        display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
+        flex-wrap: wrap;
       }
+    }
+
+    #seguidores {
+      display: flex;
+      gap: 30px;
+
+      button {
+        border: none;
+
+        &:focus {
+          box-shadow: none;
+        }
+
+        article {
+          width: fit-content;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+
+          p {
+            margin: 0;
+
+            i {
+              color: $cor-principal;
+            }
+          }
+        }
+      }
+    }
+
+    @media (max-width: 990px) {
+      div {
+        justify-content: center;
+      }
+    }
+  }
+
+  @media (max-width: 1160px) {
+    #perfil {
+      padding: 0 20px 0 20px;
     }
   }
 
   @media (max-width: 990px) {
     #perfil {
-      width: 95%;
+      text-align: center;
+      padding: 0;
+    }
+  }
+
+  h2 {
+    color: $cor-secundaria;
+    font-size: $tamanho-fonte-muito-grande;
+    font-family: $fonte-principal;
+    text-align: center;
+  }
+
+  @media (max-width: 410px) {
+    h2 {
+      font-size: $tamanho-fonte-grande;
     }
   }
 
