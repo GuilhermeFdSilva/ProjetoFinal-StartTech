@@ -1,72 +1,118 @@
-<section class="saudacao">
+<div id="saudacao">
   <h1>Bem-vindo ao seu perfil!</h1>
   <div>
     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalExibicao">
       <article>
-        <p><strong><i class="bi bi-hearts"></i>&nbsp;123</strong></p>
+        <p><strong><i class="bi bi-person-hearts"></i>&nbsp;123</strong></p>
         <p>seguidores</p>
       </article>
     </button>
     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalExibicao">
       <article>
-        <p><strong><i class="bi bi-person-hearts"></i>&nbsp;232</strong></p>
+        <p><strong><i class="bi bi-hearts"></i>&nbsp;232</strong></p>
         <p>seguindo</p>
       </article>
     </button>
   </div>
-</section>
+</div>
 
 <div id="container">
 
-  <!-- Lado esquerdo do campo de preenchimento -->
+  <!-- Lado esquerdo -->
   <section class="container-info">
     <h2>Dados Pessoais</h2>
 
     <div>
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <article>
-        <p><strong>Nome:</strong> </p>
-      </article>
-      <button class="btn btn-link" (click)="editarCampo('nome')">Editar</button>
+      <p id="p-nome"><strong>Nome: </strong>{{ usuario.nome }}</p>
+      <div id="input-nome" class="input-group invisivel">
+        <input type="text" class="form-control" placeholder="Novo nome" aria-label="Novo nome">
+        <button class="btn btn-outline-secondary" type="button" (click)="enviar('nome')"><i
+            class="bi bi-check-lg"></i></button>
+      </div>
+      <button id="button-nome" class="btn btn-link" (click)="editarCampo('nome')">Editar</button>
     </div>
 
     <div>
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <article>
-        <p><strong>E-mail: </strong> </p>
-      </article>
-      <button class="btn btn-link" (click)="editarCampo('email')">Editar</button>
+      <p id="p-email"><strong>E-mail: </strong>{{ usuario.email }}</p>
+      <div id="input-email" class="input-group invisivel">
+        <input type="text" class="form-control" placeholder="Novo email" aria-label="Novo email">
+        <button class="btn btn-outline-secondary" type="button" (click)="enviar('email')"><i
+            class="bi bi-check-lg"></i></button>
+      </div>
+      <button id="button-email" class="btn btn-link" (click)="editarCampo('email')">Editar</button>
     </div>
 
     <div>
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <!-- Colocar variável da senha utilizada em cadastro e que ela não seja mostrada, só com o botão de visualizar hehehe -->
-      <article>
-        <p><strong>Senha:</strong> </p>
-      </article>
-      <button class="btn btn-link" (click)="editarCampo('senha')">Editar</button>
+      <p id="p-senha"><strong>Senha: </strong>{{ senha }}</p>
+      <div id="input-senha" class="input-group invisivel">
+        <input type="password" class="form-control" placeholder="Nova senha" aria-label="Nova senha">
+        <input type="password" class="form-control" placeholder="Nova senha" aria-label="Nova senha">
+        <button class="btn btn-outline-secondary" type="button" (click)="enviar('senha')"><i
+            class="bi bi-check-lg"></i></button>
+      </div>
+      <button id="button-senha" class="btn btn-link" (click)="editarCampo('senha')">Editar</button>
     </div>
   </section>
 
-  <!-- Lado direito do campo de preenchimento -->
+  <!-- Lado direito -->
   <section class="container-info">
     <h2>Informações de Contato</h2>
 
     <div>
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <article>
-        <p><strong>Endereço: </strong> </p>
-      </article>
-      <button class="btn btn-link" (click)="editarCampo('endereco')">Editar</button>
+      <p id="p-endereco"><strong>Endereço: </strong>{{ usuario.endereco }}</p>
+      <div id="input-endereco" class="input-group invisivel">
+        <input type="text" class="form-control" placeholder="Novo endereco" aria-label="Novo endereco">
+        <button class="btn btn-outline-secondary" type="button" (click)="enviar('endereco')"><i
+            class="bi bi-check-lg"></i></button>
+      </div>
+      <button id="button-endereco" class="btn btn-link" (click)="editarCampo('endereco')">Editar</button>
     </div>
 
     <div>
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <article>
-        <p><strong>Celular: </strong> </p>
-      </article>
-      <button class="btn btn-link" (click)="editarCampo('celular')">Editar</button>
+      <p id="p-celular"><strong>Celular: </strong>{{ usuario.celular }}</p>
+      <div id="input-celular" class="input-group invisivel">
+        <input type="text" class="form-control" placeholder="Novo Celular" aria-label="Novo celular">
+        <button class="btn btn-outline-secondary" type="button" (click)="enviar('celular')"><i
+            class="bi bi-check-lg"></i></button>
+      </div>
+      <button id="button-celular" class="btn btn-link" (click)="editarCampo('celular')">Editar</button>
     </div>
+  </section>
+</div>
+
+<div id="itens-venda">
+  <button class="btn"><i class="bi bi-plus-circle"></i> Adicionar item</button>
+  <h2>Seus itens a venda</h2>
+
+  <!-- Container de cards -->
+  <section class="row">
+    <article class=" col-lg-4 col-md-12" *ngFor="let item of itensDoUsuario">
+      <div class="actions">
+        <button class="btn delet"><i class="bi bi-x-lg"></i></button>
+        <button class="btn edit"><i class="bi bi-pencil"></i></button>
+      </div>
+      <!-- Inicio do card -->
+      <div class="card mb-4">
+
+        <!-- Imagem do card -->
+        <div class="card-img-container imagem-card">
+          <img class="card-img-top imagem" [src]="item.imagens[0]" [alt]="item.titulo" />
+        </div>
+
+        <!-- Corpo do card -->
+        <div class="card-body conteudo-card">
+          <h5 class="card-title">{{ item.titulo }}</h5>
+          <p class="descricao">{{ item.descricao }}</p>
+          <p *ngFor="let tag of item.tags">{{ tag }}</p>
+          <p class="preco">{{ item.preco | currency}}</p>
+        </div>
+      </div>
+    </article>
   </section>
 </div>
 
@@ -76,20 +122,26 @@
       <article class="modal-body">
 
         <!-- Seguidires -->
-        <section *ngIf="true">
+        <section *ngIf="true" style="overflow-x: hidden;">
           <div class="row" *ngFor="let seguidor of seguidores">
-            <a [routerLink]="'/perfil/' + seguidor.id">{{ seguidor.nome }}</a>
+            <button class="btn" [routerLink]="'/perfil/' + seguidor.id"
+              data-bs-dismiss="modal">{{ seguidor.nome }}</button>
+            <hr>
           </div>
         </section>
 
         <!-- Seguindo -->
         <section *ngIf="false">
-
+          <div class="row" *ngFor="let seguidor of seguidores">
+            <button class="btn" [routerLink]="'/perfil/' + seguidor.id"
+              data-bs-dismiss="modal">{{ seguidor.nome }}</button>
+            <hr>
+          </div>
         </section>
       </article>
       <article class="modal-footer" *ngIf="false">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Salvar</button>
       </article>
       <article class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">{{ titulo }}</h1>

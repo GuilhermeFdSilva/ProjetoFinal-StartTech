@@ -9,6 +9,8 @@ import { Component,  OnInit } from '@angular/core';
 export class PerfilClienteComponent implements OnInit {
   titulo:string = '';
   usuario: any;
+  senha: string = '';
+  itensDoUsuario: any[];
   seguidores: any[] = [
       {
         "id": 2,
@@ -29,16 +31,31 @@ export class PerfilClienteComponent implements OnInit {
         "seguidores": []
       }
   ];
-  seguindo: any;
 
   ngOnInit(): void {
     this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
       this.usuario = dummy.usuarios[0];
+      this.itensDoUsuario = dummy.itens.filter((item: any) => {
+         return item.id % 2 === 0;
+      });
+      let numero = 0;
+      while(numero < this.usuario.senha.length) {
+        this.senha += '*';
+        numero++;
+      }
     });
   }
 
   editarCampo(campo: string) {
+     document.getElementById(`p-${campo}`)?.classList.add('invisivel');
+     document.getElementById(`button-${campo}`)?.classList.add('invisivel');
+     document.getElementById(`input-${campo}`)?.classList.remove('invisivel');
+  }
 
+  enviar(campo: string) {
+    document.getElementById(`p-${campo}`)?.classList.remove('invisivel');
+    document.getElementById(`button-${campo}`)?.classList.remove('invisivel');
+    document.getElementById(`input-${campo}`)?.classList.add('invisivel');
   }
 
   constructor(private http: HttpClient) { }

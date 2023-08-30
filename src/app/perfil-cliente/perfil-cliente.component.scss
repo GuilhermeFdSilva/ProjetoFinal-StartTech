@@ -1,6 +1,6 @@
 @import "../../styles.scss";
 
-.saudacao {
+#saudacao {
   padding-top: 30px;
   max-width: 1140px;
   margin: auto;
@@ -20,6 +20,7 @@
       &:focus {
         box-shadow: none;
       }
+
       article {
         width: fit-content;
         display: flex;
@@ -35,6 +36,29 @@
         }
       }
     }
+  }
+
+  @media (max-width: 990px) {
+    h1 {
+      text-align: center;
+    }
+
+    div {
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: 410px) {
+    h1 {
+      font-size: $tamanho-fonte-muito-grande;
+    }
+  }
+}
+
+@media (max-width: 1200px) {
+  .saudacao {
+    width: 100%;
+    padding-left: 20px;
   }
 }
 
@@ -70,10 +94,12 @@
       align-items: center;
       justify-content: space-between;
 
-      article {
-        p {
-          margin: 0;
-        }
+      p {
+        margin: 0;
+      }
+
+      .invisivel {
+        display: none;
       }
     }
   }
@@ -82,6 +108,7 @@
     .container-info {
       width: 95%;
       margin: 5px 0;
+      padding: 10px;
 
       &:first-of-type {
         margin-right: 0;
@@ -98,5 +125,156 @@
 @media (max-width: 990px) {
   #container {
     flex-wrap: wrap;
+  }
+}
+
+#itens-venda {
+  max-width: 1140px;
+  margin: auto;
+  text-align: center;
+  
+  button {
+    width: 100%;
+    background-color: $cinza;
+    margin-bottom: 30px;
+  }
+
+  @media (max-width: 1160px) {
+    button {
+      width: 99%;
+    }
+  }
+
+  @media (max-width: 990px) {
+    button {
+      width: 95%;
+    }
+  }
+
+  h2 {
+    font-family: $fonte-principal;
+    color: $cor-secundaria;
+  }
+
+  @media (max-width: 410px) {
+    h2 {
+      font-size: $tamanho-fonte-muito-grande;
+    }
+  }
+
+  section {
+    margin: auto;
+
+    article {
+      .actions {
+        position: absolute;
+        z-index: 1;
+        top: 0;
+        right: 0;
+        display: flex;
+        flex-direction: row-reverse;
+        padding: 5px 20px 0 0;
+        gap: 5px;
+
+        button {
+          height: 42px;
+          width: 42px;
+        }
+
+        @media (max-width: 500px) {
+          button {
+            font-size: $tamanho-fonte-pequena;
+            height: 40px;
+            width: 40px;
+          }
+        }
+
+        .delet {
+          background-color: $cor-principal;
+          color: white;
+        }
+
+        .edit {
+          background-color: $cor-terciaria;
+          color: white;
+        }
+      }
+
+      div {
+        .imagem-card {
+          height: 0;
+          padding-bottom: 133.33%;
+          /* Proporção 3:4 */
+          position: relative;
+
+          .imagem {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        @media (max-width: 990px) {
+          .imagem-card {
+            padding-bottom: 99.99%;
+          }
+        }
+
+        .conteudo-card {
+          h5 {
+            color: $cor-secundaria;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .descricao {
+            height: 72px;
+            display: -webkit-box;
+            -webkit-line-clamp: 3;
+            -webkit-box-orient: vertical;
+            overflow: hidden;
+            text-overflow: ellipsis;
+          }
+
+          .preco {
+            font-size: $tamanho-fonte-muito-grande;
+            color: $cor-principal;
+            margin: 0;
+          }
+        }
+
+        .botoes-card {
+          width: 100%;
+
+          button {
+            width: calc(50% - 10px);
+
+            &:first-of-type {
+              margin-right: 20px;
+            }
+          }
+
+          .detalhes-produto {
+            background-color: $cor-principal;
+            color: white;
+
+          }
+
+          .contato {
+            background-color: $whatsapp;
+          }
+        }
+      }
+    }
+  }
+
+  @media (max-width: 1140px) {
+    section {
+      width: 100%;
+    }
   }
 }
