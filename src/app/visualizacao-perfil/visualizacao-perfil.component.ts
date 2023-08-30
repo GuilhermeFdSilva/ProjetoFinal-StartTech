@@ -1,14 +1,14 @@
-import { Usuario } from './../../assets/services/usuario/usuario.service';
+import { Usuario } from '../../assets/services/usuario/usuario.service';
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
-  selector: 'app-vizualizacao-perfil',
-  templateUrl: './vizualizacao-perfil.component.html',
-  styleUrls: ['./vizualizacao-perfil.component.scss']
+  selector: 'app-visualizacao-perfil',
+  templateUrl: './visualizacao-perfil.component.html',
+  styleUrls: ['./visualizacao-perfil.component.scss']
 })
-export class VizualizacaoPerfilComponent implements OnInit {
+export class VisualizacaoPerfilComponent implements OnInit {
   itens: any[] = [];
   usuarios: any[] = [];
 

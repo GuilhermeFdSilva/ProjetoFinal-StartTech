@@ -6,7 +6,8 @@
     <div>
       <h1 id="name">{{ usuario.nome }}</h1>
       <section>
-        <button class="btn btn-lg"><i *ngIf="true" class="bi bi-heart"></i><i *ngIf="false" id="seguindo" class="bi bi-heart-fill"></i></button>
+        <button class="btn btn-lg"><i *ngIf="true" class="bi bi-heart"></i><i *ngIf="false" id="seguindo"
+            class="bi bi-heart-fill"></i></button>
         <button class="btn btn-lg" id="contato"><i class="bi bi-whatsapp"></i></button>
       </section>
     </div>
@@ -45,7 +46,7 @@
         <!-- Corpo do card -->
         <div class="card-body conteudo-card">
           <h5 class="card-title">{{ item.titulo }}</h5>
-          <p class="preco">{{ item.preco | currency}}</p>
+          <p class="preco">{{ item.preco | currency }}</p>
         </div>
 
         <!-- Footer com os botões -->

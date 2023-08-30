@@ -16,7 +16,7 @@ import { QuemSomosComponent } from './quem-somos/quem-somos.component';
 import { DetalhesComponent } from './detalhes/detalhes.component';
 import { PerfilClienteComponent } from './perfil-cliente/perfil-cliente.component';
 import { CadastroClienteComponent } from './cadastro-cliente/cadastro-cliente.component';
-import { VizualizacaoPerfilComponent } from './vizualizacao-perfil/vizualizacao-perfil.component';
+import { VisualizacaoPerfilComponent } from './visualizacao-perfil/visualizacao-perfil.component';
 
 registerLocaleData(ptBr);
 
@@ -30,7 +30,7 @@ registerLocaleData(ptBr);
     DetalhesComponent,
     PerfilClienteComponent,
     CadastroClienteComponent,
-    VizualizacaoPerfilComponent,
+    VisualizacaoPerfilComponent,
   ],
   imports: [
     AppRoutingModule,
