@@ -1,0 +1,112 @@
+@import '../../styles.scss';
+
+#container {
+  padding: 30px 0;
+
+  form {
+    width: 85%;
+    max-width: 1140px;
+    margin: auto;
+    background: $cinza;
+    border-radius: 4px;
+    padding: 30px 30px;
+
+    h2 {
+      margin: 0;
+      color: $cor-secundaria;
+      font-size: $tamanho-fonte-enorme;
+      font-family: $fonte-principal;
+      text-align: center;
+    }
+
+    @media (max-width: 410px) {
+        h2 {
+            font-size: $tamanho-fonte-muito-grande;
+        }
+    }
+
+    .form-group {
+      width: 100%;
+
+      &:first-of-type {
+        margin-top: 25px;
+      }
+
+      label {
+        color: $cor-secundaria;
+        font-size: $tamanho-fonte-grande;
+      }
+
+      .imagem,
+      .titulo,
+      .preco {
+        width: 100%;
+        border: 3px solid $cor-terciaria;
+        font-size: $tamanho-fonte-normal;
+        color: black;
+        padding: 20px 45px 20px 20px;
+      }
+
+      textarea {
+        resize: none;
+        width: 100%;
+        border: 3px solid $cor-terciaria;
+        font-size: $tamanho-fonte-normal;
+        color: black;
+        padding: 20px 45px 20px 20px;
+      }
+
+      .form-check {
+        display: flex;
+        flex-direction: column;
+        padding-left: 30px;
+      }
+    }
+
+    #actions-imagem {
+      padding: 0;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-evenly;
+
+      button {
+        width: calc(50% - 5px);
+
+        &:first-of-type {
+          margin-right: 10px;
+        }
+      }
+
+      .actions-imagem-btn {
+        margin-bottom: 12px;
+        background-color: adjust-color($color: $cinza, $lightness: -3%);
+      }
+    }
+
+    article {
+      padding-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+    }
+  }
+
+  .gpt-help {
+    background-color: $cor-principal;
+    color: white;
+    margin-bottom: 12px;
+  }
+
+  article {
+    #enviar {
+      width: 100%;
+      background-color: $cor-principal;
+      color: white;
+    }
+  }
+
+  @media (max-width: 990px) {
+    form {
+      width: 95%;
+    }
+  }
+}

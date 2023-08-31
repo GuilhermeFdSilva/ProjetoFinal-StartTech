@@ -1,0 +1,61 @@
+<div id="container">
+  <form id="login" class="was-validated">
+    <h2 *ngIf="true">Cadastrar novo item</h2>
+    <h2 *ngIf="false">Editar item </h2>
+
+    <!-- Imagens -->
+    <div class="form-group">
+      <label for="imagem">Imagens:</label>
+      <div id="imagens">
+        <input type="url" class="form-control imagem" placeholder="Ex: https://url-da-imagem.com" required>
+      </div>
+      <a class="btn btn-link" href="https://imgbb.com/" target="_blank">Você pode hospedar suas imagens aqui</a>
+    </div>
+
+    <!-- Adicionar imagens -->
+    <article id="actions-imagem">
+      <button class="btn actions-imagem-btn" (click)="adicionarImagem()"><i class="bi bi-plus-circle"></i></button>
+      <button class="btn actions-imagem-btn" (click)="removerImagem()"><i class="bi bi-dash-circle"></i></button>
+    </article>
+
+    <!-- Titulo -->
+    <div class="form-group">
+      <label for="titulo">Titulo:</label>
+      <input type="text" class="form-control titulo" id="titulo" placeholder="Ex: Pena de hipogrifo" required>
+    </div>
+
+    <!-- Descrição -->
+    <div class="form-group">
+      <label for="titulo">Descrição:</label>
+      <textarea class="form-control" id="descricao" [(ngModel)]="descricao" name="descricao"
+        (keyup)="limitarCaracteres()" placeholder="Ex: Pena de hipogrifo" required></textarea>
+    </div>
+    <button class="btn gpt-help" (click)="gerarDescricao()">Ajuda</button>
+
+    <!-- Preço -->
+    <div class="form-group">
+      <label for="preco">Preço:</label>
+      <input type="text" class="form-control preco" id="preco" placeholder="Ex: 123999,00" required>
+    </div>
+
+    <!-- Categorias -->
+    <div class="form-group">
+      <label>Categorias:</label>
+      <div class="form-check">
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="" name="categorias">
+          opção 1
+        </label>
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="" name="categorias">
+          opção 2
+        </label>
+      </div>
+    </div>
+
+    <!-- Enviar -->
+    <article>
+      <button class="btn btn-lg" id="enviar">Enviar</button>
+    </article>
+  </form>
+</div>
