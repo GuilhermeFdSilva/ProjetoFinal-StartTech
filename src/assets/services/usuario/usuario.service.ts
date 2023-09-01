@@ -27,16 +27,16 @@ export class UsuarioService {
   }
 
   getUsuarioById(usuarioId: number): Usuario {
-     return Object.assign(new Usuario, this.getDados().subscribe((response: Array<Usuario>) => {
+    return Object.assign(new Usuario, this.getDados().subscribe((response: Array<Usuario>) => {
       return response.find((usuario: Usuario) => {
         usuario = Object.assign(new Usuario, usuario);
         return usuario.getId() === usuarioId;
       });
     },
-    (error) => {
-      this.erroServidor.next(error);
-      return new Usuario();
-    }));
+      (error) => {
+        this.erroServidor.next(error);
+        return new Usuario();
+      }));
   }
 
   criarUsuario(objeto: Object): void {
@@ -136,7 +136,7 @@ export class UsuarioService {
       const seguindo = this.usuarioPincipal.getSeguindo();
       response.forEach((usuario: Usuario) => {
         if (seguindo.includes(usuario.getId())) {
-          this.seguidores.push(Object.assign(new Usuario, usuario));
+          this.seguindo.push(Object.assign(new Usuario, usuario));
           this.atualizarDados.next('');
         }
       });
