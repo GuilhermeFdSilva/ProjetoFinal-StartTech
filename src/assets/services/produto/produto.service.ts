@@ -33,10 +33,12 @@ export class ProdutoService {
     return this.itensUsuarioMain;
   }
 
-  getItensMain(): void {
+  getItensEMainItens(): void {
     this.getDados().subscribe((response: Array<Produto>) => {
-      response.forEach((item: Produto) => {
-        item = Object.assign(new Produto, item);
+      response.forEach((item) => {
+        this.todosItens.push(Object.assign(new Produto, item));
+      });
+      this.todosItens.forEach((item: Produto) => {
         if (this.usuarioService.getUsuarioPrincipal().getId() === item.getUsuarioId()) {
           this.itensUsuarioMain.push(Object.assign(new Produto, item));
         }
@@ -164,18 +166,9 @@ export class ProdutoService {
   }
 
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {
-    this.usuarioService.atualizarDados.subscribe((response) => {
-      this.getItensMain();
+    this.usuarioService.atualizarDados.subscribe(() => {
+      this.getItensEMainItens();
     });
-    this.getDados().subscribe((response: Array<Produto>) => {
-      console.log('oi');
-      response.forEach((item) => {
-        this.todosItens.push(Object.assign(new Produto, item));
-      });
-    },
-      (error) => {
-        this.usuarioService.erroServidor.next(error);
-      });
   }
 }
 
