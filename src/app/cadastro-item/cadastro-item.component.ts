@@ -8,7 +8,7 @@ import { GptService } from 'src/assets/services/openai/gpt.service';
   styleUrls: ['./cadastro-item.component.scss']
 })
 export class CadastroItemComponent {
-  titulo: string = '';
+  titulo: string = 'Teste';
   descricao: string = '';
 
   adicionarImagem() {
@@ -40,10 +40,17 @@ export class CadastroItemComponent {
   }
 
   gerarDescricao() {
-    if ( true ){
-
+    if (this.titulo.length <= 0){
+      return;
     }
-    this.gptHelp.gerarDescricao('abc').subscribe()
+    this.gptHelp.gerarDescricao(this.titulo).subscribe((response) => {
+      const resposta = response.choices[0].text.trim();
+      this.descricao = resposta;
+      console.log(this.descricao);
+    },
+    (error) => {
+
+    });
   }
 
   constructor(private gptHelp: GptService) { }

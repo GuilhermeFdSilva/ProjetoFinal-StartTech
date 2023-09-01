@@ -44,16 +44,15 @@
         border: 3px solid $cor-terciaria;
         font-size: $tamanho-fonte-normal;
         color: black;
-        padding: 20px 45px 20px 20px;
       }
 
       textarea {
-        resize: none;
+        resize: vertical;
+        overflow: auto;
         width: 100%;
         border: 3px solid $cor-terciaria;
         font-size: $tamanho-fonte-normal;
         color: black;
-        padding: 20px 45px 20px 20px;
       }
 
       .form-check {

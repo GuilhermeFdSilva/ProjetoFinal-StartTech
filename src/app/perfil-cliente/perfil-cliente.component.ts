@@ -7,6 +7,7 @@ import { Component,  OnInit } from '@angular/core';
   styleUrls: ['./perfil-cliente.component.scss']
 })
 export class PerfilClienteComponent implements OnInit {
+  itemAExcluir: string = 'Teste';
   titulo:string = '';
   usuario: any;
   senha: string = '';

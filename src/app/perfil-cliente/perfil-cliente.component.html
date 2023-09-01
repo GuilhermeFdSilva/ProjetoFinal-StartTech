@@ -93,7 +93,8 @@
   <section class="row">
     <article class=" col-lg-4 col-md-12" *ngFor="let item of itensDoUsuario">
       <div class="actions">
-        <button class="btn delet"><i class="bi bi-x-lg"></i></button>
+        <button class="btn delet" data-bs-toggle="modal" data-bs-target="#confirmacao"><i
+            class="bi bi-x-lg"></i></button>
         <button class="btn edit"><i class="bi bi-pencil"></i></button>
       </div>
       <!-- Inicio do card -->
@@ -139,14 +140,28 @@
           </div>
         </section>
       </article>
-      <article class="modal-footer" *ngIf="false">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Salvar</button>
-      </article>
       <article class="modal-header">
         <h1 class="modal-title fs-5" id="exampleModalLabel">{{ titulo }}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </article>
     </div>
   </section>
+</div>
+
+<div class="modal fade" id="confirmacao" tabindex="-1" aria-labelledby="confirmação" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Deletar {{ itemAExcluir }}</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Confirme se quer realmente deletar {{ itemAExcluir }}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Confirmar</button>
+      </div>
+    </div>
+  </div>
 </div>

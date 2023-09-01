@@ -12,7 +12,7 @@ export class GptService {
   constructor(private http: HttpClient) { }
 
   gerarDescricao(valorItem: string): Observable<any> {
-    const valorDescricao: string = `Forneça uma breve descrição histórica do ${valorItem}. Máximo 120 caracteres.`;
+    const valorDescricao: string = `Forneça uma descrição histórica de no maximo 100 caracteres de ${valorItem}. Máximo de 100 caracteres extreitamente importante.`;
 
     const header: HttpHeaders = new HttpHeaders({
       'Content-Type': 'application/json',
