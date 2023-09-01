@@ -7,25 +7,44 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class ProdutoService {
+  private itensUsuarioMain: Array<Produto> = [];
   private item: Produto = new Produto();
-  private dono: Usuario = new Usuario();
-  private itensDono: Array<Produto> = [];
-  private itens: Array<Produto> = [];
+  private vendedor: Usuario = new Usuario();
+  private itensVendedor: Array<Produto> = [];
+  private todosItens: Array<Produto> = [];
 
   getItem(): Produto {
     return this.item;
   }
 
-  getDonoItem(): Usuario {
-    return this.dono;
+  getVendedorItem(): Usuario {
+    return this.vendedor;
   }
 
   getItens(): Array<Produto> {
-    return this.itens;
+    return this.todosItens;
   }
 
-  getItensDono(): Array<Produto> {
-    return this.itensDono;
+  getItensVendedor(): Array<Produto> {
+    return this.itensVendedor;
+  }
+
+  getItensUsuarioMain(): Array<Produto> {
+    return this.itensUsuarioMain;
+  }
+
+  getItensMain(): void {
+    this.getDados().subscribe((response: Array<Produto>) => {
+      response.forEach((item: Produto) => {
+        item = Object.assign(new Produto, item);
+        if (this.usuarioService.getUsuarioPrincipal().getId() === item.getUsuarioId()) {
+          this.itensUsuarioMain.push(Object.assign(new Produto, item));
+        }
+      });
+    },
+      (error) => {
+        this.usuarioService.erroServidor.next(error);
+      });
   }
 
   selecionarItem(itemId: number): void {
@@ -34,8 +53,8 @@ export class ProdutoService {
         item = Object.assign(new Produto, item);
         return item.getId() === itemId;
       }));
-      this.dono = Object.assign(new Usuario, this.usuarioService.getUsuarioById(this.item.getUsuarioId()));
-      this.getItensUsuario(this.dono.getId());
+      this.vendedor = Object.assign(new Usuario, this.usuarioService.getUsuarioById(this.item.getUsuarioId()));
+      this.getItensUsuario(this.vendedor.getId());
       this.usuarioService.atualizarDados.next('');
     },
       (error) => {
@@ -43,9 +62,15 @@ export class ProdutoService {
       });
   }
 
-  selecionaDono(donoId: number): void {
-    this.dono = this.usuarioService.getUsuarioById(donoId);
-    this.getItensUsuario(this.dono.getId());
+  selecionaVendedor(donoId: number): void {
+    this.usuarioService.getUsuarioById(donoId).subscribe((response) => {
+      this.vendedor = Object.assign(new Usuario, response);
+      this.getItensUsuario(this.vendedor.getId());
+      this.usuarioService.atualizarDados.next('');
+    },
+      (error) => {
+        this.usuarioService.erroServidor.next(error);
+      })
   }
 
   criarItem(objeto: any): void {
@@ -53,7 +78,7 @@ export class ProdutoService {
     this.addDados(item).subscribe((response) => {
       this.getDados().subscribe((response: Array<Produto>) => {
         response.forEach((item) => {
-          this.itens.push(Object.assign(new Produto, item));
+          this.todosItens.push(Object.assign(new Produto, item));
         });
         this.usuarioService.atualizarDados.next('Item Criado');
       },
@@ -71,7 +96,7 @@ export class ProdutoService {
     this.atualizarItem(itemAtualizado).subscribe((response) => {
       this.getDados().subscribe((response: Array<Produto>) => {
         response.forEach((item) => {
-          this.itens.push(Object.assign(new Produto, item));
+          this.todosItens.push(Object.assign(new Produto, item));
         });
       },
         (error) => {
@@ -87,7 +112,7 @@ export class ProdutoService {
     this.deletarItem(itemId).subscribe((response) => {
       this.getDados().subscribe((response: Array<Produto>) => {
         response.forEach((item) => {
-          this.itens.push(Object.assign(new Produto, item));
+          this.todosItens.push(Object.assign(new Produto, item));
         });
         this.usuarioService.atualizarDados.next('Item deletado');
       },
@@ -102,11 +127,11 @@ export class ProdutoService {
 
   private getItensUsuario(usuarioId: number): void {
     this.getDados().subscribe((response: Array<Produto>) => {
-      this.itensDono = [];
+      this.itensVendedor = [];
       response.forEach((produto: Produto) => {
         produto = Object.assign(new Produto, produto);
         if (produto.getUsuarioId() === usuarioId) {
-          this.itensDono.push(Object.assign(new Produto, produto));
+          this.itensVendedor.push(Object.assign(new Produto, produto));
         }
       });
     },
@@ -116,11 +141,11 @@ export class ProdutoService {
   }
 
   private getDados(): Observable<any> {
-    return this.http.get<any>('https://localhost:3000/itens');
+    return this.http.get<any>('http://localhost:3000/itens');
   }
 
   private addDados(novoItem: Produto): Observable<any> {
-    return this.http.post('https://localhost:3000/itens', novoItem);
+    return this.http.post('http://localhost:3000/itens', novoItem);
   }
 
   private atualizarItem(itemAtualizado: Produto): Observable<any> {
@@ -139,9 +164,13 @@ export class ProdutoService {
   }
 
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {
+    this.usuarioService.atualizarDados.subscribe((response) => {
+      this.getItensMain();
+    });
     this.getDados().subscribe((response: Array<Produto>) => {
+      console.log('oi');
       response.forEach((item) => {
-        this.itens.push(Object.assign(new Produto, item));
+        this.todosItens.push(Object.assign(new Produto, item));
       });
     },
       (error) => {

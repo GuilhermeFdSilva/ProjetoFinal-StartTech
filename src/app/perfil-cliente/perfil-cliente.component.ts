@@ -1,5 +1,7 @@
-import { HttpClient } from '@angular/common/http';
-import { Component,  OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { ProdutoService } from 'src/assets/services/produto/produto.service';
+import { UsuarioService } from 'src/assets/services/usuario/usuario.service';
 
 @Component({
   selector: 'app-perfil-cliente',
@@ -7,50 +9,24 @@ import { Component,  OnInit } from '@angular/core';
   styleUrls: ['./perfil-cliente.component.scss']
 })
 export class PerfilClienteComponent implements OnInit {
-  itemAExcluir: string = 'Teste';
-  titulo:string = '';
-  usuario: any;
+  usuario: any = {};
+  itemAExcluir: string = '';
+  titulo: string = '';
   senha: string = '';
-  itensDoUsuario: any[];
-  seguidores: any[] = [
-      {
-        "id": 2,
-        "nome": "Ludmila Pavilsecov",
-        "endereco": "Rua B, 456",
-        "celular": "(22) 9876-5432",
-        "email": "usuariob@example.com",
-        "senha": "senha456",
-        "seguidores": [1]
-      },
-      {
-        "id": 3,
-        "nome": "Linus Torvalds",
-        "endereco": "Rua C, 789",
-        "celular": "(33) 5555-1234",
-        "email": "usuarioc@example.com",
-        "senha": "senha789",
-        "seguidores": []
-      }
-  ];
+  itensDoUsuario: any[] = [];
+  seguidores: any[] = [];
+  seguindo: any[] = [];
 
   ngOnInit(): void {
-    this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
-      this.usuario = dummy.usuarios[0];
-      this.itensDoUsuario = dummy.itens.filter((item: any) => {
-         return item.id % 2 === 0;
-      });
-      let numero = 0;
-      while(numero < this.usuario.senha.length) {
-        this.senha += '*';
-        numero++;
-      }
-    });
+    if (!this.usuarioService.getLogado()) {
+      this.router.navigate(['home'])
+    }
   }
 
   editarCampo(campo: string) {
-     document.getElementById(`p-${campo}`)?.classList.add('invisivel');
-     document.getElementById(`button-${campo}`)?.classList.add('invisivel');
-     document.getElementById(`input-${campo}`)?.classList.remove('invisivel');
+    document.getElementById(`p-${campo}`)?.classList.add('invisivel');
+    document.getElementById(`button-${campo}`)?.classList.add('invisivel');
+    document.getElementById(`input-${campo}`)?.classList.remove('invisivel');
   }
 
   enviar(campo: string) {
@@ -59,5 +35,13 @@ export class PerfilClienteComponent implements OnInit {
     document.getElementById(`input-${campo}`)?.classList.add('invisivel');
   }
 
-  constructor(private http: HttpClient) { }
+  constructor(private usuarioService: UsuarioService, private produtoService: ProdutoService, private router: Router) {
+    this.usuarioService.atualizarDados.subscribe((response) => {
+      this.usuario = this.usuarioService.getUsuarioPrincipal();
+      this.senha = this.usuarioService.getUsuarioPrincipal().getSenha();
+      this.itensDoUsuario = this.produtoService.getItensUsuarioMain();
+      this.seguidores = this.usuarioService.getSeguidores();
+      this.seguindo = this.usuarioService.getSeguindo();
+    });
+  }
 }
