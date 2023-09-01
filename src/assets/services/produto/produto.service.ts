@@ -8,7 +8,8 @@ import { Observable } from 'rxjs';
 })
 export class CadastroProdutoService {
   private item: Produto = new Produto();
-  private dono: Usuario = new Usuario()
+  private dono: Usuario = new Usuario();
+  private itensDono: Array<Produto> = [];
   private itens: Array<Produto> = [];
 
   getItem(): Produto {
@@ -23,18 +24,28 @@ export class CadastroProdutoService {
     return this.itens;
   }
 
+  getItensDono(): Array<Produto> {
+    return this.itensDono;
+  }
+
   selecionarItem(itemId: number): void {
     this.getDados().subscribe((response: Array<Produto>) => {
       this.item = Object.assign(new Produto, response.find((item: Produto) => {
         item = Object.assign(new Produto, item);
         return item.getId() === itemId;
       }));
-      this.usuarioService.getUsuarioById(this.item.getUsuarioId());
+      this.dono = Object.assign(new Usuario, this.usuarioService.getUsuarioById(this.item.getUsuarioId()));
+      this.getItensUsuario(this.dono.getId());
       this.usuarioService.atualizarDados.next('');
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
       });
+  }
+
+  selecionaDono(donoId: number): void {
+    this.dono = this.usuarioService.getUsuarioById(donoId);
+    this.getItensUsuario(this.dono.getId());
   }
 
   criarItem(objeto: any): void {
@@ -86,6 +97,21 @@ export class CadastroProdutoService {
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
+      });
+  }
+
+  private getItensUsuario(usuarioId: number): void {
+    this.getDados().subscribe((response: Array<Produto>) => {
+      this.itensDono = [];
+      response.forEach((produto: Produto) => {
+        produto = Object.assign(new Produto, produto);
+        if (produto.getUsuarioId() === usuarioId) {
+          this.itensDono.push(Object.assign(new Produto, produto));
+        }
+      });
+    },
+      (error) => {
+
       });
   }
 
