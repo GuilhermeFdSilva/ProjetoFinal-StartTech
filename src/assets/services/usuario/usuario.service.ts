@@ -35,7 +35,7 @@ export class UsuarioService {
   }
 
   getUsuarioById(usuarioId: number): Observable<Usuario> {
-    return this.http.get<any>(`http://localhost:3000/usuarios${usuarioId}`);
+    return this.http.get<any>(`http://localhost:3000/usuarios/${usuarioId}`);
   }
 
   criarUsuario(objeto: Object): void {
