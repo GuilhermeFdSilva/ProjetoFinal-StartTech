@@ -80,8 +80,8 @@ export class UsuarioService {
   fazerLogout(): void {
     this.usuarioPincipal = new Usuario();
     this.logado = false;
-    this.acharSeguidores();
-    this.acharSeguindo();
+    this.seguidores = [];
+    this.seguindo = [];
     this.atualizarDados.next('Até breve');
   }
 
