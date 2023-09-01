@@ -1,36 +1,41 @@
 @import '../../styles.scss';
 
-.container{
-    background-color: $cinza;
-    padding: 15px;  
-    margin-bottom: 15px;
+.container {
+  background-color: $cinza;
+  padding: 15px;
+  margin-bottom: 15px;
 }
 
-h2{
-    font-family: $fonte-principal;
-    font-weight: 700;
-    font-size: $tamanho-fonte-muito-grande;
-    margin: 0;
-    padding: 0;
+h2 {
+  font-family: $fonte-principal;
+  font-weight: 700;
+  font-size: $tamanho-fonte-muito-grande;
+  margin: 0;
+  padding: 0;
 }
 
-p, label{
-    font-family: $fonte-secundaria;
-    font-weight: 400;
-    font-size: $tamanho-fonte-normal;
-    margin: 0;
-    padding: 0;
+p,
+label {
+  font-family: $fonte-secundaria;
+  font-weight: 400;
+  font-size: $tamanho-fonte-normal;
+  margin: 0;
+  padding: 0;
 }
 
-.btn{
-    color: white;
-    background-color: $cor-secundaria;
-    transition: background-color 0.3s ease;
-    padding: 10px;
-    margin: 10px;
-    width: 80%;
+input,
+textarea {
+  width: 100%;
+  border: 3px solid $cor-terciaria;
+  font-size: $tamanho-fonte-normal;
+  color: black;
 }
 
-.btn:hover {
-    background-color: $cor-terciaria;
+.btn {
+  color: white;
+  background-color: $cor-principal;
+  transition: background-color 0.3s ease;
+  padding: 10px;
+  margin: 10px;
+  width: 80%;
 }

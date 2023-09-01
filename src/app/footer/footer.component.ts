@@ -28,7 +28,7 @@ export class FooterComponent {
     },
     {
       nome: 'LinkedIn',
-      link: 'http://www.linkedin.com',
+      link: 'https://www.linkedin.com/in/antiquary-artigos-antigos-30458728a/',
       icone: 'bi bi-linkedin'
     },
     {
