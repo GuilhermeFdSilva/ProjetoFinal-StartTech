@@ -26,17 +26,16 @@ export class UsuarioService {
     return this.todosUsuarios;
   }
 
-  getUsuarioById(usuarioId: number): Usuario {
-    return Object.assign(new Usuario, this.getDados().subscribe((response: Array<Usuario>) => {
-      return response.find((usuario: Usuario) => {
-        usuario = Object.assign(new Usuario, usuario);
-        return usuario.getId() === usuarioId;
-      });
-    },
-      (error) => {
-        this.erroServidor.next(error);
-        return new Usuario();
-      }));
+  getSeguidores(): Array<Usuario> {
+    return this.seguidores;
+  }
+  
+  getSeguindo(): Array<Usuario> {
+    return this.seguindo;
+  }
+
+  getUsuarioById(usuarioId: number): Observable<Usuario> {
+    return this.http.get<any>(`http://localhost:3000/usuarios${usuarioId}`);
   }
 
   criarUsuario(objeto: Object): void {
@@ -67,8 +66,8 @@ export class UsuarioService {
           }));
         if (usuarioLogin && usuarioLogin.getSenha() === senha) {
           this.usuarioPincipal = usuarioLogin;
-          this.getSeguidores();
-          this.getSeguindo();
+          this.acharSeguidores();
+          this.acharSeguindo();
           this.logado = true;
           this.atualizarDados.next('Bem-vindo')
         }
@@ -81,8 +80,8 @@ export class UsuarioService {
   fazerLogout(): void {
     this.usuarioPincipal = new Usuario();
     this.logado = false;
-    this.getSeguidores();
-    this.getSeguindo();
+    this.acharSeguidores();
+    this.acharSeguindo();
     this.atualizarDados.next('Até breve');
   }
 
@@ -124,7 +123,7 @@ export class UsuarioService {
     }));
   }
 
-  private getSeguidores(): void {
+  private acharSeguidores(): void {
     this.getDados().subscribe((response: Array<Usuario>) => {
       const seguidores = this.usuarioPincipal.getSeguidores();
       response.forEach((usuario: Usuario) => {
@@ -140,7 +139,7 @@ export class UsuarioService {
       });
   }
 
-  private getSeguindo(): void {
+  private acharSeguindo(): void {
     this.getDados().subscribe((response: Array<Usuario>) => {
       const seguindo = this.usuarioPincipal.getSeguindo();
       response.forEach((usuario: Usuario) => {
