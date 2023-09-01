@@ -120,6 +120,7 @@ export class UsuarioService {
     this.getDados().subscribe((response: Array<Usuario>) => {
       const seguidores = this.usuarioPincipal.getSeguidores();
       response.forEach((usuario: Usuario) => {
+        usuario = Object.assign(new Usuario, usuario);
         if (seguidores.includes(usuario.getId())) {
           this.seguidores.push(Object.assign(new Usuario, usuario));
           this.atualizarDados.next('');
@@ -135,6 +136,7 @@ export class UsuarioService {
     this.getDados().subscribe((response: Array<Usuario>) => {
       const seguindo = this.usuarioPincipal.getSeguindo();
       response.forEach((usuario: Usuario) => {
+        usuario = Object.assign(new Usuario, usuario);
         if (seguindo.includes(usuario.getId())) {
           this.seguindo.push(Object.assign(new Usuario, usuario));
           this.atualizarDados.next('');

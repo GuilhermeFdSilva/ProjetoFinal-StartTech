@@ -4,14 +4,14 @@
 
     <div class="form-group">
       <label for="email">E-mail:</label>
-      <input type="email" class="form-control" id="email" placeholder="Ex: fulano.silva89@gmail.com" required>
+      <input type="email" class="form-control" id="email" [(ngModel)]="email" name="email" placeholder="Ex: fulano.silva89@gmail.com" required>
     </div>
     <div class="form-group">
       <label for="senha">Senha:</label>
-      <input type="password" class="form-control" id="senha" placeholder="De 8 a 14 caracteres" required>
+      <input type="password" class="form-control" id="senha" [(ngModel)]="senha" name="senha" placeholder="De 8 a 14 caracteres" required>
     </div>
     <article>
-      <button class="btn btn-lg action">Login</button>
+      <button class="btn btn-lg action" (click)="loga()">Login</button>
       <button class="btn btn-link" (click)="cadastrar()">Me cadastrar</button>
     </article>
   </form>
@@ -22,25 +22,25 @@
     <!-- Dados Pessoais -->
     <div class="form-group">
       <label for="nome">Nome:</label>
-      <input type="text" class="form-control" id="nome" placeholder="Ex: Fulano da Silva" required>
+      <input type="text" class="form-control" id="nome" [(ngModel)]="nome" name="nome" placeholder="Ex: Fulano da Silva" required>
     </div>
     <div class="form-group">
-      <label for="email">E-mail:</label>
-      <input type="email" class="form-control" id="email" placeholder="Ex: fulano.silva89@gmail.com" required>
+      <label for="emailCadastro">E-mail:</label>
+      <input type="email" class="form-control" id="emailCadastro" [(ngModel)]="email" name="email" placeholder="Ex: fulano.silva89@gmail.com" required>
     </div>
     <div class="form-group">
       <label for="endereco">Endereço:</label>
-      <input type="text" class="form-control" id="endereco" placeholder="Ex: Rua dos Alfeneiros nº 4" required>
+      <input type="text" class="form-control" id="endereco" [(ngModel)]="endereco" name="endereco"  placeholder="Ex: Rua dos Alfeneiros nº 4" required>
     </div>
     <div class="form-group">
       <label for="whatsapp">Whatsapp:</label>
-      <input type="text" class="form-control" id="whatsapp" placeholder="Ex: (11) 98765-4321" required>
+      <input type="text" class="form-control" id="whatsapp" [(ngModel)]="celular" name="celular"placeholder="Ex: (11) 98765-4321" required>
     </div>
 
     <!-- Verificação se as duas senhas estão digitadas corretamente -->
     <div class="form-group">
-      <label for="senha">Senha:</label>
-      <input type="password" class="form-control" id="senha" placeholder="De 8 a 14 caracteres" required>
+      <label for="senhaCadastro">Senha:</label>
+      <input type="password" class="form-control" id="senhaCadastro" [(ngModel)]="senha" name="senha" placeholder="De 8 a 14 caracteres" required>
     </div>
 
     <div class="form-group">
@@ -49,7 +49,7 @@
     </div>
 
     <article>
-      <button class="btn btn-lg action">Cadastrar-se</button>
+      <button class="btn btn-lg action" (click)="cadastra()">Cadastrar-se</button>
       <button class="btn btn-link" (click)="login()">Já tenho cadastro</button>
     </article>
   </form>
