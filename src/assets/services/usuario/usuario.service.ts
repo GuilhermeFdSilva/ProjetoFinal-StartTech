@@ -6,7 +6,7 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class UsuarioService {
-  private usuarioPincipal: Usuario = new Usuario;
+  private usuarioPincipal: Usuario = new Usuario();
   private logado: boolean = false;
   private todosUsuarios: Array<Usuario> = [];
   atualizarDados = new Subject<string>;
@@ -44,7 +44,7 @@ export class UsuarioService {
 
   fazerLogin(email: string, senha: string): void {
     this.getDados().subscribe(
-      (response: Usuario[]) => {
+      (response: Array<Usuario>) => {
         const usuarioLogin: Usuario | undefined = Object.assign(new Usuario(), response
           .find((objectUsuario: Usuario) => {
             objectUsuario = Object.assign(new Usuario(), objectUsuario)
@@ -67,13 +67,13 @@ export class UsuarioService {
     this.atualizarDados.next('Até breve');
   }
 
-  atualizarCadastro(objetoAtualizado: Object): void {
+  atualizarCadastro(objetoAtualizado: any): void {
     const usuarioAtualizado = Object.assign(new Usuario(), objetoAtualizado);
     this.atualizaDadosPessoais(usuarioAtualizado).subscribe((respone) => {
       this.usuarioPincipal
     },
       (error) => {
-
+        this.erroServidor.next(error);
       });
   }
 
@@ -97,7 +97,7 @@ export class UsuarioService {
     }));
   }
 
-  private deixarDeSeguir(alvo: Object): void {
+  private deixarDeSeguir(alvo: any): void {
     let alvoUsuario: Usuario = Object.assign(new Usuario, alvo);
     this.usuarioPincipal.pararDeSeguir(alvoUsuario.getId());
     alvoUsuario.removerSeguidor(this.usuarioPincipal.getId());
@@ -110,7 +110,7 @@ export class UsuarioService {
       });
   }
 
-  private seguir(alvo: Object): void {
+  private seguir(alvo: any): void {
     let alvoUsuario: Usuario = Object.assign(new Usuario, alvo);
     this.usuarioPincipal.seguirUsuario(alvoUsuario.getId());
     alvoUsuario.adicionarSeguidor(this.usuarioPincipal.getId());
