@@ -1,15 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class UsuarioService {
   private usuarioPincipal: Usuario = new Usuario();
+  private seguidores: Array<Usuario> = [];
+  private seguindo: Array<Usuario> = [];
   private logado: boolean = false;
   private todosUsuarios: Array<Usuario> = [];
-  atualizarDados = new Subject<string>;
+  atualizarDados = new BehaviorSubject<string>('');
   erroServidor = new Subject<string>;
 
   getUsuarioPrincipal(): Usuario {
@@ -52,6 +54,8 @@ export class UsuarioService {
           }));
         if (usuarioLogin && usuarioLogin.getSenha() === senha) {
           this.usuarioPincipal = usuarioLogin;
+          this.getSeguidores();
+          this.getSeguindo();
           this.logado = true;
           this.atualizarDados.next('Bem-vindo')
         }
@@ -64,6 +68,8 @@ export class UsuarioService {
   fazerLogout(): void {
     this.usuarioPincipal = new Usuario();
     this.logado = false;
+    this.getSeguidores();
+    this.getSeguindo();
     this.atualizarDados.next('Até breve');
   }
 
@@ -95,6 +101,36 @@ export class UsuarioService {
         this.seguir(usuarioAlvo);
       }
     }));
+  }
+
+  private getSeguidores(): void {
+    this.getDados().subscribe((response: Array<Usuario>) => {
+      const seguidores = this.usuarioPincipal.getSeguidores();
+      response.forEach((usuario: Usuario) => {
+        if (seguidores.includes(usuario.getId())) {
+          this.seguidores.push(Object.assign(new Usuario, usuario));
+          this.atualizarDados.next('');
+        }
+      });
+    },
+      (error) => {
+        this.erroServidor.next(error);
+      });
+  }
+
+  private getSeguindo(): void {
+    this.getDados().subscribe((response: Array<Usuario>) => {
+      const seguindo = this.usuarioPincipal.getSeguindo();
+      response.forEach((usuario: Usuario) => {
+        if (seguindo.includes(usuario.getId())) {
+          this.seguidores.push(Object.assign(new Usuario, usuario));
+          this.atualizarDados.next('');
+        }
+      });
+    },
+      (error) => {
+        this.erroServidor.next(error);
+      });
   }
 
   private deixarDeSeguir(alvo: any): void {
