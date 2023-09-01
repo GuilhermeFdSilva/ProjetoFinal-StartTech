@@ -26,6 +26,19 @@ export class UsuarioService {
     return this.todosUsuarios;
   }
 
+  getUsuarioById(usuarioId: number): Usuario {
+     return Object.assign(new Usuario, this.getDados().subscribe((response: Array<Usuario>) => {
+      return response.find((usuario: Usuario) => {
+        usuario = Object.assign(new Usuario, usuario);
+        return usuario.getId() === usuarioId;
+      });
+    },
+    (error) => {
+      this.erroServidor.next(error);
+      return new Usuario();
+    }));
+  }
+
   criarUsuario(objeto: Object): void {
     const usuario = Object.assign(new Usuario, objeto);
     this.addDados(usuario).subscribe((response) => {
