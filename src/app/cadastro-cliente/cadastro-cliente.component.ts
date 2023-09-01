@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   UsuarioService,
   Usuario,
@@ -9,23 +10,26 @@ import {
   templateUrl: './cadastro-cliente.component.html',
   styleUrls: ['./cadastro-cliente.component.scss'],
 })
-export class CadastroClienteComponent {
-  constructor(private usuarioService: UsuarioService) {this.usuarioService.atualizarDados.subscribe((response) => {console.log(response);})}
+export class CadastroClienteComponent implements OnInit {
 
-   email:string = '';
-   senha:string = '';
-   nome:string = '';
-   endereco:string = '';
-   celular:string = '';
+  constructor(private usuarioService: UsuarioService, private router: Router) { }
+
+  email: string = '';
+  senha: string = '';
+  nome: string = '';
+  endereco: string = '';
+  celular: string = '';
 
   cadastra() {
     const usuario: any = { email: this.email, senha: this.senha, nome: this.nome, endereco: this.endereco, celular: this.celular }
     this.usuarioService.criarUsuario(usuario);
+    this.login();
   }
 
   loga() {
     console.log(this.email, this.senha);
     this.usuarioService.fazerLogin(this.email, this.senha);
+    this.router.navigate(['home']);
   }
 
   cadastrar() {
@@ -38,5 +42,11 @@ export class CadastroClienteComponent {
     document.getElementById('cadastro')?.classList.remove('activate');
     document.getElementById('login')?.classList.add('activate');
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  ngOnInit(): void {
+    if(this.usuarioService.getLogado()) {
+      this.router.navigate(['home']);
+    }
   }
 }
