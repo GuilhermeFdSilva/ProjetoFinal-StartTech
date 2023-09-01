@@ -8,8 +8,8 @@ import { Observable, Subject } from 'rxjs';
 export class UsuarioService {
   private usuarioPincipal: Usuario = new Usuario;
   private logado: boolean = false;
-  private todosUsuarios: Array<Usuario> = []
-  eventoLogin = new Subject<string>;
+  private todosUsuarios: Array<Usuario> = [];
+  atualizarDados = new Subject<string>;
   erroServidor = new Subject<string>;
 
   getUsuarioPrincipal(): Usuario {
@@ -24,9 +24,22 @@ export class UsuarioService {
     return this.todosUsuarios;
   }
 
-  criarUsuario(objeto: Object): Observable<any> {
+  criarUsuario(objeto: Object): void {
     const usuario = Object.assign(new Usuario, objeto);
-    return this.addDados(usuario);
+    this.addDados(usuario).subscribe((response) => {
+      this.getDados().subscribe((response: Array<Usuario>) => {
+        response.forEach(objeto => {
+          this.todosUsuarios.push(Object.assign(new Usuario, objeto));
+          this.atualizarDados.next('Usuário criado');
+        });
+      },
+        (error) => {
+          this.erroServidor.next(error);
+        });
+    },
+      (error) => {
+        this.erroServidor.next(error);
+      });
   }
 
   fazerLogin(email: string, senha: string): void {
@@ -40,9 +53,7 @@ export class UsuarioService {
         if (usuarioLogin && usuarioLogin.getSenha() === senha) {
           this.usuarioPincipal = usuarioLogin;
           this.logado = true;
-          this.eventoLogin.next(`Bem-vindo ${this.usuarioPincipal.getNome()}`);
-        } else {
-          this.eventoLogin.next("E-mail e/ou senha incorretos");
+          this.atualizarDados.next('Bem-vindo')
         }
       },
       (error) => {
@@ -53,12 +64,17 @@ export class UsuarioService {
   fazerLogout(): void {
     this.usuarioPincipal = new Usuario();
     this.logado = false;
-    this.eventoLogin.next('Até logo');
+    this.atualizarDados.next('Até breve');
   }
 
-  atualizarCadastro(objetoAtualizado: Object): Observable<any> {
+  atualizarCadastro(objetoAtualizado: Object): void {
     const usuarioAtualizado = Object.assign(new Usuario(), objetoAtualizado);
-    return this.atualizaDadosPessoais(usuarioAtualizado);
+    this.atualizaDadosPessoais(usuarioAtualizado).subscribe((respone) => {
+      this.usuarioPincipal
+    },
+      (error) => {
+
+      });
   }
 
   toggleSeguir(idUsuarioAlvo: number): void {
@@ -86,8 +102,8 @@ export class UsuarioService {
     this.usuarioPincipal.pararDeSeguir(alvoUsuario.getId());
     alvoUsuario.removerSeguidor(this.usuarioPincipal.getId());
     this.atualizarSeguidores(this.usuarioPincipal).subscribe((response) => {
-      this.eventoLogin.next('Deixou de seguir');
       this.atualizarSeguidores(alvoUsuario).subscribe();
+      this.atualizarDados.next('Deixou de seguir :(');
     },
       (error) => {
         this.erroServidor.next(error);
@@ -99,8 +115,8 @@ export class UsuarioService {
     this.usuarioPincipal.seguirUsuario(alvoUsuario.getId());
     alvoUsuario.adicionarSeguidor(this.usuarioPincipal.getId());
     this.atualizarSeguidores(this.usuarioPincipal).subscribe((response) => {
-      this.eventoLogin.next('Seguindo');
       this.atualizarSeguidores(alvoUsuario).subscribe();
+      this.atualizarDados.next('Seguindo :)');
     },
       (error) => {
         this.erroServidor.next(error);
@@ -118,6 +134,9 @@ export class UsuarioService {
   private atualizaDadosPessoais(usuarioAtualizado: Usuario): Observable<any> {
     return this.http.patch(`http://localhost:3000/usuarios/${usuarioAtualizado.getId()}`,
       {
+        nome: usuarioAtualizado.getNome(),
+        endereco: usuarioAtualizado.getEndereco(),
+        celular: usuarioAtualizado.getCelular(),
         email: usuarioAtualizado.getEmail(),
         senha: usuarioAtualizado.getSenha()
       });
@@ -133,13 +152,13 @@ export class UsuarioService {
 
   constructor(private http: HttpClient) {
     this.getDados().subscribe((response: Array<Usuario>) => {
-      response.forEach(objeto =>{
+      response.forEach(objeto => {
         this.todosUsuarios.push(Object.assign(new Usuario, objeto))
-      })
+      });
     },
-    (error) => {
-      this.erroServidor.next(error);
-    });
+      (error) => {
+        this.erroServidor.next(error);
+      });
   }
 
 }
