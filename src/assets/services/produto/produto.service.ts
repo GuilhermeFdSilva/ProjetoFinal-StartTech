@@ -33,16 +33,20 @@ export class ProdutoService {
     return this.itensUsuarioMain;
   }
 
-  getItensEMainItens(): void {
+  getItensEMainItens(string: string): void {
+    this.todosItens = [];
     this.getDados().subscribe((response: Array<Produto>) => {
       response.forEach((item) => {
         this.todosItens.push(Object.assign(new Produto, item));
       });
-      this.todosItens.forEach((item: Produto) => {
-        if (this.usuarioService.getUsuarioPrincipal().getId() === item.getUsuarioId()) {
-          this.itensUsuarioMain.push(Object.assign(new Produto, item));
-        }
-      });
+      if (string === 'Bem-vindo') {
+        this.itensUsuarioMain = [];
+        this.todosItens.forEach((item: Produto) => {
+          if (this.usuarioService.getUsuarioPrincipal().getId() === item.getUsuarioId()) {
+            this.itensUsuarioMain.push(Object.assign(new Produto, item));
+          }
+        });
+      }
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
@@ -166,8 +170,8 @@ export class ProdutoService {
   }
 
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {
-    this.usuarioService.atualizarDados.subscribe(() => {
-      this.getItensEMainItens();
+    this.usuarioService.atualizarDados.subscribe((response) => {
+      this.getItensEMainItens(response);
     });
   }
 }
