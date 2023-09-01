@@ -89,7 +89,15 @@ export class UsuarioService {
   atualizarCadastro(objetoAtualizado: any): void {
     const usuarioAtualizado = Object.assign(new Usuario(), objetoAtualizado);
     this.atualizaDadosPessoais(usuarioAtualizado).subscribe((respone) => {
-      this.usuarioPincipal
+      this.usuarioPincipal = usuarioAtualizado;
+      this.getDados().subscribe((response: Array<Usuario>) => {
+        response.forEach(objeto => {
+          this.todosUsuarios.push(Object.assign(new Usuario, objeto))
+        });
+      },
+        (error) => {
+          this.erroServidor.next(error);
+        });
     },
       (error) => {
         this.erroServidor.next(error);

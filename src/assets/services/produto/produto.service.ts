@@ -11,18 +11,78 @@ export class CadastroProdutoService {
   private dono: Usuario = new Usuario()
   private itens: Array<Produto> = [];
 
-  getItem() {
-    
+  getItem(): Produto {
+    return this.item;
   }
 
-  // Trocar nome dessa
-  setItem(itemId: number) {
+  getDonoItem(): Usuario {
+    return this.dono;
+  }
+
+  getItens(): Array<Produto> {
+    return this.itens;
+  }
+
+  selecionarItem(itemId: number): void {
     this.getDados().subscribe((response: Array<Produto>) => {
       this.item = Object.assign(new Produto, response.find((item: Produto) => {
         item = Object.assign(new Produto, item);
         return item.getId() === itemId;
       }));
+      this.usuarioService.getUsuarioById(this.item.getUsuarioId());
       this.usuarioService.atualizarDados.next('');
+    },
+      (error) => {
+        this.usuarioService.erroServidor.next(error);
+      });
+  }
+
+  criarItem(objeto: any): void {
+    const item = Object.assign(new Produto, objeto);
+    this.addDados(item).subscribe((response) => {
+      this.getDados().subscribe((response: Array<Produto>) => {
+        response.forEach((item) => {
+          this.itens.push(Object.assign(new Produto, item));
+        });
+        this.usuarioService.atualizarDados.next('Item Criado');
+      },
+        (error) => {
+          this.usuarioService.erroServidor.next(error);
+        });
+    },
+      (error) => {
+        this.usuarioService.erroServidor.next(error);
+      });
+  }
+
+  alterarItem(objeto: any): void {
+    const itemAtualizado = Object.assign(new Produto, objeto);
+    this.atualizarItem(itemAtualizado).subscribe((response) => {
+      this.getDados().subscribe((response: Array<Produto>) => {
+        response.forEach((item) => {
+          this.itens.push(Object.assign(new Produto, item));
+        });
+      },
+        (error) => {
+          this.usuarioService.erroServidor.next(error);
+        });
+    },
+      (error) => {
+        this.usuarioService.erroServidor.next(error);
+      });
+  }
+
+  deletar(itemId: number): void {
+    this.deletarItem(itemId).subscribe((response) => {
+      this.getDados().subscribe((response: Array<Produto>) => {
+        response.forEach((item) => {
+          this.itens.push(Object.assign(new Produto, item));
+        });
+        this.usuarioService.atualizarDados.next('Item deletado');
+      },
+        (error) => {
+          this.usuarioService.erroServidor.next(error);
+        });
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
@@ -53,7 +113,14 @@ export class CadastroProdutoService {
   }
 
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {
-
+    this.getDados().subscribe((response: Array<Produto>) => {
+      response.forEach((item) => {
+        this.itens.push(Object.assign(new Produto, item));
+      });
+    },
+      (error) => {
+        this.usuarioService.erroServidor.next(error);
+      });
   }
 }
 
