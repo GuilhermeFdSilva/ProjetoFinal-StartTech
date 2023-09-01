@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class CadastroProdutoService {
+export class ProdutoService {
   private item: Produto = new Produto();
   private dono: Usuario = new Usuario();
   private itensDono: Array<Produto> = [];
