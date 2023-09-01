@@ -3,13 +3,13 @@
   <div>
     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalExibicao">
       <article>
-        <p><strong><i class="bi bi-person-hearts"></i>&nbsp;123</strong></p>
+        <p><strong><i class="bi bi-person-hearts"></i>&nbsp;{{ seguidores.length }}</strong></p>
         <p>seguidores</p>
       </article>
     </button>
     <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalExibicao">
       <article>
-        <p><strong><i class="bi bi-hearts"></i>&nbsp;232</strong></p>
+        <p><strong><i class="bi bi-hearts"></i>&nbsp;{{ seguindo.length }}</strong></p>
         <p>seguindo</p>
       </article>
     </button>
@@ -133,7 +133,7 @@
 
         <!-- Seguindo -->
         <section *ngIf="false">
-          <div class="row" *ngFor="let seguidor of seguidores">
+          <div class="row" *ngFor="let seguidor of seguindo">
             <button class="btn" [routerLink]="'/perfil/' + seguidor.id"
               data-bs-dismiss="modal">{{ seguidor.nome }}</button>
             <hr>
