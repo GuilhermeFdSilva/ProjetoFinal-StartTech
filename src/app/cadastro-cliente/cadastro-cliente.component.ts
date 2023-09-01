@@ -27,7 +27,6 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   loga() {
-    console.log(this.email, this.senha);
     this.usuarioService.fazerLogin(this.email, this.senha);
     this.router.navigate(['home']);
   }
