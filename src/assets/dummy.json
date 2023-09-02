@@ -1,6 +1,5 @@
 {
-  "usuarios": [
-    {
+  "usuarios": [{
       "id": 1,
       "nome": "Juliano Assanjo",
       "endereco": "Rua A, 123",
@@ -10,9 +9,6 @@
       "seguidores": [
         2,
         3
-      ],
-      "seguindo": [
-        2
       ]
     },
     {
@@ -24,7 +20,8 @@
       "senha": "senha456",
       "seguidores": [
         1
-      ]
+      ],
+      "seguindo": []
     },
     {
       "id": 3,
@@ -33,7 +30,8 @@
       "celular": "(33) 5555-1234",
       "email": "usuarioc@example.com",
       "senha": "senha789",
-      "seguidores": []
+      "seguidores": [],
+      "seguindo": []
     },
     {
       "seguidores": [1,2,3],
@@ -46,10 +44,9 @@
       "id": 4
     }
   ],
-  "itens": [
-    {
+  "itens": [{
       "id": 1,
-      "usuario_id": 1,
+      "usuarioId": 1,
       "titulo": "Jarro de Latão",
       "descricao": "Jarro de Latão com desenhos muito delicados em relevo",
       "preco": 545.99,
@@ -64,7 +61,7 @@
     },
     {
       "id": 2,
-      "usuario_id": 3,
+      "usuarioId": 3,
       "titulo": "Mesa lateral em madeira de lei",
       "descricao": "Mesa produzida em madeira de lei maciça, com acabamento em verniz fosco. Possui 3 gavetas e 1 prateleira. Medidas: 0,60 x 0,60 x 0,60 m.",
       "preco": 544,
@@ -79,7 +76,7 @@
     },
     {
       "id": 3,
-      "usuario_id": 3,
+      "usuarioId": 3,
       "titulo": "Taças de prata",
       "descricao": "Taças feitas em prata para servir sobremesas",
       "preco": 380.98,
@@ -93,7 +90,7 @@
     },
     {
       "id": 4,
-      "usuario_id": 3,
+      "usuarioId": 3,
       "titulo": "Xícaras de chá inglesas",
       "descricao": "Aparelho em porcelana cara em perfeitas condições",
       "preco": 700,
@@ -107,7 +104,7 @@
     },
     {
       "id": 5,
-      "usuario_id": 2,
+      "usuarioId": 2,
       "titulo": "Vaso antigo de arte francesa",
       "descricao": "Adornado com pinturas simples e elegantes",
       "preco": 345.93,
@@ -120,7 +117,7 @@
     },
     {
       "id": 6,
-      "usuario_id": 3,
+      "usuarioId": 3,
       "titulo": "Tapete persa",
       "descricao": "Tapete persa de 2,5 x 3,5 m, em perfeito estado de conservação",
       "preco": 2005.93,
@@ -134,7 +131,7 @@
     },
     {
       "id": 7,
-      "usuario_id": 1,
+      "usuarioId": 1,
       "titulo": "Taças francesas de cristal",
       "descricao": "Feitas de cristal fino, com detalhes rubros",
       "preco": 1000.99,
@@ -148,7 +145,7 @@
     },
     {
       "id": 8,
-      "usuario_id": 2,
+      "usuarioId": 2,
       "titulo": "Pergaminho Qi Baishi",
       "descricao": "Pergaminho com pintura de Qi Baishi, emoldurado em madeira de lei",
       "preco": 10000.99,
@@ -162,7 +159,7 @@
     },
     {
       "id": 9,
-      "usuario_id": 3,
+      "usuarioId": 3,
       "titulo": "Vaso em pasta de vidro",
       "descricao": "Decorado com figuras de salamandras e plantas aquáticas em alto relevo",
       "preco": 7000,
@@ -175,7 +172,7 @@
     },
     {
       "id": 10,
-      "usuario_id": 1,
+      "usuarioId": 1,
       "titulo": "Relógio de parede em madeira",
       "descricao": "Relógio que creio ser da epóca colonial",
       "preco": 690.99,
@@ -189,7 +186,7 @@
     },
     {
       "id": 11,
-      "usuario_id": 2,
+      "usuarioId": 2,
       "titulo": "Tipografa Underwood 198",
       "descricao": "Máquina de escrever em perfeitissimas condições de uso, com case original e fita nova",
       "preco": 690.99,
@@ -204,7 +201,7 @@
     },
     {
       "id": 12,
-      "usuario_id": 3,
+      "usuarioId": 3,
       "titulo": "Anfora grega",
       "descricao": "Anfora grega de 1,5 m de altura, em perfeito estado de conservação, com pinturas originais. Objeto de colecionador.",
       "preco": 25000.99,
@@ -219,7 +216,7 @@
     },
     {
       "id": 13,
-      "usuario_id": 1,
+      "usuarioId": 1,
       "titulo": "Jogo de chá japonês",
       "descricao": "Jogo de chá japonês, com 6 xícaras e 6 pires, em perfeito estado de conservação, feito na dinastia Ming",
       "preco": 25000.99,
@@ -234,7 +231,7 @@
     },
     {
       "id": 14,
-      "usuario_id": 2,
+      "usuarioId": 2,
       "titulo": "Prato decorativo mexicano",
       "descricao": "Prato que ganhei da minha abuela na ultima viagemque fiz ao México",
       "preco": 25000.99,
@@ -249,7 +246,7 @@
     },
     {
       "id": 15,
-      "usuario_id": 3,
+      "usuarioId": 3,
       "titulo": "Relógio de mesa em bronze",
       "descricao": "Relógio de mesa francês em bronze, com anjinho de bronze maciço.",
       "preco": 7890,
@@ -264,7 +261,7 @@
     },
     {
       "id": 16,
-      "usuario_id": 1,
+      "usuarioId": 1,
       "titulo": "Tapete persa legitimo",
       "descricao": "Tapete persa legitimo em cores preta e pasteis estampados bordados",
       "preco": 9001,
@@ -278,8 +275,7 @@
       ]
     }
   ],
-  "tags": [
-    {
+  "tags": [{
       "id": 1,
       "nome": "Móveis"
     },

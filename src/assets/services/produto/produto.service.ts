@@ -33,10 +33,14 @@ export class ProdutoService {
     return this.itensUsuarioMain;
   }
 
-  getItensMain(): void {
+  getItensEMainItens(): void {
+    this.todosItens = [];
     this.getDados().subscribe((response: Array<Produto>) => {
-      response.forEach((item: Produto) => {
-        item = Object.assign(new Produto, item);
+      response.forEach((item) => {
+        this.todosItens.push(Object.assign(new Produto, item));
+      });
+      this.itensUsuarioMain = [];
+      this.todosItens.forEach((item: Produto) => {
         if (this.usuarioService.getUsuarioPrincipal().getId() === item.getUsuarioId()) {
           this.itensUsuarioMain.push(Object.assign(new Produto, item));
         }
@@ -75,16 +79,8 @@ export class ProdutoService {
 
   criarItem(objeto: any): void {
     const item = Object.assign(new Produto, objeto);
-    this.addDados(item).subscribe((response) => {
-      this.getDados().subscribe((response: Array<Produto>) => {
-        response.forEach((item) => {
-          this.todosItens.push(Object.assign(new Produto, item));
-        });
-        this.usuarioService.atualizarDados.next('Item Criado');
-      },
-        (error) => {
-          this.usuarioService.erroServidor.next(error);
-        });
+    this.addDados(item).subscribe(() => {
+      this.getItensEMainItens()
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
@@ -93,15 +89,8 @@ export class ProdutoService {
 
   alterarItem(objeto: any): void {
     const itemAtualizado = Object.assign(new Produto, objeto);
-    this.atualizarItem(itemAtualizado).subscribe((response) => {
-      this.getDados().subscribe((response: Array<Produto>) => {
-        response.forEach((item) => {
-          this.todosItens.push(Object.assign(new Produto, item));
-        });
-      },
-        (error) => {
-          this.usuarioService.erroServidor.next(error);
-        });
+    this.atualizarItem(itemAtualizado).subscribe(() => {
+      this.getItensEMainItens();
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
@@ -109,16 +98,8 @@ export class ProdutoService {
   }
 
   deletar(itemId: number): void {
-    this.deletarItem(itemId).subscribe((response) => {
-      this.getDados().subscribe((response: Array<Produto>) => {
-        response.forEach((item) => {
-          this.todosItens.push(Object.assign(new Produto, item));
-        });
-        this.usuarioService.atualizarDados.next('Item deletado');
-      },
-        (error) => {
-          this.usuarioService.erroServidor.next(error);
-        });
+    this.deletarItem(itemId).subscribe(() => {
+      this.getItensEMainItens();
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
@@ -136,7 +117,7 @@ export class ProdutoService {
       });
     },
       (error) => {
-
+        this.usuarioService.erroServidor.next(error);
       });
   }
 
@@ -164,18 +145,9 @@ export class ProdutoService {
   }
 
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {
-    this.usuarioService.atualizarDados.subscribe((response) => {
-      this.getItensMain();
+    this.usuarioService.atualizarDados.subscribe(() => {
+      this.getItensEMainItens();
     });
-    this.getDados().subscribe((response: Array<Produto>) => {
-      console.log('oi');
-      response.forEach((item) => {
-        this.todosItens.push(Object.assign(new Produto, item));
-      });
-    },
-      (error) => {
-        this.usuarioService.erroServidor.next(error);
-      });
   }
 }
 

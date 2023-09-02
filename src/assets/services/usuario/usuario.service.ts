@@ -29,7 +29,7 @@ export class UsuarioService {
   getSeguidores(): Array<Usuario> {
     return this.seguidores;
   }
-  
+
   getSeguindo(): Array<Usuario> {
     return this.seguindo;
   }
@@ -40,8 +40,9 @@ export class UsuarioService {
 
   criarUsuario(objeto: Object): void {
     const usuario = Object.assign(new Usuario, objeto);
-    this.addDados(usuario).subscribe((response) => {
+    this.addDados(usuario).subscribe(() => {
       this.getDados().subscribe((response: Array<Usuario>) => {
+        this.todosUsuarios = [];
         response.forEach(objeto => {
           this.todosUsuarios.push(Object.assign(new Usuario, objeto));
           this.atualizarDados.next('Usuário criado');
@@ -57,21 +58,20 @@ export class UsuarioService {
   }
 
   fazerLogin(email: string, senha: string): void {
-    this.getDados().subscribe(
-      (response: Array<Usuario>) => {
-        const usuarioLogin: Usuario | undefined = Object.assign(new Usuario(), response
-          .find((objectUsuario: Usuario) => {
-            objectUsuario = Object.assign(new Usuario(), objectUsuario)
-            return objectUsuario.getEmail() === email;
-          }));
-        if (usuarioLogin && usuarioLogin.getSenha() === senha) {
-          this.usuarioPincipal = usuarioLogin;
-          this.acharSeguidores();
-          this.acharSeguindo();
-          this.logado = true;
-          this.atualizarDados.next('Bem-vindo')
-        }
-      },
+    this.getDados().subscribe((response: Array<Usuario>) => {
+      const usuarioLogin: Usuario = Object.assign(new Usuario(), response
+        .find((objectUsuario: Usuario) => {
+          objectUsuario = Object.assign(new Usuario(), objectUsuario)
+          return objectUsuario.getEmail() === email;
+        }));
+      if (usuarioLogin && usuarioLogin.getSenha() === senha) {
+        this.usuarioPincipal = usuarioLogin;
+        this.acharSeguidores();
+        this.acharSeguindo();
+        this.logado = true;
+        this.atualizarDados.next('Bem-vindo')
+      }
+    },
       (error) => {
         this.erroServidor.next(error);
       });
@@ -80,19 +80,25 @@ export class UsuarioService {
   fazerLogout(): void {
     this.usuarioPincipal = new Usuario();
     this.logado = false;
-    this.acharSeguidores();
-    this.acharSeguindo();
+    this.seguidores = [];
+    this.seguindo = [];
     this.atualizarDados.next('Até breve');
   }
 
   atualizarCadastro(objetoAtualizado: any): void {
     const usuarioAtualizado = Object.assign(new Usuario(), objetoAtualizado);
-    this.atualizaDadosPessoais(usuarioAtualizado).subscribe((respone) => {
-      this.usuarioPincipal = usuarioAtualizado;
-      this.getDados().subscribe((response: Array<Usuario>) => {
-        response.forEach(objeto => {
-          this.todosUsuarios.push(Object.assign(new Usuario, objeto))
+    this.atualizaDadosPessoais(usuarioAtualizado).subscribe(() => {
+      this.getDados().subscribe((usuarios: Array<Usuario>) => {
+        this.usuarioPincipal = Object.assign(new Usuario, usuarios
+          .find((usuario: Usuario) => {
+            usuario = Object.assign(new Usuario, usuario);
+            return usuario.getId() === this.usuarioPincipal.getId();
+          }));
+        this.todosUsuarios = [];
+        usuarios.forEach(objeto => {
+          this.todosUsuarios.push(Object.assign(new Usuario, objeto));
         });
+        this.atualizarDados.next('Dados atualizados');
       },
         (error) => {
           this.erroServidor.next(error);
@@ -159,7 +165,7 @@ export class UsuarioService {
     let alvoUsuario: Usuario = Object.assign(new Usuario, alvo);
     this.usuarioPincipal.pararDeSeguir(alvoUsuario.getId());
     alvoUsuario.removerSeguidor(this.usuarioPincipal.getId());
-    this.atualizarSeguidores(this.usuarioPincipal).subscribe((response) => {
+    this.atualizarSeguidores(this.usuarioPincipal).subscribe(() => {
       this.atualizarSeguidores(alvoUsuario).subscribe();
       this.atualizarDados.next('Deixou de seguir :(');
     },
@@ -172,7 +178,7 @@ export class UsuarioService {
     let alvoUsuario: Usuario = Object.assign(new Usuario, alvo);
     this.usuarioPincipal.seguirUsuario(alvoUsuario.getId());
     alvoUsuario.adicionarSeguidor(this.usuarioPincipal.getId());
-    this.atualizarSeguidores(this.usuarioPincipal).subscribe((response) => {
+    this.atualizarSeguidores(this.usuarioPincipal).subscribe(() => {
       this.atualizarSeguidores(alvoUsuario).subscribe();
       this.atualizarDados.next('Seguindo :)');
     },
@@ -190,7 +196,7 @@ export class UsuarioService {
   }
 
   private atualizaDadosPessoais(usuarioAtualizado: Usuario): Observable<any> {
-    return this.http.patch(`http://localhost:3000/usuarios/${usuarioAtualizado.getId()}`,
+    return this.http.patch(`http://localhost:3000/usuarios/${this.usuarioPincipal.getId()}`,
       {
         nome: usuarioAtualizado.getNome(),
         endereco: usuarioAtualizado.getEndereco(),
