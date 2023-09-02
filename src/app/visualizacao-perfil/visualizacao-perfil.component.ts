@@ -1,34 +1,49 @@
-import { Usuario } from '../../assets/services/usuario/usuario.service';
+import { Usuario, UsuarioService } from '../../assets/services/usuario/usuario.service';
+import { ProdutoService } from '../../assets/services/produto/produto.service';
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { ActivatedRoute, Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-visualizacao-perfil',
   templateUrl: './visualizacao-perfil.component.html',
   styleUrls: ['./visualizacao-perfil.component.scss']
 })
+
 export class VisualizacaoPerfilComponent implements OnInit {
+
+  usuario: any = {};
+  numeroSeguidores: number = 0;
+  numeroSeguindo: number = 0;
+
   itens: any[] = [];
   usuarios: any[] = [];
 
-  usuarioId: string;
+  usuarioId: string = '';
+  
+  itensDoUsuario: any[] = [];
 
-  usuario: any;
-  itensDoUsuario: any[];
-
-  constructor(private http: HttpClient, private activatedRouter: ActivatedRoute, private router: Router) { }
+  constructor(private UsuarioService: UsuarioService, private ProdutoService: ProdutoService,private activatedRouter: ActivatedRoute, private router: Router) {
+    this.UsuarioService.atualizarDados.subscribe((response) => {
+      this.UsuarioService.getUsuarioById(parseInt(this.usuarioId)).subscribe((usuario) => {this.usuario = Object.assign(new Usuario, usuario)});});
+      this.itensDoUsuario = this.ProdutoService.getItensUsuarioMain();
+      
+      console.log (this.usuario);
+    };
+   
 
   ngOnInit(): void {
     this.activatedRouter.paramMap.subscribe((params) => {
       this.usuarioId = params.get('id') ?? '';
-    });
-    this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
-      this.itens = dummy.itens;
-      this.usuarios = dummy.usuarios;
-      this.usuario = this.usuarios.find((u) => u.id === parseInt(this.usuarioId));
-      this.itensDoUsuario = this.itens.filter((item) => item.usuario_id === parseInt(this.usuarioId));
-    });
+    }); // seta o id do usuario
+
+    this.usuario = this.UsuarioService.getUsuarioById(parseInt(this.usuarioId));
+    this.numeroSeguidores = this.usuario.seguidores().length;
+    this.numeroSeguindo = this.usuario.seguindo().length;
+
+    console.log (this.usuarioId)
+    console.log (this.usuario)
+    console.log (this.numeroSeguidores)
   }
 
   verDetalhes(itemId: number) {
