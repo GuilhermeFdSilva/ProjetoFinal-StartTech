@@ -1,6 +1,5 @@
 {
-  "usuarios": [
-    {
+  "usuarios": [{
       "id": 1,
       "nome": "Juliano Assanjo",
       "endereco": "Rua A, 123",
@@ -10,7 +9,8 @@
       "seguidores": [
         2,
         3
-      ]
+      ],
+      "seguindo": []
     },
     {
       "id": 2,
@@ -21,7 +21,8 @@
       "senha": "senha456",
       "seguidores": [
         1
-      ]
+      ],
+      "seguindo": []
     },
     {
       "id": 3,
@@ -30,7 +31,8 @@
       "celular": "(33) 5555-1234",
       "email": "usuarioc@example.com",
       "senha": "senha789",
-      "seguidores": []
+      "seguidores": [],
+      "seguindo": []
     },
     {
       "seguidores": [],
@@ -43,8 +45,7 @@
       "id": 4
     }
   ],
-  "itens": [
-    {
+  "itens": [{
       "id": 1,
       "usuarioId": 1,
       "titulo": "Jarro de Latão",
@@ -275,8 +276,7 @@
       ]
     }
   ],
-  "tags": [
-    {
+  "tags": [{
       "id": 1,
       "nome": "Móveis"
     },
