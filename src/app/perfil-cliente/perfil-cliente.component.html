@@ -162,7 +162,7 @@
         </section>
 
         <!-- Seguindo -->
-        <section *ngIf="!seguidores">
+        <section *ngIf="!seguidores" style="overflow-x: hidden;">
           <div class="row" *ngFor="let seguidor of this.usuarioService.getSeguindo()">
             <button class="btn" [routerLink]="'/perfil/' + seguidor.getSeguindo()"
               data-bs-dismiss="modal">{{ seguidor.getNome() }}</button>
