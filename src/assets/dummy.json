@@ -9,9 +9,6 @@
       "seguidores": [
         2,
         3
-      ],
-      "seguindo": [
-        4
       ]
     },
     {
@@ -37,8 +34,8 @@
       "seguindo": []
     },
     {
-      "seguidores": [],
-      "seguindo": [],
+      "seguidores": [1,2,3],
+      "seguindo": [1],
       "email": "digimaum@gigimaum.com",
       "senha": "123senha",
       "nome": "Digimaum",
