@@ -40,8 +40,9 @@ export class UsuarioService {
 
   criarUsuario(objeto: Object): void {
     const usuario = Object.assign(new Usuario, objeto);
-    this.addDados(usuario).subscribe((response) => {
+    this.addDados(usuario).subscribe(() => {
       this.getDados().subscribe((response: Array<Usuario>) => {
+        this.todosUsuarios = [];
         response.forEach(objeto => {
           this.todosUsuarios.push(Object.assign(new Usuario, objeto));
           this.atualizarDados.next('Usuário criado');
@@ -164,7 +165,7 @@ export class UsuarioService {
     let alvoUsuario: Usuario = Object.assign(new Usuario, alvo);
     this.usuarioPincipal.pararDeSeguir(alvoUsuario.getId());
     alvoUsuario.removerSeguidor(this.usuarioPincipal.getId());
-    this.atualizarSeguidores(this.usuarioPincipal).subscribe((response) => {
+    this.atualizarSeguidores(this.usuarioPincipal).subscribe(() => {
       this.atualizarSeguidores(alvoUsuario).subscribe();
       this.atualizarDados.next('Deixou de seguir :(');
     },
@@ -177,7 +178,7 @@ export class UsuarioService {
     let alvoUsuario: Usuario = Object.assign(new Usuario, alvo);
     this.usuarioPincipal.seguirUsuario(alvoUsuario.getId());
     alvoUsuario.adicionarSeguidor(this.usuarioPincipal.getId());
-    this.atualizarSeguidores(this.usuarioPincipal).subscribe((response) => {
+    this.atualizarSeguidores(this.usuarioPincipal).subscribe(() => {
       this.atualizarSeguidores(alvoUsuario).subscribe();
       this.atualizarDados.next('Seguindo :)');
     },

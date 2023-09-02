@@ -1,15 +1,18 @@
 <div id="saudacao">
   <h1>Bem-vindo ao seu perfil!</h1>
   <div>
-    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalExibicao">
+    <button type="button" class="btn" [attr.data-bs-toggle]="temSeguidores() ? 'modal' : null"
+      [attr.data-bs-target]="temSeguidores() ? '#modalExibicao' : null" (click)="seguidores = true">
       <article>
-        <p><strong><i class="bi bi-person-hearts"></i>&nbsp;{{ seguidores.length }}</strong></p>
+        <p><strong><i class="bi bi-person-hearts"></i>&nbsp;{{ this.usuarioService.getSeguidores().length }}</strong>
+        </p>
         <p>seguidores</p>
       </article>
     </button>
-    <button type="button" class="btn" data-bs-toggle="modal" data-bs-target="#modalExibicao">
+    <button type="button" class="btn" [attr.data-bs-toggle]="eSeguido() ? 'modal' : null"
+      [attr.data-bs-target]="eSeguido() ? '#modalExibicao' : null" (click)="seguidores = false">
       <article>
-        <p><strong><i class="bi bi-hearts"></i>&nbsp;{{ seguindo.length }}</strong></p>
+        <p><strong><i class="bi bi-hearts"></i>&nbsp;{{ this.usuarioService.getSeguindo().length }}</strong></p>
         <p>seguindo</p>
       </article>
     </button>
@@ -51,7 +54,9 @@
 
     <div>
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <p id="p-senha"><strong>Senha: </strong>{{ camuflar() }}</p>
+      <p id="p-senha" *ngIf="!verSenha"><strong>Senha: </strong>{{ camuflar() }}</p>
+      <p id="p-senha" *ngIf="verSenha"><strong>Senha:
+        </strong>{{ this.usuarioService.getUsuarioPrincipal().getSenha() }}</p>
       <div id="input-senha" class="input-group invisivel">
         <form class="input-group" (ngSubmit)="submeter()">
           <input type="password" [formControl]="senhaAtt" class="form-control" placeholder="Nova senha"
@@ -62,7 +67,13 @@
               class="bi bi-check-lg"></i></button>
         </form>
       </div>
-      <button id="button-senha" class="btn btn-link" (click)="editarCampo('senha')">Editar</button>
+      <div class="botao-ver-senha">
+        <button id="ver-senha" class="btn" (mousedown)="ver()" (mouseup)="esconder()">
+          <i class="bi bi-eye" *ngIf="!verSenha"></i>
+          <i class="bi bi-eye-fill" *ngIf="verSenha"></i>
+        </button>
+        <button id="button-senha" class="btn btn-link" (click)="editarCampo('senha')">Editar</button>
+      </div>
     </div>
   </section>
 
@@ -101,31 +112,35 @@
 </div>
 
 <div id="itens-venda">
-  <button class="btn"><i class="bi bi-plus-circle"></i> Adicionar item</button>
-  <h2>Seus itens a venda</h2>
+  <button class="btn" routerLink="/cadastro-item"><i class="bi bi-plus-circle"></i> Adicionar item</button>
+  <h2 *ngIf="this.produtoService.getItensUsuarioMain().length > 0">Seus itens a venda</h2>
 
   <!-- Container de cards -->
   <section class="row">
-    <article class=" col-lg-4 col-md-12" *ngFor="let item of itensDoUsuario">
+    <article class=" col-lg-4 col-md-12" *ngFor="let item of this.produtoService.getItensUsuarioMain()">
       <div class="actions">
-        <button class="btn delet" data-bs-toggle="modal" data-bs-target="#confirmacao"><i
-            class="bi bi-x-lg"></i></button>
-        <button class="btn edit"><i class="bi bi-pencil"></i></button>
+
+        <!-- Botão deletar -->
+        <button class="btn delet" (click)="deletar(item.getTitulo(), item.getId())" data-bs-toggle="modal"
+          data-bs-target="#confirmacao"><i class="bi bi-x-lg"></i></button>
+
+        <!-- Botão editar -->
+        <button class="btn edit" [routerLink]="'/cadastro-item/' + item.getId()"><i class="bi bi-pencil"></i></button>
       </div>
       <!-- Inicio do card -->
       <div class="card mb-4">
 
         <!-- Imagem do card -->
         <div class="card-img-container imagem-card">
-          <img class="card-img-top imagem" [src]="item.imagens[0]" [alt]="item.titulo" />
+          <img class="card-img-top imagem" [src]="item.getImagens()[0]" [alt]="item.getTitulo()" />
         </div>
 
         <!-- Corpo do card -->
         <div class="card-body conteudo-card">
-          <h5 class="card-title">{{ item.titulo }}</h5>
-          <p class="descricao">{{ item.descricao }}</p>
-          <p *ngFor="let tag of item.tags">{{ tag }}</p>
-          <p class="preco">{{ item.preco | currency}}</p>
+          <h5 class="card-title">{{ item.getTitulo() }}</h5>
+          <p class="descricao">{{ item.getDescricao() }}</p>
+          <p *ngFor="let tag of item.getTags()">{{ tag }}</p>
+          <p class="preco">{{ item.getPreco() | currency}}</p>
         </div>
       </div>
     </article>
@@ -138,19 +153,19 @@
       <article class="modal-body">
 
         <!-- Seguidires -->
-        <section *ngIf="true" style="overflow-x: hidden;">
-          <div class="row" *ngFor="let seguidor of seguidores">
-            <button class="btn" [routerLink]="'/perfil/' + seguidor.id"
-              data-bs-dismiss="modal">{{ seguidor.nome }}</button>
+        <section *ngIf="seguidores" style="overflow-x: hidden;">
+          <div class="row" *ngFor="let seguidor of this.usuarioService.getSeguidores()">
+            <button class="btn" [routerLink]="'/perfil/' + seguidor.getId()"
+              data-bs-dismiss="modal">{{ seguidor.getNome() }}</button>
             <hr>
           </div>
         </section>
 
         <!-- Seguindo -->
-        <section *ngIf="false">
-          <div class="row" *ngFor="let seguidor of seguindo">
-            <button class="btn" [routerLink]="'/perfil/' + seguidor.id"
-              data-bs-dismiss="modal">{{ seguidor.nome }}</button>
+        <section *ngIf="!seguidores">
+          <div class="row" *ngFor="let seguidor of this.usuarioService.getSeguindo()">
+            <button class="btn" [routerLink]="'/perfil/' + seguidor.getSeguindo()"
+              data-bs-dismiss="modal">{{ seguidor.getNome() }}</button>
             <hr>
           </div>
         </section>
@@ -175,7 +190,8 @@
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Confirmar</button>
+        <button type="button" class="btn btn-primary" (click)="confirmarDeletar()"
+          data-bs-dismiss="modal">Confirmar</button>
       </div>
     </div>
   </div>

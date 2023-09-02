@@ -11,13 +11,12 @@ import { UsuarioService } from 'src/assets/services/usuario/usuario.service';
 })
 export class PerfilClienteComponent implements OnInit {
   // Variaveis de exibição
-  usuario: any = {};
+  protected usuario: any = {};
+  seguidores: boolean;
   itemAExcluir: string = '';
+  idItemAExcluir: number = -1;
   titulo: string = '';
-  senha: string = '';
-  itensDoUsuario: any[] = [];
-  seguidores: any[] = [];
-  seguindo: any[] = [];
+  verSenha: boolean = false;
 
   // Variaveis de Controle
   nome = new FormControl('', Validators.required);
@@ -31,6 +30,16 @@ export class PerfilClienteComponent implements OnInit {
     if (!this.usuarioService.getLogado()) {
       this.router.navigate(['home']);
     }
+    document.getElementById('ver-senha')?.addEventListener('touchstart', () => this.ver());
+    document.getElementById('ver-senha')?.addEventListener('touchend', () => this.esconder());
+  }
+
+  temSeguidores() {
+    return this.usuarioService.getUsuarioPrincipal().getSeguidores().length > 0;
+  }
+  
+  eSeguido() {
+    return this.usuarioService.getUsuarioPrincipal().getSeguindo().length > 0;
   }
 
   editarCampo(campo: string) {
@@ -43,6 +52,14 @@ export class PerfilClienteComponent implements OnInit {
     document.getElementById(`p-${campo}`)?.classList.remove('invisivel');
     document.getElementById(`button-${campo}`)?.classList.remove('invisivel');
     document.getElementById(`input-${campo}`)?.classList.add('invisivel');
+  }
+
+  ver() {
+    this.verSenha = true;
+  }
+
+  esconder() {
+    this.verSenha = false;
   }
 
   submeter() {
@@ -58,21 +75,29 @@ export class PerfilClienteComponent implements OnInit {
   }
 
   camuflar() {
-    if (this.senha.length <= 0) {
-      return '';
+    if (this.usuarioService.getUsuarioPrincipal().getSenha()){
+      if (this.usuarioService.getUsuarioPrincipal().getSenha().length <= 0) {
+        return '';
+      }
+      const regular = /./g;
+      const camuflada = this.usuarioService.getUsuarioPrincipal().getSenha().replaceAll(regular, '*');
+      return camuflada;
     }
-    const regular = /./g;
-    const camuflada = this.senha.replaceAll(regular, '*');
-    return camuflada;
+    return '';
   }
 
-  constructor(private usuarioService: UsuarioService, private produtoService: ProdutoService, private router: Router) {
+  deletar(nomeItem:string, idItem: number) {
+    this.itemAExcluir = nomeItem;
+    this.idItemAExcluir = idItem;
+  }
+
+  confirmarDeletar() {
+    this.produtoService.deletar(this.idItemAExcluir);
+  }
+
+  constructor(protected usuarioService: UsuarioService, protected produtoService: ProdutoService, private router: Router) {
     this.usuarioService.atualizarDados.subscribe((response) => {
       this.usuario = this.usuarioService.getUsuarioPrincipal();
-      this.senha = this.usuarioService.getUsuarioPrincipal().getSenha();
-      this.itensDoUsuario = this.produtoService.getItensUsuarioMain();
-      this.seguidores = this.usuarioService.getSeguidores();
-      this.seguindo = this.usuarioService.getSeguindo();
     });
   }
 }
