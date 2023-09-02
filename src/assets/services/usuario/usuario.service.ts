@@ -29,7 +29,7 @@ export class UsuarioService {
   getSeguidores(): Array<Usuario> {
     return this.seguidores;
   }
-  
+
   getSeguindo(): Array<Usuario> {
     return this.seguindo;
   }
@@ -57,21 +57,20 @@ export class UsuarioService {
   }
 
   fazerLogin(email: string, senha: string): void {
-    this.getDados().subscribe(
-      (response: Array<Usuario>) => {
-        const usuarioLogin: Usuario | undefined = Object.assign(new Usuario(), response
-          .find((objectUsuario: Usuario) => {
-            objectUsuario = Object.assign(new Usuario(), objectUsuario)
-            return objectUsuario.getEmail() === email;
-          }));
-        if (usuarioLogin && usuarioLogin.getSenha() === senha) {
-          this.usuarioPincipal = usuarioLogin;
-          this.acharSeguidores();
-          this.acharSeguindo();
-          this.logado = true;
-          this.atualizarDados.next('Bem-vindo')
-        }
-      },
+    this.getDados().subscribe((response: Array<Usuario>) => {
+      const usuarioLogin: Usuario = Object.assign(new Usuario(), response
+        .find((objectUsuario: Usuario) => {
+          objectUsuario = Object.assign(new Usuario(), objectUsuario)
+          return objectUsuario.getEmail() === email;
+        }));
+      if (usuarioLogin && usuarioLogin.getSenha() === senha) {
+        this.usuarioPincipal = usuarioLogin;
+        this.acharSeguidores();
+        this.acharSeguindo();
+        this.logado = true;
+        this.atualizarDados.next('Bem-vindo')
+      }
+    },
       (error) => {
         this.erroServidor.next(error);
       });
@@ -87,12 +86,18 @@ export class UsuarioService {
 
   atualizarCadastro(objetoAtualizado: any): void {
     const usuarioAtualizado = Object.assign(new Usuario(), objetoAtualizado);
-    this.atualizaDadosPessoais(usuarioAtualizado).subscribe((respone) => {
-      this.usuarioPincipal = usuarioAtualizado;
-      this.getDados().subscribe((response: Array<Usuario>) => {
-        response.forEach(objeto => {
-          this.todosUsuarios.push(Object.assign(new Usuario, objeto))
+    this.atualizaDadosPessoais(usuarioAtualizado).subscribe(() => {
+      this.getDados().subscribe((usuarios: Array<Usuario>) => {
+        this.usuarioPincipal = Object.assign(new Usuario, usuarios
+          .find((usuario: Usuario) => {
+            usuario = Object.assign(new Usuario, usuario);
+            return usuario.getId() === this.usuarioPincipal.getId();
+          }));
+        this.todosUsuarios = [];
+        usuarios.forEach(objeto => {
+          this.todosUsuarios.push(Object.assign(new Usuario, objeto));
         });
+        this.atualizarDados.next('Dados atualizados');
       },
         (error) => {
           this.erroServidor.next(error);
@@ -190,7 +195,7 @@ export class UsuarioService {
   }
 
   private atualizaDadosPessoais(usuarioAtualizado: Usuario): Observable<any> {
-    return this.http.patch(`http://localhost:3000/usuarios/${usuarioAtualizado.getId()}`,
+    return this.http.patch(`http://localhost:3000/usuarios/${this.usuarioPincipal.getId()}`,
       {
         nome: usuarioAtualizado.getNome(),
         endereco: usuarioAtualizado.getEndereco(),

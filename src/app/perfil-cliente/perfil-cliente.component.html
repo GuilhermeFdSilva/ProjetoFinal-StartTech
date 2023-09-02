@@ -25,10 +25,12 @@
     <div>
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
       <p id="p-nome"><strong>Nome: </strong>{{ usuario.nome }}</p>
-      <div id="input-nome" class="input-group invisivel">
-        <input type="text" class="form-control" placeholder="Novo nome" aria-label="Novo nome">
-        <button class="btn btn-outline-secondary" type="button" (click)="enviar('nome')"><i
-            class="bi bi-check-lg"></i></button>
+      <div id="input-nome" class="invisivel">
+        <form class="input-group" (ngSubmit)="submeter()">
+          <input type="text" [formControl]="nome" class="form-control" placeholder="Novo nome" aria-label="Novo nome">
+          <button class="btn btn-outline-secondary" type="submit" (click)="enviar('nome')"><i
+              class="bi bi-check-lg"></i></button>
+        </form>
       </div>
       <button id="button-nome" class="btn btn-link" (click)="editarCampo('nome')">Editar</button>
     </div>
@@ -37,21 +39,28 @@
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
       <p id="p-email"><strong>E-mail: </strong>{{ usuario.email }}</p>
       <div id="input-email" class="input-group invisivel">
-        <input type="text" class="form-control" placeholder="Novo email" aria-label="Novo email">
-        <button class="btn btn-outline-secondary" type="button" (click)="enviar('email')"><i
-            class="bi bi-check-lg"></i></button>
+        <form class="input-group" (ngSubmit)="submeter()">
+          <input type="email" [formControl]="email" class="form-control" placeholder="Novo email"
+            aria-label="Novo email">
+          <button class="btn btn-outline-secondary" type="submit" (click)="enviar('email')"><i
+              class="bi bi-check-lg"></i></button>
+        </form>
       </div>
       <button id="button-email" class="btn btn-link" (click)="editarCampo('email')">Editar</button>
     </div>
 
     <div>
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
-      <p id="p-senha"><strong>Senha: </strong>{{ senha }}</p>
+      <p id="p-senha"><strong>Senha: </strong>{{ camuflar() }}</p>
       <div id="input-senha" class="input-group invisivel">
-        <input type="password" class="form-control" placeholder="Nova senha" aria-label="Nova senha">
-        <input type="password" class="form-control" placeholder="Nova senha" aria-label="Nova senha">
-        <button class="btn btn-outline-secondary" type="button" (click)="enviar('senha')"><i
-            class="bi bi-check-lg"></i></button>
+        <form class="input-group" (ngSubmit)="submeter()">
+          <input type="password" [formControl]="senhaAtt" class="form-control" placeholder="Nova senha"
+            aria-label="Nova senha">
+          <input type="password" [formControl]="senhaAttConfirm" class="form-control" placeholder="Nova senha"
+            aria-label="Nova senha">
+          <button class="btn btn-outline-secondary" type="submit" (click)="enviar('senha')"><i
+              class="bi bi-check-lg"></i></button>
+        </form>
       </div>
       <button id="button-senha" class="btn btn-link" (click)="editarCampo('senha')">Editar</button>
     </div>
@@ -65,9 +74,12 @@
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
       <p id="p-endereco"><strong>Endereço: </strong>{{ usuario.endereco }}</p>
       <div id="input-endereco" class="input-group invisivel">
-        <input type="text" class="form-control" placeholder="Novo endereco" aria-label="Novo endereco">
-        <button class="btn btn-outline-secondary" type="button" (click)="enviar('endereco')"><i
-            class="bi bi-check-lg"></i></button>
+        <form class="input-group" (ngSubmit)="submeter()">
+          <input type="text" [formControl]="endereco" class="form-control" placeholder="Novo endereco"
+            aria-label="Novo endereco">
+          <button class="btn btn-outline-secondary" type="submit" (click)="enviar('endereco')"><i
+              class="bi bi-check-lg"></i></button>
+        </form>
       </div>
       <button id="button-endereco" class="btn btn-link" (click)="editarCampo('endereco')">Editar</button>
     </div>
@@ -76,9 +88,12 @@
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
       <p id="p-celular"><strong>Celular: </strong>{{ usuario.celular }}</p>
       <div id="input-celular" class="input-group invisivel">
-        <input type="text" class="form-control" placeholder="Novo Celular" aria-label="Novo celular">
-        <button class="btn btn-outline-secondary" type="button" (click)="enviar('celular')"><i
-            class="bi bi-check-lg"></i></button>
+        <form class="input-group" (ngSubmit)="submeter()">
+          <input type="text" [formControl]="celular" class="form-control" placeholder="Novo Celular"
+            aria-label="Novo celular">
+          <button class="btn btn-outline-secondary" type="submit" (click)="enviar('celular')"><i
+              class="bi bi-check-lg"></i></button>
+        </form>
       </div>
       <button id="button-celular" class="btn btn-link" (click)="editarCampo('celular')">Editar</button>
     </div>

@@ -39,14 +39,12 @@ export class ProdutoService {
       response.forEach((item) => {
         this.todosItens.push(Object.assign(new Produto, item));
       });
-      if (string === 'Bem-vindo') {
-        this.itensUsuarioMain = [];
-        this.todosItens.forEach((item: Produto) => {
-          if (this.usuarioService.getUsuarioPrincipal().getId() === item.getUsuarioId()) {
-            this.itensUsuarioMain.push(Object.assign(new Produto, item));
-          }
-        });
-      }
+      this.itensUsuarioMain = [];
+      this.todosItens.forEach((item: Produto) => {
+        if (this.usuarioService.getUsuarioPrincipal().getId() === item.getUsuarioId()) {
+          this.itensUsuarioMain.push(Object.assign(new Produto, item));
+        }
+      });
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
