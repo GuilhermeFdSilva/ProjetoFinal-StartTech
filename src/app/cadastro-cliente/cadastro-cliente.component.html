@@ -1,6 +1,6 @@
 <div id="container">
   <form id="login" class="activate">
-    <h2>Login</h2>
+    <h2>LOGIN</h2>
 
     <div class="form-group">
       <label for="email">E-mail:</label>
@@ -18,7 +18,7 @@
   </form>
 
   <form id="cadastro"[formGroup]="cadastroForm" (ngSubmit)="cadastra()">
-    <h2>Cadastro</h2>
+    <h2>CADASTRO</h2>
     <!-- Dados Pessoais -->
     <div class="form-group">
       <label for="nome">Nome:</label>
@@ -79,7 +79,7 @@
   
     <article>
       <button class="btn btn-lg action" [disabled]="cadastroForm.invalid">Cadastrar-se</button>
-      <button class="btn btn-link" (click)="login()">Já tenho cadastro</button>
+      <button class="btn btn-link" (click)="login()">Já possuo cadastro</button>
     </article>
   </form>
 </div>
