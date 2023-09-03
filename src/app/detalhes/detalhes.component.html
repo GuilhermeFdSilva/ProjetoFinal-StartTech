@@ -1,7 +1,7 @@
 <div id="container">
 
   <!-- Inicio do card -->
-  <article class="card" id="card">
+  <article *ngIf="abrir" class="card" id="card">
     <div class="row g-0">
 
       <!-- Carrossel card -->
@@ -10,14 +10,16 @@
 
           <!-- Primeira imagem do carrossel -->
           <article class="carousel-item active">
-            <img [src]="produto.imagens[0]" class="d-block fundo" [alt]="produto.titulo">
-            <img [src]="produto.imagens[0]" class="d-block imagem-exibicao" [alt]="produto.titulo">
+            <img [src]="this.produtoService.getItem().getImagens()[0]" class="d-block fundo"
+              [alt]="this.produtoService.getItem().getTitulo()">
+            <img [src]="this.produtoService.getItem().getImagens()[0]" class="d-block imagem-exibicao"
+              [alt]="this.produtoService.getItem().getTitulo()">
           </article>
 
           <!-- Outras imagens -->
-          <article class="carousel-item" *ngFor="let imagem of produto.imagens.slice(1)">
-            <img [src]="imagem" class="d-block fundo" [alt]="produto.titulo">
-            <img [src]="imagem" class="d-block imagem-exibicao" [alt]="produto.titulo">
+          <article class="carousel-item" *ngFor="let imagem of this.produtoService.getItem().getImagens().slice(1)">
+            <img [src]="imagem" class="d-block fundo" [alt]="this.produtoService.getItem().getTitulo()">
+            <img [src]="imagem" class="d-block imagem-exibicao" [alt]="this.produtoService.getItem().getTitulo()">
           </article>
         </div>
 
@@ -35,25 +37,30 @@
       <!-- Descrição do item a venda -->
       <section class="col-lg-6 col-md-12" id="descricao-item">
         <div class="card-body">
-          <h1>{{ produto.titulo }}</h1>
+          <h1>{{ this.produtoService.getItem().getTitulo() }}</h1>
           <p>
-            {{ produto.descricao }}          </p>
+            {{ this.produtoService.getItem().getDescricao() }}
+          </p>
           <p>
             <strong>Categorias:</strong>
             <br>
-            {{ produto.tags }}
+            {{ this.produtoService.getItem().getTags() }}
           </p>
           <p id="preco">
             <strong>Preço:</strong>
             <br>
-            {{ produto.preco | currency }}
+            {{ this.produtoService.getItem().getPreco() | currency }}
           </p>
           <p>
             <strong>Vendido por:</strong>
-            {{ getNomeUsuario(produto.usuario_id) }}
+            {{ this.produtoService.getVendedorItem().getNome() }}
           </p>
-          <button id="vendedor" class="btn btn-lg" (click)="verVendedor(produto.usuario_id)">Vendedor</button>
-          <button id="contato" class="btn btn-lg"><i class="bi bi-whatsapp"></i>&nbsp;Contato</button>
+          <button id="vendedor" class="btn btn-lg"
+            (click)="verVendedor(this.produtoService.getVendedorItem().getId())">Vendedor</button>
+          <button id="contato" (click)="contato()" class="btn btn-lg">
+            <i class="bi bi-whatsapp"></i>
+            &nbsp;Contato
+          </button>
         </div>
       </section>
     </div>

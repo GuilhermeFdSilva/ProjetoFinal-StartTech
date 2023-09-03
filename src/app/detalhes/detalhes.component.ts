@@ -1,6 +1,8 @@
+import { UsuarioService } from './../../assets/services/usuario/usuario.service';
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ProdutoService } from 'src/assets/services/produto/produto.service';
 
 @Component({
   selector: 'app-detalhes',
@@ -8,34 +10,34 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['./detalhes.component.scss']
 })
 export class DetalhesComponent implements OnInit {
-  itens: any[] = [];
-  usuarios: any[] = [];
-
-  produto: any;
 
   produtoId: string;
+
+  abrir: boolean = false;
 
   ngOnInit() {
     this.activatedRouter.paramMap.subscribe(params => {
       this.produtoId = params.get('id') ?? '';
     });
-    this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
-      this.itens = dummy.itens;
-      this.usuarios = dummy.usuarios;
-      this.produto = this.itens.find((item) => {
-        return item.id === parseInt(this.produtoId);
+  }
+
+  verVendedor(usuarioId: number) {
+    this.router.navigate(['/perfil', usuarioId]);
+  }
+
+  contato() {
+    window.open(`https://wa.me/55${this.produtoService.getVendedorItem().getCelular()}`, '_blank');
+  }
+
+  constructor(
+    private activatedRouter: ActivatedRoute,
+    private router: Router,
+    protected produtoService: ProdutoService,
+    private usuarioService: UsuarioService) {
+      this.usuarioService.atualizarDados.subscribe((response) => {
+        if(response === 'Item pronto') {
+          this.abrir = true;
+        }
       });
-    });
   }
-
-  getNomeUsuario(usuarioId: number): string {
-    const usuario = this.usuarios.find(u => u.id === usuarioId);
-    return usuario ? usuario.nome : 'Desconhecido';
-  }
-
-  verVendedor(usuarioId: string){
-    this.router.navigate(['perfil', usuarioId]);
-  }
-
-  constructor(private activatedRouter: ActivatedRoute, private router: Router, private http: HttpClient) { }
 }
