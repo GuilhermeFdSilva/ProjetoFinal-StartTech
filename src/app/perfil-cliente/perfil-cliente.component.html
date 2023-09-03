@@ -6,14 +6,14 @@
       <article>
         <p><strong><i class="bi bi-person-hearts"></i>&nbsp;{{ this.usuarioService.getSeguidores().length }}</strong>
         </p>
-        <p>seguidores</p>
+        <p>Seguidores</p>
       </article>
     </button>
     <button type="button" class="btn" [attr.data-bs-toggle]="eSeguido() ? 'modal' : null"
       [attr.data-bs-target]="eSeguido() ? '#modalExibicao' : null" (click)="seguidores = false">
       <article>
         <p><strong><i class="bi bi-hearts"></i>&nbsp;{{ this.usuarioService.getSeguindo().length }}</strong></p>
-        <p>seguindo</p>
+        <p>Seguindo</p>
       </article>
     </button>
   </div>
@@ -23,7 +23,7 @@
 
   <!-- Lado esquerdo -->
   <section class="container-info">
-    <h2>Dados Pessoais</h2>
+    <h2>Dados pessoais</h2>
 
     <div>
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
@@ -79,7 +79,7 @@
 
   <!-- Lado direito -->
   <section class="container-info">
-    <h2>Informações de Contato</h2>
+    <h2>Informações de contato</h2>
 
     <div>
       <!--  Adicionar aqui,confome a pessoa preencheu no cadastro -->
@@ -112,8 +112,8 @@
 </div>
 
 <div id="itens-venda">
-  <button class="btn" routerLink="/cadastro-item"><i class="bi bi-plus-circle"></i> Adicionar item</button>
-  <h2 *ngIf="this.produtoService.getItensUsuarioMain().length > 0">Seus itens a venda</h2>
+  <button class="btn" routerLink="/cadastro-item"><i class="bi bi-plus-circle"></i> Adicionar novo item</button>
+  <h2 *ngIf="this.produtoService.getItensUsuarioMain().length > 0">Seus anúncios:</h2>
 
   <!-- Container de cards -->
   <section class="row">
