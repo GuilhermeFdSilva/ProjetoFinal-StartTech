@@ -1,17 +1,20 @@
 <div id="container">
-  <h1>Antiquary</h1>
+  <h1>ANTIQUARY</h1>
   <h5>Tesouros a um clique de distância</h5>
-  <p>Entre, explore e descubra as relíquias históricas perdidas, que você encontrará <strong>aqui</strong>.</p>
+  <p>Explore e descubra as relíquias históricas perdidas, que você encontrará apenas <strong>aqui</strong>.</p>
 
   <div class="dropdown">
     <button class="btn btn-secondary dropdown-toggle" type="button" id="tagDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      Filtrar por Tags
+      Filtrar por categoria
     </button>
     <div class="dropdown-menu" aria-labelledby="tagDropdown">
-      <a class="dropdown-item" (click)="filtrarItensPorTag('')">Todos Itens</a>
-      <a class="dropdown-item" (click)="filtrarItensPorTag('Decoração')">Decoração</a>
-      <a class="dropdown-item" (click)="filtrarItensPorTag('Móveis')">Móveis</a>
-      <a class="dropdown-item" (click)="filtrarItensPorTag('Acessórios')">Acessórios</a>
+      <a class="dropdown-item" style="cursor: pointer;" (click)="filtrarItensPorTag('')">Todos Itens</a>
+      <a class="dropdown-item" style="cursor: pointer;" (click)="filtrarItensPorTag('Acessórios')">Acessórios</a>
+      <a class="dropdown-item" style="cursor: pointer;" (click)="filtrarItensPorTag('Decoração')">Decoração</a>
+      <a class="dropdown-item" style="cursor: pointer;" (click)="filtrarItensPorTag('Máquina')">Máquina</a>
+      <a class="dropdown-item" style="cursor: pointer;" (click)="filtrarItensPorTag('Móveis')">Móveis</a>
+      <a class="dropdown-item" style="cursor: pointer;" (click)="filtrarItensPorTag('Relógio')">Relógiio</a>
+      <a class="dropdown-item" style="cursor: pointer;" (click)="filtrarItensPorTag('Tapeçaria')">Tapeçaria</a>
     </div>
   </div>
   
@@ -31,7 +34,7 @@
         <div class="card-body conteudo-card">
           <h5 class="card-title">{{ item.titulo }}</h5>
           <p class="card-text">
-            Vendedor: {{ getNomeUsuario(item.usuario_id) }}
+            Vendedor: {{ getNomeUsuario(item.usuarioId) }}
           </p>
           <p class="preco">{{ item.preco | currency }}</p>
         </div>
@@ -41,7 +44,7 @@
           <button class="btn detalhes-produto" (click)="verDetalhes(item.id); this.produtoService.selecionarItem(item.id)">
             Mais detalhes
           </button>
-          <button class="btn contato" (click)="contato(item.usuario_id)">
+          <button class="btn contato" (click)="contato(item.usuarioId)">
             <i class="bi bi-whatsapp"></i>&nbsp;Contato
           </button>
         </div>
