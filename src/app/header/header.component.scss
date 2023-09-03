@@ -44,6 +44,10 @@ header {
             width: 50%;
           }
 
+          #pesquisa{
+            visibility: hidden;
+          }
+
           #link-cadastro {
             color: white;
             font-family: $fonte-secundaria;

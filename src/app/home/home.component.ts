@@ -5,14 +5,16 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-
 export class HomeComponent implements OnInit {
   itens: any[] = [];
+  itensFiltrados: any[] = [];
   usuarios: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {
+    this.itensFiltrados = [...this.itens];
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > 66) {
         document.getElementById('botao-topo')?.classList.add('visivel');
@@ -26,11 +28,16 @@ export class HomeComponent implements OnInit {
     this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
       this.itens = dummy.itens;
       this.usuarios = dummy.usuarios;
+      this.itensFiltrados = [...this.itens]; 
+
+      // O operador ..., chamado operador de propagação ou spread operator em 
+      // JavaScript/TypeScript, é usado para criar cópias de arrays e objetos, 
+      // bem como para espalhar os elementos de um array ou objeto em outro.
     });
   }
 
   getNomeUsuario(usuarioId: number): string {
-    const usuario = this.usuarios.find(u => u.id === usuarioId);
+    const usuario = this.usuarios.find((u) => u.id === usuarioId);
     return usuario ? usuario.nome : 'Desconhecido';
   }
 
@@ -40,11 +47,21 @@ export class HomeComponent implements OnInit {
   }
 
   contato(usuarioId: number) {
-    const usuario = this.usuarios.find(u => u.id === usuarioId);
+    const usuario = this.usuarios.find((u) => u.id === usuarioId);
     window.location.href = `https://wa.me/55${usuario.celular}`;
   }
 
   voltarAoTopo() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  filtrarItensPorTag(tag: string) {
+    if (tag === '') {
+      this.itensFiltrados = this.itens; // Mostrar todos os itens
+    } else {
+      this.itensFiltrados = this.itens.filter((item) =>
+        item.tags.includes(tag)
+      );
+    }
   }
 }

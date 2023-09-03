@@ -1,5 +1,6 @@
 {
-  "usuarios": [{
+  "usuarios": [
+    {
       "id": 1,
       "nome": "Juliano Assanjo",
       "endereco": "Rua A, 123",
@@ -34,17 +35,44 @@
       "seguindo": []
     },
     {
-      "seguidores": [1,2,3],
-      "seguindo": [1],
+      "seguidores": [
+        1,
+        2,
+        3
+      ],
+      "seguindo": [
+        1
+      ],
       "email": "digimaum@gigimaum.com",
       "senha": "123senha",
       "nome": "Digimaum",
       "endereco": "Rua dos Digimaum",
       "celular": "11966674201",
       "id": 4
+    },
+    {
+      "seguidores": [],
+      "seguindo": [],
+      "email": "rochalirathiago@gmail.com",
+      "senha": "senha123",
+      "nome": "Thiago Rocha Lira",
+      "endereco": "Rua do Thiago 324324",
+      "celular": "11930482988",
+      "id": 5
+    },
+    {
+      "seguidores": [],
+      "seguindo": [],
+      "email": "digimon@gmail.com",
+      "senha": "asdf",
+      "nome": "digimon",
+      "endereco": "sdajfjkdsa",
+      "celular": 119304,
+      "id": 6
     }
   ],
-  "itens": [{
+  "itens": [
+    {
       "id": 1,
       "usuarioId": 1,
       "titulo": "Jarro de Latão",
@@ -85,7 +113,7 @@
         "https://photos.enjoei.com.br/tacas-de-prata-para-sobremesa-87615393/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xNTIxNzI2OS80N2Q2OGZlYmQ4NWQ0NTZlNjQ2OGE2NTZkYjBmNjdlYS5qcGc"
       ],
       "tags": [
-        "acessórios"
+        "Acessórios"
       ]
     },
     {
@@ -275,7 +303,8 @@
       ]
     }
   ],
-  "tags": [{
+  "tags": [
+    {
       "id": 1,
       "nome": "Móveis"
     },

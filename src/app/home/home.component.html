@@ -3,9 +3,21 @@
   <h5>Tesouros a um clique de distância</h5>
   <p>Entre, explore e descubra as relíquias históricas perdidas, que você encontrará <strong>aqui</strong>.</p>
 
+  <div class="dropdown">
+    <button class="btn btn-secondary dropdown-toggle" type="button" id="tagDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      Filtrar por Tags
+    </button>
+    <div class="dropdown-menu" aria-labelledby="tagDropdown">
+      <a class="dropdown-item" (click)="filtrarItensPorTag('')">Todos Itens</a>
+      <a class="dropdown-item" (click)="filtrarItensPorTag('Decoração')">Decoração</a>
+      <a class="dropdown-item" (click)="filtrarItensPorTag('Móveis')">Móveis</a>
+      <a class="dropdown-item" (click)="filtrarItensPorTag('Acessórios')">Acessórios</a>
+    </div>
+  </div>
+  
   <!-- Container dos cards -->
   <section class="row">
-    <article class="col-lg-4 col-md-12" *ngFor="let item of itens.reverse()">
+    <article class="col-lg-4 col-md-12" *ngFor="let item of itensFiltrados.reverse()">
 
       <!-- Inicio do card -->
       <div class="card mb-4">
