@@ -9,7 +9,11 @@
       "senha": "senha123",
       "seguidores": [
         2,
-        3
+        4
+      ],
+      "seguindo": [
+        2,
+        4
       ]
     },
     {
@@ -22,7 +26,10 @@
       "seguidores": [
         1
       ],
-      "seguindo": []
+      "seguindo": [
+        1,
+        4
+      ]
     },
     {
       "id": 3,
@@ -37,8 +44,7 @@
     {
       "seguidores": [
         1,
-        2,
-        3
+        2
       ],
       "seguindo": [
         1
