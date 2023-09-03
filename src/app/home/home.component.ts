@@ -27,7 +27,6 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
-      console.log('Dados do JSON:', dummy);
       this.itens = dummy.itens;
       this.usuarios = dummy.usuarios;
       this.itensFiltrados = [...this.itens];
@@ -38,7 +37,6 @@ export class HomeComponent implements OnInit {
   }
 
   getNomeUsuario(usuarioId: number): string {
-    console.log('usuarioId:', usuarioId);
     const usuario = this.usuarios.find((u) => u.id === usuarioId);
     return usuario ? usuario.nome : 'Desconhecido';
   }
