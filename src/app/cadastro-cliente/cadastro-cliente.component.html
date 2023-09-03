@@ -22,7 +22,7 @@
     <!-- Dados Pessoais -->
     <div class="form-group">
       <label for="nome">Nome:</label>
-      <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Ex: Fulano da Silva">
+      <input type="text" class="form-control" id="nome" formControlName="nome" placeholder="Ex: João da Silva" maxlength="25">
       <div *ngIf="cadastroForm.get('nome')?.hasError('required') && cadastroForm.get('nome')?.touched" class="text-danger">
         Nome é obrigatório.
       </div>
@@ -30,7 +30,7 @@
   
     <div class="form-group">
       <label for="emailCadastro">E-mail:</label>
-      <input type="email" class="form-control" id="emailCadastro" formControlName="email" placeholder="Ex: fulano.silva89@gmail.com">
+      <input type="email" class="form-control" id="emailCadastro" formControlName="email" placeholder="Ex: joao.silva89@gmail.com">
       <div *ngIf="cadastroForm.get('email')?.hasError('required') && cadastroForm.get('email')?.touched" class="text-danger">
         E-mail é obrigatório.
       </div>
@@ -41,15 +41,15 @@
   
     <div class="form-group">
       <label for="endereco">Endereço:</label>
-      <input type="text" class="form-control" id="endereco" formControlName="endereco" placeholder="Ex: Rua dos Alfeneiros nº 4">
+      <input type="text" class="form-control" id="endereco" formControlName="endereco" placeholder="Ex: Rua dos Alfeneiros, 4" maxlength="35">
       <div *ngIf="cadastroForm.get('endereco')?.hasError('required') && cadastroForm.get('endereco')?.touched" class="text-danger">
         Endereço é obrigatório.
       </div>
     </div>
   
     <div class="form-group">
-      <label for="whatsapp">Whatsapp:</label>
-      <input type="text" class="form-control" id="whatsapp" formControlName="whatsapp" placeholder="Ex: (11) 98765-4321" maxlength="11">
+      <label for="whatsapp">Whatsapp(DDD + número):</label>
+      <input type="text" class="form-control" id="whatsapp" formControlName="whatsapp" placeholder="Ex: 11912345678" maxlength="11" minlength="11">
       <div *ngIf="cadastroForm.get('whatsapp')?.hasError('required') && cadastroForm.get('whatsapp')?.touched" class="text-danger">
         Whatsapp é obrigatório.
       </div>
@@ -57,11 +57,10 @@
         Apenas números são permitidos.
       </div>
     </div>
-    
   
     <div class="form-group">
       <label for="senhaCadastro">Senha:</label>
-      <input type="password" class="form-control" id="senhaCadastro" formControlName="senha" placeholder="De 8 a 14 caracteres">
+      <input type="password" class="form-control" id="senhaCadastro" formControlName="senha" placeholder="De 8 a 14 caracteres" minlength="8" maxlength="14">
       <div *ngIf="cadastroForm.get('senha')?.hasError('required') && cadastroForm.get('senha')?.touched" class="text-danger">
         Senha é obrigatória.
       </div>      
@@ -69,7 +68,7 @@
   
     <div class="form-group">
       <label for="senha2">Confirme a senha:</label>
-      <input type="password" class="form-control" id="senha2" formControlName="senha2" placeholder="De 8 a 14 caracteres">
+      <input type="password" class="form-control" id="senha2" formControlName="senha2" placeholder="De 8 a 14 caracteres" minlength="8" maxlength="14">
       <div *ngIf="cadastroForm.get('senha2')?.hasError('required') && cadastroForm.get('senha2')?.touched" class="text-danger">
         Confirmação de senha é obrigatória.
       </div>

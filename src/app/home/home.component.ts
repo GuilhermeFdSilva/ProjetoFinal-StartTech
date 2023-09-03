@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { ProdutoService } from 'src/assets/services/produto/produto.service';
 
 @Component({
   selector: 'app-home',
@@ -12,7 +13,7 @@ export class HomeComponent implements OnInit {
   itensFiltrados: any[] = [];
   usuarios: any[] = [];
 
-  constructor(private http: HttpClient, private router: Router) {
+  constructor(private http: HttpClient, private router: Router, protected produtoService: ProdutoService) {
     this.itensFiltrados = [...this.itens];
 
     window.addEventListener('scroll', () => {
@@ -28,10 +29,10 @@ export class HomeComponent implements OnInit {
     this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
       this.itens = dummy.itens;
       this.usuarios = dummy.usuarios;
-      this.itensFiltrados = [...this.itens]; 
+      this.itensFiltrados = [...this.itens];
 
-      // O operador ..., chamado operador de propagação ou spread operator em 
-      // JavaScript/TypeScript, é usado para criar cópias de arrays e objetos, 
+      // O operador ..., chamado operador de propagação ou spread operator em
+      // JavaScript/TypeScript, é usado para criar cópias de arrays e objetos,
       // bem como para espalhar os elementos de um array ou objeto em outro.
     });
   }

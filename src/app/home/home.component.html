@@ -38,7 +38,7 @@
 
         <!-- Footer com os botões -->
         <div class="card-footer d-flex botoes-card">
-          <button class="btn detalhes-produto" (click)="verDetalhes(item.id)">
+          <button class="btn detalhes-produto" (click)="verDetalhes(item.id); this.produtoService.selecionarItem(item.id)">
             Mais detalhes
           </button>
           <button class="btn contato" (click)="contato(item.usuario_id)">
