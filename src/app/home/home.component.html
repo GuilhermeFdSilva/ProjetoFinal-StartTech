@@ -31,7 +31,7 @@
         <div class="card-body conteudo-card">
           <h5 class="card-title">{{ item.titulo }}</h5>
           <p class="card-text">
-            Vendedor: {{ getNomeUsuario(item.usuario_id) }}
+            Vendedor: {{ getNomeUsuario(item.usuarioId) }}
           </p>
           <p class="preco">{{ item.preco | currency }}</p>
         </div>
@@ -41,7 +41,7 @@
           <button class="btn detalhes-produto" (click)="verDetalhes(item.id); this.produtoService.selecionarItem(item.id)">
             Mais detalhes
           </button>
-          <button class="btn contato" (click)="contato(item.usuario_id)">
+          <button class="btn contato" (click)="contato(item.usuarioId)">
             <i class="bi bi-whatsapp"></i>&nbsp;Contato
           </button>
         </div>

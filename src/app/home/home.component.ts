@@ -27,10 +27,10 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
+      console.log('Dados do JSON:', dummy);
       this.itens = dummy.itens;
       this.usuarios = dummy.usuarios;
       this.itensFiltrados = [...this.itens];
-
       // O operador ..., chamado operador de propagação ou spread operator em
       // JavaScript/TypeScript, é usado para criar cópias de arrays e objetos,
       // bem como para espalhar os elementos de um array ou objeto em outro.
@@ -38,9 +38,11 @@ export class HomeComponent implements OnInit {
   }
 
   getNomeUsuario(usuarioId: number): string {
+    console.log('usuarioId:', usuarioId);
     const usuario = this.usuarios.find((u) => u.id === usuarioId);
     return usuario ? usuario.nome : 'Desconhecido';
   }
+  
 
   verDetalhes(itemId: number) {
     this.router.navigate(['detalhes', itemId]);
