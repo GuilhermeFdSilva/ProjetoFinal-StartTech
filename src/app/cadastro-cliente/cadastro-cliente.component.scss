@@ -21,6 +21,12 @@
     padding: 30px 30px;
     transition: all ease 1s;
 
+    #mensagemErro{
+      color: red;
+      font-size: $tamanho-fonte-grande;
+      font-family: $fonte-principal;
+    }
+
     h2 {
       margin: 0;
       font-size: $tamanho-fonte-enorme;

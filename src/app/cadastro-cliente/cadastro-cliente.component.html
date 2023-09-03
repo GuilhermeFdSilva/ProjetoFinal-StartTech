@@ -10,6 +10,7 @@
       <label for="senha">Senha:</label>
       <input type="password" class="form-control" id="senha" [(ngModel)]="senha" name="senha" placeholder="De 8 a 14 caracteres" required>
     </div>
+      <p id="mensagemErro">{{ mensagemErro }}</p>
     <article>
       <button class="btn btn-lg action" (click)="loga()">Login</button>
       <button class="btn btn-link" (click)="cadastrar()">Me cadastrar</button>

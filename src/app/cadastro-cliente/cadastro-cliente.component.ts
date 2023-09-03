@@ -12,7 +12,13 @@ import {
 })
 export class CadastroClienteComponent implements OnInit {
 
-  constructor(private usuarioService: UsuarioService, private router: Router) { }
+  constructor(private usuarioService: UsuarioService, private router: Router ) { 
+    
+  }
+
+
+  
+  mensagemErro: string = '';
 
   email: string = '';
   senha: string = '';
@@ -28,7 +34,14 @@ export class CadastroClienteComponent implements OnInit {
 
   loga() {
     this.usuarioService.fazerLogin(this.email, this.senha);
-    this.router.navigate(['home']);
+    this.usuarioService.atualizarDados.subscribe((Response) => {
+      if (Response === 'Bem-vindo'){
+        this.router.navigate(['/home'])
+      }
+      else {
+        this.mensagemErro = "E-mail ou senha inválidos, tente novamente"
+      }
+    } );
   }
 
   cadastrar() {

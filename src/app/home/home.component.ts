@@ -5,11 +5,11 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  styleUrls: ['./home.component.scss'],
 })
-
 export class HomeComponent implements OnInit {
   itens: any[] = [];
+  itensFiltrados: any[] = [];
   usuarios: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {
@@ -30,7 +30,7 @@ export class HomeComponent implements OnInit {
   }
 
   getNomeUsuario(usuarioId: number): string {
-    const usuario = this.usuarios.find(u => u.id === usuarioId);
+    const usuario = this.usuarios.find((u) => u.id === usuarioId);
     return usuario ? usuario.nome : 'Desconhecido';
   }
 
@@ -40,11 +40,21 @@ export class HomeComponent implements OnInit {
   }
 
   contato(usuarioId: number) {
-    const usuario = this.usuarios.find(u => u.id === usuarioId);
+    const usuario = this.usuarios.find((u) => u.id === usuarioId);
     window.location.href = `https://wa.me/55${usuario.celular}`;
   }
 
   voltarAoTopo() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  filtrarItensPorTag(tag: string) {
+    if (tag === '') {
+      this.itensFiltrados = this.itens; // Mostrar todos os itens
+    } else {
+      this.itensFiltrados = this.itens.filter((item) =>
+        item.tags.includes(tag)
+      );
+    }
   }
 }

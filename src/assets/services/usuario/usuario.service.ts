@@ -69,7 +69,7 @@ export class UsuarioService {
         this.acharSeguidores();
         this.acharSeguindo();
         this.logado = true;
-        this.atualizarDados.next('Bem-vindo')
+        this.atualizarDados.next('Bem-vindo');
       }
     },
       (error) => {
