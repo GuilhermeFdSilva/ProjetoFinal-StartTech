@@ -117,7 +117,7 @@
 
   <!-- Container de cards -->
   <section class="row">
-    <article class=" col-lg-4 col-md-12" *ngFor="let item of this.produtoService.getItensUsuarioMain()">
+    <article class=" col-lg-4 col-md-12" *ngFor="let item of this.produtoService.getItensUsuarioMain(); let i = index">
       <div class="actions">
 
         <!-- Botão deletar -->
@@ -125,7 +125,7 @@
           data-bs-target="#confirmacao"><i class="bi bi-x-lg"></i></button>
 
         <!-- Botão editar -->
-        <button class="btn edit" [routerLink]="'/cadastro-item/' + item.getId()"><i class="bi bi-pencil"></i></button>
+        <button class="btn edit" (click)="this.produtoService.selecionarItem(i)" [routerLink]="'/cadastro-item/' + item.getId()"><i class="bi bi-pencil"></i></button>
       </div>
       <!-- Inicio do card -->
       <div class="card mb-4">

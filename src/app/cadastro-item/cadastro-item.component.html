@@ -1,61 +1,92 @@
 <div id="container">
-  <form id="login" class="was-validated">
+  <form id="login" (ngSubmit)="enviarDados()" class="was-validated">
     <h2 *ngIf="true">Cadastrar novo item</h2>
     <h2 *ngIf="false">Editar item </h2>
 
     <!-- Imagens -->
     <div class="form-group">
-      <label for="imagem">Imagens:</label>
-      <div id="imagens">
-        <input type="url" class="form-control imagem" placeholder="Ex: https://url-da-imagem.com" required>
+      <label form="imagens">Imagens:</label>
+      <div id="imagens" *ngFor="let imagem of imagens; let i = index" [ngClass]="{'extra': i > 0}">
+        <input type="url" class="form-control imagem" [(ngModel)]="imagem.url" name="imagem {{i}}"
+          placeholder="Ex: https://url-da-imagem.com" required>
+        <button *ngIf="i > 0" class="btn remover-imagem-btn" type="button" (click)="removerImagem(i)"><i
+            class="bi bi-dash-circle"></i></button>
       </div>
       <a class="btn btn-link" href="https://imgbb.com/" target="_blank">Você pode hospedar suas imagens aqui</a>
     </div>
 
     <!-- Adicionar imagens -->
-    <article id="actions-imagem">
-      <button class="btn actions-imagem-btn" (click)="adicionarImagem()"><i class="bi bi-plus-circle"></i></button>
-      <button class="btn actions-imagem-btn" (click)="removerImagem()"><i class="bi bi-dash-circle"></i></button>
+    <article id="adicionar-imagem">
+      <button class="btn" type="button" (click)="adicionarImagem()"><i class="bi bi-plus-circle"></i></button>
     </article>
 
     <!-- Titulo -->
     <div class="form-group">
       <label for="titulo">Titulo:</label>
-      <input type="text" class="form-control titulo" id="titulo" placeholder="Ex: Pena de hipogrifo" required>
+      <input type="text" class="form-control titulo" id="titulo" [formControl]="titulo"
+        placeholder="Ex: Pena de hipogrifo" required>
     </div>
+    <p *ngIf="this.titulo.invalid" style="color: red;">
+      Campo obrigatório de 6 a 30 caracteres
+    </p>
 
     <!-- Descrição -->
     <div class="form-group">
       <label for="titulo">Descrição:</label>
-      <textarea class="form-control" id="descricao" [(ngModel)]="descricao" name="descricao"
-        (keyup)="limitarCaracteres()" placeholder="Ex: Pena de hipogrifo" required></textarea>
+      <textarea class="form-control" id="descricao" [formControl]="descricao" placeholder="Ex: Pena de hipogrifo"
+        required></textarea>
     </div>
-    <button class="btn gpt-help" (click)="gerarDescricao()">Ajuda</button>
+    <p *ngIf="this.descricao.invalid" style="color: red;">
+      Campo obrigatório de 30 a 200 caracteres
+    </p>
+    <!-- <button class="btn gpt-help" (click)="gerarDescricao()">Ajuda</button> -->
 
     <!-- Preço -->
     <div class="form-group">
       <label for="preco">Preço:</label>
-      <input type="text" class="form-control preco" id="preco" placeholder="Ex: 123999,00" required>
+      <input type="text" class="form-control preco" id="preco" [formControl]="preco" placeholder="Ex: 123999,00"
+        required>
     </div>
+    <p *ngIf="this.preco.invalid" style="color: red;">
+      Somente números e "."
+    </p>
 
     <!-- Categorias -->
     <div class="form-group">
       <label>Categorias:</label>
       <div class="form-check">
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="" name="categorias">
-          opção 1
+          <input class="form-check-input" type="checkbox" value="Móveis" name="categorias" (change)="verificarCheck()"
+            required>
+          Móveis
         </label>
         <label class="form-check-label">
-          <input class="form-check-input" type="checkbox" value="" name="categorias">
-          opção 2
+          <input class="form-check-input" type="checkbox" value="Decoração" name="categorias"
+            (change)="verificarCheck()" required>
+          Decoração
+        </label>
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="Tapeçaria" name="categorias"
+            (change)="verificarCheck()" required>
+          Tapeçaria
+        </label>
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="Relógio" name="categorias" (change)="verificarCheck()"
+            required>
+          Relógio
+        </label>
+        <label class="form-check-label">
+          <input class="form-check-input" type="checkbox" value="Máquina" name="categorias" (change)="verificarCheck()"
+            required>
+          Máquina
         </label>
       </div>
     </div>
 
     <!-- Enviar -->
     <article>
-      <button class="btn btn-lg" id="enviar">Enviar</button>
+      <button type="submit" class="btn btn-lg" id="enviar"
+        [disabled]="(imagens[0].url.length === 0 || titulo.invalid || descricao.invalid || preco.invalid || tags.length === 0 ? 'true' : '')">Enviar</button>
     </article>
   </form>
 </div>

@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 })
 export class GptService {
   private url: string = 'https://api.openai.com/v1/engines/text-davinci-003/completions';
-  private key: string = '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';
+  private key: string = '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';
 
   constructor(private http: HttpClient) { }
 
