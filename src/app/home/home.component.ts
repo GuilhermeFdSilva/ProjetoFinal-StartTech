@@ -13,6 +13,8 @@ export class HomeComponent implements OnInit {
   usuarios: any[] = [];
 
   constructor(private http: HttpClient, private router: Router) {
+    this.itensFiltrados = [...this.itens];
+
     window.addEventListener('scroll', () => {
       if (window.scrollY > 66) {
         document.getElementById('botao-topo')?.classList.add('visivel');
@@ -26,6 +28,11 @@ export class HomeComponent implements OnInit {
     this.http.get<any>('./assets/dummy.json').subscribe((dummy) => {
       this.itens = dummy.itens;
       this.usuarios = dummy.usuarios;
+      this.itensFiltrados = [...this.itens]; 
+
+      // O operador ..., chamado operador de propagação ou spread operator em 
+      // JavaScript/TypeScript, é usado para criar cópias de arrays e objetos, 
+      // bem como para espalhar os elementos de um array ou objeto em outro.
     });
   }
 
