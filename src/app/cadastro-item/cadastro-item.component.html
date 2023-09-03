@@ -1,7 +1,7 @@
 <div id="container">
   <form id="login" (ngSubmit)="enviarDados()" class="was-validated">
-    <h2 *ngIf="true">Cadastrar novo item</h2>
-    <h2 *ngIf="false">Editar item </h2>
+    <h2 *ngIf="cadastro">Cadastrar novo item</h2>
+    <h2 *ngIf="!cadastro">Editar item </h2>
 
     <!-- Imagens -->
     <div class="form-group">
@@ -89,4 +89,8 @@
         [disabled]="(imagens[0].url.length === 0 || titulo.invalid || descricao.invalid || preco.invalid || tags.length === 0 ? 'true' : '')">Enviar</button>
     </article>
   </form>
+</div>
+
+<div id="mensagem" class="alert alert-success" role="alert">
+  Sucesso!
 </div>

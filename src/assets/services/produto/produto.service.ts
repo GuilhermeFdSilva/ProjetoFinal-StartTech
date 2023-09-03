@@ -57,9 +57,11 @@ export class ProdutoService {
         item = Object.assign(new Produto, item);
         return item.getId() === itemId;
       }));
-      this.vendedor = Object.assign(new Usuario, this.usuarioService.getUsuarioById(this.item.getUsuarioId()));
+      this.usuarioService.getUsuarioById(this.item.getUsuarioId()).subscribe(response => {
+        this.vendedor = Object.assign(new Usuario, response);
+      });
       this.getItensUsuario(this.vendedor.getId());
-      this.usuarioService.atualizarDados.next('');
+      this.usuarioService.atualizarDados.next('Item pronto');
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
@@ -130,7 +132,7 @@ export class ProdutoService {
   }
 
   private atualizarItem(itemAtualizado: Produto): Observable<any> {
-    return this.http.patch(`http://localhost:3000/itens/${itemAtualizado.getId()}`,
+    return this.http.patch(`http://localhost:3000/itens/${this.item.getId()}`,
       {
         titulo: itemAtualizado.getTitulo(),
         descricao: itemAtualizado.getDescricao(),

@@ -118,8 +118,19 @@
 
 .alert {
   position: fixed;
-  top: 30px;
-  width: 100%;
+  top: 30%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 30%;
+  min-width: fit-content;
   visibility: hidden;
   transition: all ease 0.5s;
+
+  p {
+    margin: 0;
+  }
+}
+
+.mensagem {
+  visibility: visible;
 }
