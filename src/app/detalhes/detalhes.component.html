@@ -56,7 +56,7 @@
             {{ this.produtoService.getVendedorItem().getNome() }}
           </p>
           <button id="vendedor" class="btn btn-lg"
-            (click)="verVendedor(this.produtoService.getVendedorItem().getId())">Vendedor</button>
+            (click)="this.produtoService.selecionaVendedor(this.produtoService.getItem().getUsuarioId()); verVendedor(this.produtoService.getVendedorItem().getId())">Vendedor</button>
           <button id="contato" (click)="contato()" class="btn btn-lg">
             <i class="bi bi-whatsapp"></i>
             &nbsp;Contato
