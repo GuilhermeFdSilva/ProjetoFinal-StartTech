@@ -59,6 +59,16 @@
       "endereco": "Rua do Thiago 324324",
       "celular": "11930482988",
       "id": 5
+    },
+    {
+      "seguidores": [],
+      "seguindo": [],
+      "email": "digimon@gmail.com",
+      "senha": "asdf",
+      "nome": "digimon",
+      "endereco": "sdajfjkdsa",
+      "celular": 119304,
+      "id": 6
     }
   ],
   "itens": [

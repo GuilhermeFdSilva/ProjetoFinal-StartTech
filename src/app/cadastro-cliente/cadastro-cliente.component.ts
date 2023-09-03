@@ -4,20 +4,34 @@ import {
   UsuarioService,
   Usuario,
 } from 'src/assets/services/usuario/usuario.service';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 @Component({
   selector: 'app-cadastro-cliente',
   templateUrl: './cadastro-cliente.component.html',
   styleUrls: ['./cadastro-cliente.component.scss'],
 })
 export class CadastroClienteComponent implements OnInit {
-
-  constructor(private usuarioService: UsuarioService, private router: Router ) { 
-    
+  constructor(
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private fb: FormBuilder
+  ) {
+    this.cadastroForm = this.fb.group(
+      {
+        nome: ['', Validators.required],
+        email: ['', [Validators.required, Validators.email]],
+        endereco: ['', Validators.required],
+        whatsapp: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+        senha: ['', Validators.required],
+        senha2: ['', Validators.required],
+      },
+      {
+        validator: this.passwordMatchValidator, // Adiciona um validador personalizado para confirmar senhas
+      }
+    );
   }
 
-
-  
+  cadastroForm: FormGroup;
   mensagemErro: string = '';
 
   email: string = '';
@@ -27,21 +41,37 @@ export class CadastroClienteComponent implements OnInit {
   celular: string = '';
 
   cadastra() {
-    const usuario: any = { email: this.email, senha: this.senha, nome: this.nome, endereco: this.endereco, celular: this.celular }
-    this.usuarioService.criarUsuario(usuario);
-    this.login();
+    if (this.cadastroForm && this.cadastroForm.valid) {
+      const email = this.cadastroForm.get('email');
+      const senha = this.cadastroForm.get('senha');
+      const nome = this.cadastroForm.get('nome');
+      const endereco = this.cadastroForm.get('endereco');
+      const whatsapp = this.cadastroForm.get('whatsapp');
+  
+      if (email && senha && nome && endereco && whatsapp) {
+        const usuario: any = {
+          email: email.value,
+          senha: senha.value,
+          nome: nome.value,
+          endereco: endereco.value,
+          celular: whatsapp.value,
+        };
+        this.usuarioService.criarUsuario(usuario);
+        this.login();
+      }
+    }
   }
+  
 
   loga() {
     this.usuarioService.fazerLogin(this.email, this.senha);
     this.usuarioService.atualizarDados.subscribe((Response) => {
-      if (Response === 'Bem-vindo'){
-        this.router.navigate(['/home'])
+      if (Response === 'Bem-vindo') {
+        this.router.navigate(['/home']);
+      } else {
+        this.mensagemErro = 'E-mail ou senha inválidos, tente novamente';
       }
-      else {
-        this.mensagemErro = "E-mail ou senha inválidos, tente novamente"
-      }
-    } );
+    });
   }
 
   cadastrar() {
@@ -57,8 +87,14 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    if(this.usuarioService.getLogado()) {
+    if (this.usuarioService.getLogado()) {
       this.router.navigate(['home']);
     }
+  }
+
+  passwordMatchValidator(group: FormGroup) {
+    const senha = group.get('senha')?.value;
+    const senha2 = group.get('senha2')?.value;
+    return senha === senha2 ? null : { passwordMismatch: true };
   }
 }
