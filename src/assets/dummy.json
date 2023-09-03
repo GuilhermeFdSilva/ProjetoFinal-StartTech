@@ -4,88 +4,39 @@
       "id": 1,
       "nome": "Juliano Assanjo",
       "endereco": "Rua A, 123",
-      "celular": "11930482988",
+      "celular": "11912345678",
       "email": "juliano@example.com",
       "senha": "senha123",
       "seguidores": [
-        2,
-        4
+        2
       ],
       "seguindo": [
-        2,
-        4,
-        7
+        2
       ]
     },
     {
       "id": 2,
       "nome": "Ludmila Pavilsecov",
       "endereco": "Rua B, 456",
-      "celular": "(22) 9876-5432",
+      "celular": "11912345678",
       "email": "usuariob@example.com",
       "senha": "senha456",
       "seguidores": [
         1
       ],
       "seguindo": [
-        1,
-        4
+        1
       ]
     },
     {
       "id": 3,
       "nome": "Linus Torvalds",
       "endereco": "Rua C, 789",
-      "celular": "(33) 5555-1234",
+      "celular": "11912345678",
       "email": "usuarioc@example.com",
       "senha": "senha789",
       "seguidores": [],
       "seguindo": []
-    },
-    {
-      "seguidores": [
-        1,
-        2
-      ],
-      "seguindo": [
-        1
-      ],
-      "email": "digimaum@gigimaum.com",
-      "senha": "123senha",
-      "nome": "Digimaum",
-      "endereco": "Rua dos Digimaum",
-      "celular": "11966674201",
-      "id": 4
-    },
-    {
-      "seguidores": [],
-      "seguindo": [],
-      "email": "rochalirathiago@gmail.com",
-      "senha": "senha123",
-      "nome": "Thiago Rocha Lira",
-      "endereco": "Rua do Thiago 324324",
-      "celular": "11930482988",
-      "id": 5
-    },
-    {
-      "seguidores": [],
-      "seguindo": [],
-      "email": "digimon@gmail.com",
-      "senha": "asdf",
-      "nome": "digimon",
-      "endereco": "sdajfjkdsa",
-      "celular": 119304,
-      "id": 6
-    },
-    {
-      "seguidores": [],
-      "seguindo": [],
-      "email": "fernando@mail.com",
-      "senha": "senha123",
-      "nome": "Fernando Dias de Noites",
-      "endereco": "Rua do pôr da Lua 234",
-      "celular": "11930482988",
-      "id": 7
     }
   ],
   "itens": [
@@ -130,8 +81,7 @@
         "https://photos.enjoei.com.br/tacas-de-prata-para-sobremesa-87615393/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xNTIxNzI2OS80N2Q2OGZlYmQ4NWQ0NTZlNjQ2OGE2NTZkYjBmNjdlYS5qcGc"
       ],
       "tags": [
-        "Acessórios",
-        "Móveis"
+        "Decoração"
       ]
     },
     {
@@ -172,6 +122,7 @@
         "https://photos.enjoei.com.br/tapete-persa-88986604/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NzMzNTM4LzdmM2EwYTVkODg2MTFkMjJlMjIyYjg4MzcyYzVlYzg2LmpwZw"
       ],
       "tags": [
+        "Tapeçaria",
         "Decoração"
       ]
     },
@@ -221,13 +172,14 @@
       "usuarioId": 1,
       "titulo": "Relógio de parede em madeira",
       "descricao": "Relógio que creio ser da epóca colonial",
-      "preco": 690.99,
+      "preco": 950.99,
       "imagens": [
         "https://photos.enjoei.com.br/relogio-de-parede-antigo-em-madeira-88267917/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yODEwMzA5MS80MWQzZTk3Y2M3M2YzNjU4MTY1NzgyMDU3MjBjYjVmMS5qcGc",
         "https://photos.enjoei.com.br/relogio-de-parede-antigo-em-madeira-88267917/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yODEwMzA5MS9kZWIxNmU2YTAyZmNmZGVlN2IwYmQ0ZGJmNjdkMDhmMy5qcGc"
       ],
       "tags": [
-        "Decoração"
+        "Decoração",
+        "Relógio"
       ]
     },
     {
@@ -235,14 +187,16 @@
       "usuarioId": 2,
       "titulo": "Tipografa Underwood 198",
       "descricao": "Máquina de escrever em perfeitissimas condições de uso, com case original e fita nova",
-      "preco": 690.99,
+      "preco": 1290.99,
       "imagens": [
         "https://photos.enjoei.com.br/maquina-de-escrever-antiga-underwood-198-80303495/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy81MjkzMjEwLzcyNmVmM2ExMGUwZDM0NzViMWVmMzEyOTJlNDVmOTFiLmpwZw",
         "https://photos.enjoei.com.br/maquina-de-escrever-antiga-underwood-198-80303495/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy81MjkzMjEwL2VlNTNmYzUzOTU2MWFmODFmOTdlOWI1OWE3MjYzZmQyLmpwZw",
         "https://photos.enjoei.com.br/maquina-de-escrever-antiga-underwood-198-80303495/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy81MjkzMjEwLzJlZTY0MzA1ZGYyOGNhYjdmNWNjMDc1YzhmNzBhMDM1LmpwZw"
       ],
       "tags": [
-        "Decoração"
+        "Decoração",
+        "Acessórios",
+        "Máquina"
       ]
     },
     {
@@ -302,7 +256,8 @@
         "https://photos.enjoei.com.br/relogio-de-mesa-frances-em-bronze-antigo-anjinho-86146105/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xOTg1OTY0Mi85NzNiMTQ3YmVkMGRlMzA2MDRiMDQ4N2IwN2Q1NjJmZC5qcGc"
       ],
       "tags": [
-        "Decoração"
+        "Decoração",
+        "Relógio"
       ]
     },
     {
@@ -317,7 +272,7 @@
         "https://photos.enjoei.com.br/tapete-persa-legitimo-em-cores-preta-e-pasteis-estampados-bordados-46168863/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xNDU0ODE2NC9kZTFlYjU0MTU1YmUzNTE2N2I2MjJiOTIwY2JmOTg0ZC5qcGc"
       ],
       "tags": [
-        "Decoração"
+        "Tapeçaria"
       ]
     },
     {
@@ -325,7 +280,8 @@
         "https://photos.enjoei.com.br/conjunto-licoreira-ceramarte-90093840/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xMjMzNTAyNC82OTVkZTdmMjZjNzJkZDRhMzU1YzY0YTNhMDY0MGYzOC5qcGc"
       ],
       "tags": [
-        "Decoração"
+        "Decoração",
+        "Acessórios"
       ],
       "usuarioId": 7,
       "titulo": "Conjunto Licoreira Ceramarte",
@@ -335,6 +291,7 @@
     }
   ],
   "tags": [
+
     {
       "id": 1,
       "nome": "Móveis"
@@ -354,6 +311,11 @@
     {
       "id": 5,
       "nome": "Máquina"
+    },
+    {
+      "id": 6,
+      "nome": "Acessórios"
     }
+
   ]
 }
