@@ -72,7 +72,7 @@ export class ProdutoService {
     this.usuarioService.getUsuarioById(donoId).subscribe((response) => {
       this.vendedor = Object.assign(new Usuario, response);
       this.getItensUsuario(this.vendedor.getId());
-      this.usuarioService.atualizarDados.next('');
+      this.usuarioService.atualizarDados.next('Vendedor pronto');
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
@@ -83,6 +83,7 @@ export class ProdutoService {
     const item = Object.assign(new Produto, objeto);
     this.addDados(item).subscribe(() => {
       this.getItensEMainItens()
+      this.usuarioService.atualizarDados.next('Item')
     },
       (error) => {
         this.usuarioService.erroServidor.next(error);
@@ -147,8 +148,10 @@ export class ProdutoService {
   }
 
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {
-    this.usuarioService.atualizarDados.subscribe(() => {
-      this.getItensEMainItens();
+    this.usuarioService.atualizarDados.subscribe((response) => {
+      if (response === 'Item') {
+        this.getItensEMainItens();
+      }
     });
   }
 }

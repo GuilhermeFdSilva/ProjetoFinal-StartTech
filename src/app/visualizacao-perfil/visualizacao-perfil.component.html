@@ -1,14 +1,14 @@
 <div id="container">
 
   <!-- Perfil do Vendedor -->
-  <div id="perfil">
+  <div *ngIf="abrir" id="perfil">
 
     <div>
-      <h1 id="name">{{ usuario.nome }}</h1>
+      <h1 id="name">{{ this.produtoService.getVendedorItem().getNome() }}</h1>
       <section>
-        <button class="btn btn-lg"><i *ngIf="true" class="bi bi-heart"></i><i *ngIf="false" id="seguindo"
+        <button (click)="seguir()" class="btn btn-lg"><i *ngIf="!seguindo" class="bi bi-heart"></i><i *ngIf="seguindo" id="seguindo"
             class="bi bi-heart-fill"></i></button>
-        <button class="btn btn-lg" id="contato"><i class="bi bi-whatsapp"></i></button>
+        <button class="btn btn-lg" id="contato" (click)="contato()"><i class="bi bi-whatsapp"></i></button>
       </section>
     </div>
 
@@ -16,45 +16,45 @@
     <div id="seguidores">
       <button class="btn">
         <article>
-          <p><strong><i class="bi bi-person-hearts"></i>&nbsp; {{ numeroSeguidores }} </strong></p>
+          <p><strong><i class="bi bi-person-hearts"></i>&nbsp; {{ this.produtoService.getVendedorItem().getSeguidores().length }} </strong></p>
           <p>seguidores</p>
         </article>
       </button>
       <button class="btn">
         <article>
-          <p><strong><i class="bi bi-hearts"></i>&nbsp;{{ numeroSeguindo }}</strong></p>
+          <p><strong><i class="bi bi-hearts"></i>&nbsp;{{ this.produtoService.getVendedorItem().getSeguindo().length }}</strong></p>
           <p>seguindo</p>
         </article>
       </button>
     </div>
   </div>
 
-  <h2>Itens vendidos</h2>
+  <h2  *ngIf="abrir && this.produtoService.getItensVendedor().length > 0">Itens vendidos</h2>
 
   <!-- Container de cards -->
-  <section class="row">
-    <article class=" col-lg-4 col-md-12" *ngFor="let item of itensDoUsuario">
+  <section  *ngIf="abrir" class="row">
+    <article class=" col-lg-4 col-md-12" *ngFor="let item of this.produtoService.getItensVendedor()">
 
       <!-- Inicio do card -->
       <div class="card mb-4">
 
         <!-- Imagem do card -->
         <div class="card-img-container imagem-card">
-          <img class="card-img-top imagem" [src]="item.imagens[0]" [alt]="item.titulo" />
+          <img class="card-img-top imagem" [src]="item.getImagens()[0]" [alt]="item.getTitulo()" />
         </div>
 
         <!-- Corpo do card -->
         <div class="card-body conteudo-card">
-          <h5 class="card-title">{{ item.titulo }}</h5>
-          <p class="preco">{{ item.preco | currency }}</p>
+          <h5 class="card-title">{{ item.getTitulo() }}</h5>
+          <p class="preco">{{ item.getPreco() | currency }}</p>
         </div>
 
         <!-- Footer com os botões -->
         <div class="card-footer d-flex botoes-card">
-          <button class="btn detalhes-produto" (click)="verDetalhes(item.id)">
+          <button class="btn detalhes-produto" (click)="verDetalhes(item.getId())">
             Mais detalhes
           </button>
-          <button class="btn contato" (click)="contato(item.usuario_id)">
+          <button class="btn contato" (click)="contato()">
             <i class="bi bi-whatsapp"></i>&nbsp;Contato
           </button>
         </div>

@@ -109,24 +109,18 @@ export class UsuarioService {
       });
   }
 
-  toggleSeguir(idUsuarioAlvo: number): void {
+  toggleSeguir(alvo: Usuario): void {
     if (!this.logado) {
       return;
     }
-    let usuarioAlvo: Usuario | undefined;
-    let seguindo: boolean = this.usuarioPincipal.getSeguindo().includes(idUsuarioAlvo);
-    Object.assign(new Usuario, this.getDados().subscribe((response) => {
-      usuarioAlvo = Object.assign(response.find((object: Usuario) => {
-        object = Object.assign(new Usuario, object);
-        return object.getId() === idUsuarioAlvo;
-      }));
-      if (seguindo && usuarioAlvo) {
-        this.deixarDeSeguir(usuarioAlvo);
-      }
-      if (!seguindo && usuarioAlvo) {
-        this.seguir(usuarioAlvo);
-      }
-    }));
+    let usuarioAlvo: Usuario = alvo;
+    let seguindo: boolean = this.usuarioPincipal.getSeguindo().includes(usuarioAlvo.getId());
+    if (seguindo) {
+      this.deixarDeSeguir(usuarioAlvo);
+    }
+    if (!seguindo) {
+      this.seguir(usuarioAlvo);
+    }
   }
 
   private acharSeguidores(): void {
@@ -161,30 +155,35 @@ export class UsuarioService {
       });
   }
 
-  private deixarDeSeguir(alvo: any): void {
-    let alvoUsuario: Usuario = Object.assign(new Usuario, alvo);
-    this.usuarioPincipal.pararDeSeguir(alvoUsuario.getId());
-    alvoUsuario.removerSeguidor(this.usuarioPincipal.getId());
+  private deixarDeSeguir(alvo: Usuario): void {
+    let ok = false;
+    this.usuarioPincipal.pararDeSeguir(alvo.getId());
+    alvo.removerSeguidor(this.usuarioPincipal.getId());
     this.atualizarSeguidores(this.usuarioPincipal).subscribe(() => {
-      this.atualizarSeguidores(alvoUsuario).subscribe();
+      ok = true;
       this.atualizarDados.next('Deixou de seguir :(');
     },
       (error) => {
         this.erroServidor.next(error);
       });
+    if (ok) {
+      this.atualizarSeguidores(alvo).subscribe();
+    }
   }
 
-  private seguir(alvo: any): void {
-    let alvoUsuario: Usuario = Object.assign(new Usuario, alvo);
-    this.usuarioPincipal.seguirUsuario(alvoUsuario.getId());
-    alvoUsuario.adicionarSeguidor(this.usuarioPincipal.getId());
+  private seguir(alvo: Usuario): void {
+    let ok = false;
+    this.usuarioPincipal.seguirUsuario(alvo.getId());
+    alvo.adicionarSeguidor(this.usuarioPincipal.getId());
     this.atualizarSeguidores(this.usuarioPincipal).subscribe(() => {
-      this.atualizarSeguidores(alvoUsuario).subscribe();
       this.atualizarDados.next('Seguindo :)');
     },
       (error) => {
         this.erroServidor.next(error);
       });
+    if (ok) {
+      this.atualizarSeguidores(alvo).subscribe();
+    }
   }
 
   private getDados(): Observable<any> {
