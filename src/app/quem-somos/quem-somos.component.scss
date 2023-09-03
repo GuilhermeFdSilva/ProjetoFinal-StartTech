@@ -14,6 +14,11 @@
   padding: 20px;
 }
 
+#texto::first-letter{
+  text-transform: uppercase;
+  font-size: 2em;
+}
+
 h2 {
   font-family: $fonte-principal;
   font-weight: 700;
