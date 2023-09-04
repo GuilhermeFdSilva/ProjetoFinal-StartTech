@@ -25,6 +25,14 @@ export class ProdutoService {
     return this.todosItens;
   }
 
+  getItensReverse(): Array<Produto> {
+    const novoArray = [];
+    for (let i = this.todosItens.length - 1; i >= 0; i--) {
+      novoArray.push(this.todosItens[i]);
+    }
+    return novoArray;
+  }
+
   getItensVendedor(): Array<Produto> {
     return this.itensVendedor;
   }

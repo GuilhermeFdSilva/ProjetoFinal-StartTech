@@ -20,7 +20,7 @@
   
   <!-- Container dos cards -->
   <section class="row">
-    <article class="col-lg-4 col-md-12" *ngFor="let item of this.produtoService.getItens().reverse()">
+    <article class="col-lg-4 col-md-12" *ngFor="let item of this.produtoService.getItensReverse()">
 
       <!-- Inicio do card -->
       <div class="card mb-4" *ngIf="item.getTags().includes(this.tag) || this.tag === ''">
