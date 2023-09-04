@@ -3,7 +3,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { UsuarioService } from 'src/assets/services/usuario/usuario.service';
 import { ProdutoService } from 'src/assets/services/produto/produto.service';
-import { GptService } from 'src/assets/services/openai/gpt.service'
 
 @Component({
   selector: 'app-cadastro-item',

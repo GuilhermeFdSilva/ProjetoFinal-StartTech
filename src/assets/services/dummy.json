@@ -1,0 +1,308 @@
+{
+    "usuarios": [
+      {
+        "id": 1,
+        "nome": "Juliano Assanjo",
+        "endereco": "Rua A, 123",
+        "celular": "11912345678",
+        "email": "juliano@example.com",
+        "senha": "senha123",
+        "seguidores": [
+          2
+        ],
+        "seguindo": [
+          2,
+          3
+        ]
+      },
+      {
+        "id": 2,
+        "nome": "Ludmila Pavilsecov",
+        "endereco": "Rua B, 456",
+        "celular": "11912345678",
+        "email": "usuariob@example.com",
+        "senha": "senha456",
+        "seguidores": [
+          1
+        ],
+        "seguindo": [
+          1
+        ]
+      },
+      {
+        "id": 3,
+        "nome": "Linus Torvalds",
+        "endereco": "Rua C, 789",
+        "celular": "11912345678",
+        "email": "usuarioc@example.com",
+        "senha": "senha789",
+        "seguidores": [
+          1
+        ],
+        "seguindo": []
+      }
+    ],
+    "itens": [
+      {
+        "id": 1,
+        "usuarioId": 1,
+        "titulo": "Jarro de Latão",
+        "descricao": "Jarro de Latão com desenhos muito delicados em relevo",
+        "preco": 545.99,
+        "imagens": [
+          "https://photos.enjoei.com.br/jarro-de-latao-com-desenhos-em-relevo-muito-delicado-82837180/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xMjI3NzA5OS82YjVjMGI2MTE2MjlhNjdjMzc5NjMxZGMyOTczNjE2NS5qcGc",
+          "https://photos.enjoei.com.br/jarro-de-latao-com-desenhos-em-relevo-muito-delicado-82837180/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xMjI3NzA5OS8yNjJkMzc4ZTQxZmY1MzNlMTEyMTIyNzM4MTA3ZTQ5NS5qcGc",
+          "https://photos.enjoei.com.br/jarro-de-latao-com-desenhos-em-relevo-muito-delicado-82837180/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xMjI3NzA5OS8yN2U3Y2RjMjljOThmMTQ2MjVhMTZiMGNjNmQ1NWI2MS5qcGc"
+        ],
+        "tags": [
+          "Decoração"
+        ]
+      },
+      {
+        "id": 2,
+        "usuarioId": 3,
+        "titulo": "Mesa lateral em madeira de lei",
+        "descricao": "Mesa produzida em madeira de lei maciça, com acabamento em verniz fosco. Possui 3 gavetas e 1 prateleira. Medidas: 0,60 x 0,60 x 0,60 m.",
+        "preco": 544,
+        "imagens": [
+          "https://photos.enjoei.com.br/mesa-lateral-antiga-em-madeira-de-lei-macica-89829209/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy83ODkzMTE0L2VmZmM2ODI0ZmQ5OTY2M2I2NWM1ZWVjNjgxYTlmN2UyLmpwZw",
+          "https://photos.enjoei.com.br/mesa-lateral-antiga-em-madeira-de-lei-macica-89829209/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy83ODkzMTE0LzNkZTY4ZDhiMTgxNTE4Mzc5OWM2M2QxM2ZkYjdlNTZmLmpwZw",
+          "https://photos.enjoei.com.br/mesa-lateral-antiga-em-madeira-de-lei-macica-89829209/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy83ODkzMTE0L2YyMDk3YmIwYTBlMzU4YjZkZDVkNWIyNTc0MjFiYWYzLmpwZw"
+        ],
+        "tags": [
+          "Móveis"
+        ]
+      },
+      {
+        "id": 3,
+        "usuarioId": 3,
+        "titulo": "Taças de prata",
+        "descricao": "Taças feitas em prata para servir sobremesas",
+        "preco": 380.98,
+        "imagens": [
+          "https://photos.enjoei.com.br/tacas-de-prata-para-sobremesa-87615393/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xNTIxNzI2OS8wMTUxY2U4MjgxN2ViMzExNTJmZGNjZGNhZTNiM2U1MS5qcGc",
+          "https://photos.enjoei.com.br/tacas-de-prata-para-sobremesa-87615393/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xNTIxNzI2OS80N2Q2OGZlYmQ4NWQ0NTZlNjQ2OGE2NTZkYjBmNjdlYS5qcGc"
+        ],
+        "tags": [
+          "Decoração"
+        ]
+      },
+      {
+        "id": 4,
+        "usuarioId": 3,
+        "titulo": "Xícaras de chá inglesas",
+        "descricao": "Aparelho em porcelana cara em perfeitas condições",
+        "preco": 700,
+        "imagens": [
+          "https://photos.enjoei.com.br/xicaras-cha-inglesas-89775206/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yNjg1NTAvZTYyMGMyZGEzOGMzMjg0YjJmZmM1MzdmYjYxNGVhNmEuanBn",
+          "https://photos.enjoei.com.br/xicaras-cha-inglesas-89775357/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yNjg1NTAvOTk4NDFmYTkwMjQyOTFlZjYyODJlNzQyOWNjN2NmYzkuanBn"
+        ],
+        "tags": [
+          "Decoração"
+        ]
+      },
+      {
+        "id": 5,
+        "usuarioId": 2,
+        "titulo": "Vaso antigo de arte francesa",
+        "descricao": "Adornado com pinturas simples e elegantes",
+        "preco": 345.93,
+        "imagens": [
+          "https://photos.enjoei.com.br/antigo-vaso-frances-80963004/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yMDM1ODgxNi9kNzZhMTdjNmQxNjc3ZmE1NDE4OTJkYjBiNjAyMjk0ZC5qcGc"
+        ],
+        "tags": [
+          "Decoração"
+        ]
+      },
+      {
+        "id": 6,
+        "usuarioId": 3,
+        "titulo": "Tapete persa",
+        "descricao": "Tapete persa de 2,5 x 3,5 m, em perfeito estado de conservação",
+        "preco": 2005.93,
+        "imagens": [
+          "https://photos.enjoei.com.br/tapete-persa-88986604/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NzMzNTM4LzdlZTYyODc3N2I3YThmMDM0YjExYTEzMzZlN2Q2Y2Y1LmpwZw",
+          "https://photos.enjoei.com.br/tapete-persa-88986604/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy82NzMzNTM4LzdmM2EwYTVkODg2MTFkMjJlMjIyYjg4MzcyYzVlYzg2LmpwZw"
+        ],
+        "tags": [
+          "Tapeçaria",
+          "Decoração"
+        ]
+      },
+      {
+        "id": 7,
+        "usuarioId": 1,
+        "titulo": "Taças francesas de cristal",
+        "descricao": "Feitas de cristal fino, com detalhes rubros",
+        "preco": 1000.99,
+        "imagens": [
+          "https://photos.enjoei.com.br/tacas-cristal-frances-89537941/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xMDA0MTQzMS8zMzA0YzdkZjkwMWQzZDEyOWIxYzZhNmQyMTU0OWVlOC5qcGc",
+          "https://photos.enjoei.com.br/tacas-cristal-frances-89537941/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xMDA0MTQzMS9mZjgxYzkxNGNhZjY1M2U1MTI1YTI2YTA4MGU2NGY5ZC5qcGc"
+        ],
+        "tags": [
+          "Decoração"
+        ]
+      },
+      {
+        "id": 8,
+        "usuarioId": 2,
+        "titulo": "Pergaminho Qi Baishi",
+        "descricao": "Pergaminho com pintura de Qi Baishi, emoldurado em madeira de lei",
+        "preco": 10000.99,
+        "imagens": [
+          "https://photos.enjoei.com.br/pergaminho-qi-baishi-88946595/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8zMDgwMzcvNjA0ZDEyMmFhOTY5ODlkMjJhMzY3OTlmZTA2MjUzZWUuanBn",
+          "https://photos.enjoei.com.br/pergaminho-qi-baishi-88946595/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8zMDgwMzcvYTJlMjZiZDA2MDYyYmM1NDQ1ODA1YjQ3MTZmODQxMTMuanBn"
+        ],
+        "tags": [
+          "Decoração"
+        ]
+      },
+      {
+        "id": 9,
+        "usuarioId": 3,
+        "titulo": "Vaso em pasta de vidro",
+        "descricao": "Decorado com figuras de salamandras e plantas aquáticas em alto relevo",
+        "preco": 7000,
+        "imagens": [
+          "https://photos.enjoei.com.br/lindo-vaso-em-pasta-de-vidro-decorado-com-figuras-de-salamandras-e-plantas-aquaticas-em-alto-relevo-89465077/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xNDEzNjMzMS84MDQzNjFkZTdjZGM3NmJjMjZmZTE4YjhkYjk3OWQ2Yi5qcGc"
+        ],
+        "tags": [
+          "Decoração"
+        ]
+      },
+      {
+        "id": 10,
+        "usuarioId": 1,
+        "titulo": "Relógio de parede em madeira",
+        "descricao": "Relógio que creio ser da epóca colonial",
+        "preco": 950.99,
+        "imagens": [
+          "https://photos.enjoei.com.br/relogio-de-parede-antigo-em-madeira-88267917/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yODEwMzA5MS80MWQzZTk3Y2M3M2YzNjU4MTY1NzgyMDU3MjBjYjVmMS5qcGc",
+          "https://photos.enjoei.com.br/relogio-de-parede-antigo-em-madeira-88267917/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yODEwMzA5MS9kZWIxNmU2YTAyZmNmZGVlN2IwYmQ0ZGJmNjdkMDhmMy5qcGc"
+        ],
+        "tags": [
+          "Decoração",
+          "Relógio"
+        ]
+      },
+      {
+        "id": 11,
+        "usuarioId": 2,
+        "titulo": "Tipografa Underwood 198",
+        "descricao": "Máquina de escrever em perfeitissimas condições de uso, com case original e fita nova",
+        "preco": 1290.99,
+        "imagens": [
+          "https://photos.enjoei.com.br/maquina-de-escrever-antiga-underwood-198-80303495/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy81MjkzMjEwLzcyNmVmM2ExMGUwZDM0NzViMWVmMzEyOTJlNDVmOTFiLmpwZw",
+          "https://photos.enjoei.com.br/maquina-de-escrever-antiga-underwood-198-80303495/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy81MjkzMjEwL2VlNTNmYzUzOTU2MWFmODFmOTdlOWI1OWE3MjYzZmQyLmpwZw",
+          "https://photos.enjoei.com.br/maquina-de-escrever-antiga-underwood-198-80303495/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy81MjkzMjEwLzJlZTY0MzA1ZGYyOGNhYjdmNWNjMDc1YzhmNzBhMDM1LmpwZw"
+        ],
+        "tags": [
+          "Decoração",
+          "Acessórios",
+          "Máquina"
+        ]
+      },
+      {
+        "id": 12,
+        "usuarioId": 3,
+        "titulo": "Anfora grega",
+        "descricao": "Anfora grega de 1,5 m de altura, em perfeito estado de conservação, com pinturas originais. Objeto de colecionador.",
+        "preco": 25000.99,
+        "imagens": [
+          "https://photos.enjoei.com.br/anfora-grega-83920455/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8zMTI0NzU0Mi9hMGU3MzAxMDVlYzE5NGViOTJmYzgzYjhkZjk5NDM1Yi5qcGc",
+          "https://photos.enjoei.com.br/anfora-grega-83920455/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8zMTI0NzU0Mi85YzQ5YmM0YzJlMWRkODBiY2Y3YWY3YWNlMWFkYTNlOC5qcGc",
+          "https://photos.enjoei.com.br/anfora-grega-83920455/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8zMTI0NzU0Mi9mZGIwYzE5NDU4MmI1MDUzNWQyYjQ0MmNlNWQ0NjViYi5qcGc"
+        ],
+        "tags": [
+          "Decoração"
+        ]
+      },
+      {
+        "id": 13,
+        "usuarioId": 1,
+        "titulo": "Jogo de chá japonês",
+        "descricao": "Jogo de chá japonês, com 6 xícaras e 6 pires, em perfeito estado de conservação, feito na dinastia Ming",
+        "preco": 25000.99,
+        "imagens": [
+          "https://photos.enjoei.com.br/belissimo-jogo-de-cha-japones-casca-de-ovo-60572035/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yMTkwNDc0OC8yMzE0N2Q0MWI1NTZlYTM3MGEyMTA1MGNiZTk0NzhhYi5qcGc",
+          "https://photos.enjoei.com.br/belissimo-jogo-de-cha-japones-casca-de-ovo-60572035/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yMTkwNDc0OC9hN2Q1Y2MxMzJhNTRkMjUzODM4YTNlOGJhOGI0N2VhNi5qcGc",
+          "https://photos.enjoei.com.br/belissimo-jogo-de-cha-japones-casca-de-ovo-60572035/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8yMTkwNDc0OC81NTMxY2E4NjEyYzMwNzZmYzkzOTBiMTFjYjQ0MDcxMS5qcGc"
+        ],
+        "tags": [
+          "Decoração"
+        ]
+      },
+      {
+        "id": 14,
+        "usuarioId": 2,
+        "titulo": "Prato decorativo mexicano",
+        "descricao": "Prato que ganhei da minha abuela na ultima viagemque fiz ao México",
+        "preco": 25000.99,
+        "imagens": [
+          "https://photos.enjoei.com.br/prato-decorativo-de-parede-mexicano-cuernavaca-84788692/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xOTg1OTY0Mi9lNmE3OTljN2M0Mzc1OWVkODc2YzNkMzNiNWY5OGQ1My5qcGc",
+          "https://photos.enjoei.com.br/prato-decorativo-de-parede-mexicano-cuernavaca-84788692/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xOTg1OTY0Mi9jMTQyNmY1MzE4ZDk4MGUxYjI1NzAwMmNlMTk3ZmU0NS5qcGc",
+          "https://photos.enjoei.com.br/prato-decorativo-de-parede-mexicano-cuernavaca-84788692/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xOTg1OTY0Mi9iZDdmMGI4MzhhMGMyODliYjljMGM3ODIyYzA3ZjY1MS5qcGc"
+        ],
+        "tags": [
+          "Decoração"
+        ]
+      },
+      {
+        "id": 15,
+        "usuarioId": 3,
+        "titulo": "Relógio de mesa em bronze",
+        "descricao": "Relógio de mesa francês em bronze, com anjinho de bronze maciço.",
+        "preco": 7890,
+        "imagens": [
+          "https://photos.enjoei.com.br/relogio-de-mesa-frances-em-bronze-antigo-anjinho-86146105/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xOTg1OTY0Mi80NjMzYzhlNWYwYTNjMzRiOWI2ZjI1MTA5Y2Q0NzI5ZC5qcGc",
+          "https://photos.enjoei.com.br/relogio-de-mesa-frances-em-bronze-antigo-anjinho-86146105/828xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xOTg1OTY0Mi82MTZjOTE5YmEyZGNlMzhlOGQ1YzQxZjhiMjU0MDQzNy5qcGc",
+          "https://photos.enjoei.com.br/relogio-de-mesa-frances-em-bronze-antigo-anjinho-86146105/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xOTg1OTY0Mi85NzNiMTQ3YmVkMGRlMzA2MDRiMDQ4N2IwN2Q1NjJmZC5qcGc"
+        ],
+        "tags": [
+          "Decoração",
+          "Relógio"
+        ]
+      },
+      {
+        "id": 16,
+        "usuarioId": 1,
+        "titulo": "Tapete persa legitimo",
+        "descricao": "Tapete persa legitimo em cores preta e pasteis estampados bordados",
+        "preco": 9001,
+        "imagens": [
+          "https://photos.enjoei.com.br/tapete-persa-legitimo-em-cores-preta-e-pasteis-estampados-bordados-46168863/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xNDU0ODE2NC8xNzdkMDMzMmQwNDFkZWIwZjE3OTJjNWE3MjE1Njk1ZS5qcGc",
+          "https://photos.enjoei.com.br/tapete-persa-legitimo-em-cores-preta-e-pasteis-estampados-bordados-46168863/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xNDU0ODE2NC83ZGY5MDViN2Y2YjVjYmZlNDJjMmQ1Yjk1NThmZDc4Yy5qcGc",
+          "https://photos.enjoei.com.br/tapete-persa-legitimo-em-cores-preta-e-pasteis-estampados-bordados-46168863/1200xN/czM6Ly9waG90b3MuZW5qb2VpLmNvbS5ici9wcm9kdWN0cy8xNDU0ODE2NC9kZTFlYjU0MTU1YmUzNTE2N2I2MjJiOTIwY2JmOTg0ZC5qcGc"
+        ],
+        "tags": [
+          "Tapeçaria"
+        ]
+      }
+    ],
+    "tags": [
+      {
+        "id": 1,
+        "nome": "Móveis"
+      },
+      {
+        "id": 2,
+        "nome": "Decoração"
+      },
+      {
+        "id": 3,
+        "nome": "Tapeçaria"
+      },
+      {
+        "id": 4,
+        "nome": "Relógio"
+      },
+      {
+        "id": 5,
+        "nome": "Máquina"
+      },
+      {
+        "id": 6,
+        "nome": "Acessórios"
+      }
+    ]
+  }
