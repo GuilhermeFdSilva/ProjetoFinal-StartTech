@@ -121,11 +121,14 @@ export class UsuarioService {
     if (!seguindo) {
       this.seguir(usuarioAlvo);
     }
+    this.acharSeguidores()
+    this.acharSeguindo();
   }
 
   private acharSeguidores(): void {
     this.getDados().subscribe((response: Array<Usuario>) => {
       const seguidores = this.usuarioPincipal.getSeguidores();
+      this.seguidores = [];
       response.forEach((usuario: Usuario) => {
         usuario = Object.assign(new Usuario, usuario);
         if (seguidores.includes(usuario.getId())) {
@@ -142,6 +145,7 @@ export class UsuarioService {
   private acharSeguindo(): void {
     this.getDados().subscribe((response: Array<Usuario>) => {
       const seguindo = this.usuarioPincipal.getSeguindo();
+      this.seguindo = [];
       response.forEach((usuario: Usuario) => {
         usuario = Object.assign(new Usuario, usuario);
         if (seguindo.includes(usuario.getId())) {
@@ -156,23 +160,22 @@ export class UsuarioService {
   }
 
   private deixarDeSeguir(alvo: Usuario): void {
-    let ok = false;
     this.usuarioPincipal.pararDeSeguir(alvo.getId());
     alvo.removerSeguidor(this.usuarioPincipal.getId());
     this.atualizarSeguidores(this.usuarioPincipal).subscribe(() => {
-      ok = true;
       this.atualizarDados.next('Deixou de seguir :(');
     },
       (error) => {
         this.erroServidor.next(error);
       });
-    if (ok) {
-      this.atualizarSeguidores(alvo).subscribe();
-    }
+    this.atualizarDados.subscribe((response) => {
+      if (response === 'Seguindo :)') {
+        this.atualizarSeguidores(alvo).subscribe();
+      }
+    });
   }
 
   private seguir(alvo: Usuario): void {
-    let ok = false;
     this.usuarioPincipal.seguirUsuario(alvo.getId());
     alvo.adicionarSeguidor(this.usuarioPincipal.getId());
     this.atualizarSeguidores(this.usuarioPincipal).subscribe(() => {
@@ -181,9 +184,11 @@ export class UsuarioService {
       (error) => {
         this.erroServidor.next(error);
       });
-    if (ok) {
-      this.atualizarSeguidores(alvo).subscribe();
-    }
+    this.atualizarDados.subscribe((response) => {
+      if (response === 'Seguindo :)') {
+        this.atualizarSeguidores(alvo).subscribe();
+      }
+    });
   }
 
   private getDados(): Observable<any> {

@@ -12,6 +12,7 @@ import { UsuarioService } from 'src/assets/services/usuario/usuario.service';
 export class PerfilClienteComponent implements OnInit {
   // Variaveis de exibição
   protected usuario: any = {};
+  abrir: boolean = false;
   seguidores: boolean;
   itemAExcluir: string = '';
   idItemAExcluir: number = -1;
@@ -37,7 +38,7 @@ export class PerfilClienteComponent implements OnInit {
   temSeguidores() {
     return this.usuarioService.getUsuarioPrincipal().getSeguidores().length > 0;
   }
-  
+
   eSeguido() {
     return this.usuarioService.getUsuarioPrincipal().getSeguindo().length > 0;
   }
@@ -65,7 +66,7 @@ export class PerfilClienteComponent implements OnInit {
   submeter() {
     const usuarioAtualizado = {
       nome: this.nome.value === '' ? this.usuario.nome : this.nome.value,
-      email: this.email.value === '' ? this.usuario.email: this.email.value,
+      email: this.email.value === '' ? this.usuario.email : this.email.value,
       senha: this.senhaAtt.value === '' ? this.usuario.senha : this.senhaAtt.value,
       endereco: this.endereco.value === '' ? this.usuario.endereco : this.endereco.value,
       celular: this.celular.value === '' ? this.usuario.celular : this.celular.value
@@ -75,7 +76,7 @@ export class PerfilClienteComponent implements OnInit {
   }
 
   camuflar() {
-    if (this.usuarioService.getUsuarioPrincipal().getSenha()){
+    if (this.usuarioService.getUsuarioPrincipal().getSenha()) {
       if (this.usuarioService.getUsuarioPrincipal().getSenha().length <= 0) {
         return '';
       }
@@ -86,7 +87,7 @@ export class PerfilClienteComponent implements OnInit {
     return '';
   }
 
-  deletar(nomeItem:string, idItem: number) {
+  deletar(nomeItem: string, idItem: number) {
     this.itemAExcluir = nomeItem;
     this.idItemAExcluir = idItem;
   }
@@ -97,7 +98,10 @@ export class PerfilClienteComponent implements OnInit {
 
   constructor(protected usuarioService: UsuarioService, protected produtoService: ProdutoService, private router: Router) {
     this.usuarioService.atualizarDados.subscribe((response) => {
-      this.usuario = this.usuarioService.getUsuarioPrincipal();
+      if (response === 'Bem-vindo' || response === 'Dados atualizados') {
+        this.usuario = this.usuarioService.getUsuarioPrincipal();
+        this.abrir = true;
+      }
     });
   }
 }

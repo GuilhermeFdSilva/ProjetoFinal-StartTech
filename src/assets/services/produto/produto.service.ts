@@ -149,7 +149,7 @@ export class ProdutoService {
 
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {
     this.usuarioService.atualizarDados.subscribe((response) => {
-      if (response === 'Item') {
+      if (response === 'Item' || response === 'Bem-vindo') {
         this.getItensEMainItens();
       }
     });

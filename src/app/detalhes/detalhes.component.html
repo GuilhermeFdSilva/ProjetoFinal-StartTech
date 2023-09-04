@@ -1,7 +1,7 @@
 <div id="container">
 
   <!-- Inicio do card -->
-  <article *ngIf="abrir" class="card" id="card">
+  <article class="card" id="card">
     <div class="row g-0">
 
       <!-- Carrossel card -->
@@ -55,7 +55,12 @@
             <strong>Vendido por:</strong>
             {{ this.produtoService.getVendedorItem().getNome() }}
           </p>
-          <button id="vendedor" class="btn btn-lg"
+          <button
+            *ngIf="this.usuarioService.getUsuarioPrincipal().getId() === this.produtoService.getVendedorItem().getId()"
+            id="vendedor" class="btn btn-lg" (click)="meuPerfil()">Vendedor</button>
+          <button
+            *ngIf="!(this.usuarioService.getUsuarioPrincipal().getId() === this.produtoService.getVendedorItem().getId())"
+            id="vendedor" class="btn btn-lg"
             (click)="this.produtoService.selecionaVendedor(this.produtoService.getItem().getUsuarioId()); verVendedor(this.produtoService.getVendedorItem().getId())">Vendedor</button>
           <button id="contato" (click)="contato()" class="btn btn-lg">
             <i class="bi bi-whatsapp"></i>

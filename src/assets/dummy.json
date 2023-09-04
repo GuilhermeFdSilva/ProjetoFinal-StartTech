@@ -11,7 +11,8 @@
         2
       ],
       "seguindo": [
-        2
+        2,
+        3
       ]
     },
     {
@@ -35,7 +36,9 @@
       "celular": "11912345678",
       "email": "usuarioc@example.com",
       "senha": "senha789",
-      "seguidores": [],
+      "seguidores": [
+        1
+      ],
       "seguindo": []
     }
   ],
@@ -277,7 +280,6 @@
     }
   ],
   "tags": [
-
     {
       "id": 1,
       "nome": "Móveis"
@@ -302,6 +304,5 @@
       "id": 6,
       "nome": "Acessórios"
     }
-
   ]
 }
