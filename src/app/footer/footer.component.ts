@@ -8,15 +8,15 @@ import { Component } from '@angular/core';
 export class FooterComponent {
   links: Array<any> = [
     {
-      rota: 'home',
+      rota: '/home',
       pagina: 'Home'
     },
     {
-      rota: 'cadastro',
+      rota: '/login',
       pagina: 'Cadastro'
     },
     {
-      rota: 'quem-somos',
+      rota: '/quem-somos',
       pagina: 'Quem somos'
     },
   ];

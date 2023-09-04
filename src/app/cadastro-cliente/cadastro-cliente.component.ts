@@ -87,6 +87,7 @@ export class CadastroClienteComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     if (this.usuarioService.getLogado()) {
       this.router.navigate(['home']);
     }

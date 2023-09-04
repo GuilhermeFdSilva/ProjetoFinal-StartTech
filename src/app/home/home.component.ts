@@ -33,6 +33,7 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.usuarios = this.usuarioService.getUsuarios();
     this.itens = this.produtoService.getItens();
     this.itensFiltrados = [...this.itens];

@@ -20,7 +20,6 @@ export class VisualizacaoPerfilComponent implements OnInit {
 
   verDetalhes(itemId: number) {
     this.router.navigate(['detalhes', itemId]);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   contato() {
@@ -35,6 +34,7 @@ export class VisualizacaoPerfilComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.activatedRouter.paramMap.subscribe((params) => {
       this.usuarioId = params.get('id') ?? '';
     }); // seta o id do usuario

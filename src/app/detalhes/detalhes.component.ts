@@ -20,12 +20,10 @@ export class DetalhesComponent implements OnInit {
 
   verVendedor(usuarioId: number) {
     this.router.navigate(['/perfil', usuarioId]);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   meuPerfil() {
     this.router.navigate(['/meu-perfil']);
-    window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
   contato() {

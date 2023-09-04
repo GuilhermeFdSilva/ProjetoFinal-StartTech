@@ -119,6 +119,7 @@ export class CadastroItemComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     this.activatedRoute.paramMap.subscribe((param) => {
       this.itemId = param.get('id') ?? '';
     });
