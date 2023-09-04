@@ -20,31 +20,31 @@
   
   <!-- Container dos cards -->
   <section class="row">
-    <article class="col-lg-4 col-md-12" *ngFor="let item of itensFiltrados.reverse()">
+    <article class="col-lg-4 col-md-12" *ngFor="let item of this.produtoService.getItens().reverse()">
 
       <!-- Inicio do card -->
-      <div class="card mb-4">
+      <div class="card mb-4" *ngIf="item.getTags().includes(this.tag) || this.tag === ''">
 
         <!-- Imagem do card -->
         <div class="card-img-container imagem-card">
-          <img class="card-img-top imagem" [src]="item.imagens[0]" [alt]="item.titulo" />
+          <img class="card-img-top imagem" [src]="item.getImagens()[0]" [alt]="item.getTitulo()" />
         </div>
 
         <!-- Corpo do card -->
         <div class="card-body conteudo-card">
-          <h5 class="card-title">{{ item.titulo }}</h5>
+          <h5 class="card-title">{{ item.getTitulo() }}</h5>
           <p class="card-text">
-            Vendedor: {{ getNomeUsuario(item.usuarioId) }}
+            Vendedor: {{ getNomeUsuario(item.getUsuarioId()) }}
           </p>
-          <p class="preco">{{ item.preco | currency }}</p>
+          <p class="preco">{{ item.getPreco() | currency }}</p>
         </div>
 
         <!-- Footer com os botões -->
         <div class="card-footer d-flex botoes-card">
-          <button class="btn detalhes-produto" (click)="verDetalhes(item.id); this.produtoService.selecionarItem(item.id)">
+          <button class="btn detalhes-produto" (click)="verDetalhes(item.getId()); this.produtoService.selecionarItem(item.getId())">
             Mais detalhes
           </button>
-          <button class="btn contato" (click)="contato(item.usuarioId)">
+          <button class="btn contato" (click)="contato(item.getUsuarioId())">
             <i class="bi bi-whatsapp"></i>&nbsp;Contato
           </button>
         </div>
