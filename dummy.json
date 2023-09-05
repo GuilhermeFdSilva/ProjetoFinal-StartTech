@@ -1,5 +1,6 @@
 {
-  "usuarios": [{
+  "usuarios": [
+    {
       "id": 1,
       "nome": "Juliano Assanjo",
       "endereco": "Rua A, 123",
@@ -41,7 +42,8 @@
       "seguindo": []
     }
   ],
-  "itens": [{
+  "itens": [
+    {
       "id": 1,
       "usuarioId": 1,
       "titulo": "Jarro de Latão",
@@ -277,7 +279,8 @@
       ]
     }
   ],
-  "tags": [{
+  "tags": [
+    {
       "id": 1,
       "nome": "Móveis"
     },

@@ -166,7 +166,7 @@
         <section *ngIf="!seguidores" style="overflow-x: hidden;">
           <div class="row" *ngFor="let seguidor of this.usuarioService.getSeguindo()">
             <button class="btn" (click)="this.produtoService.selecionaVendedor(seguidor.getId())"
-              [routerLink]="'/perfil/' + seguidor.getSeguindo()"
+              [routerLink]="'/perfil/' + seguidor.getId()"
               data-bs-dismiss="modal">{{ seguidor.getNome() }}</button>
             <hr>
           </div>
