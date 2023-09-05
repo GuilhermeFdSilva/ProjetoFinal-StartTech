@@ -35,7 +35,7 @@ export class UsuarioService {
   }
 
   getUsuarioById(usuarioId: number): Observable<Usuario> {
-    return this.http.get<any>(`https://localhost:3000/usuarios/${usuarioId}`);
+    return this.http.get<any>(`http://localhost:3000/usuarios/${usuarioId}`);
   }
 
   criarUsuario(objeto: Object): void {
@@ -192,15 +192,15 @@ export class UsuarioService {
   }
 
   private getDados(): Observable<any> {
-    return this.http.get<any>('https://localhost:3000/usuarios');
+    return this.http.get<any>('http://localhost:3000/usuarios');
   }
 
   private addDados(novoUsuario: Usuario): Observable<any> {
-    return this.http.post('https://localhost:3000/usuarios', novoUsuario);
+    return this.http.post('http://localhost:3000/usuarios', novoUsuario);
   }
 
   private atualizaDadosPessoais(usuarioAtualizado: Usuario): Observable<any> {
-    return this.http.patch(`https://localhost:3000/usuarios/${this.usuarioPincipal.getId()}`,
+    return this.http.patch(`http://localhost:3000/usuarios/${this.usuarioPincipal.getId()}`,
       {
         nome: usuarioAtualizado.getNome(),
         endereco: usuarioAtualizado.getEndereco(),
@@ -211,7 +211,7 @@ export class UsuarioService {
   }
 
   private atualizarSeguidores(usuarioAtualizado: Usuario): Observable<any> {
-    return this.http.patch(`https://localhost:3000/usuarios/${usuarioAtualizado.getId()}`,
+    return this.http.patch(`http://localhost:3000/usuarios/${usuarioAtualizado.getId()}`,
       {
         seguidores: usuarioAtualizado.getSeguidores(),
         seguindo: usuarioAtualizado.getSeguindo()

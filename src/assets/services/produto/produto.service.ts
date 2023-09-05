@@ -133,15 +133,15 @@ export class ProdutoService {
   }
 
   private getDados(): Observable<any> {
-    return this.http.get<any>('https://localhost:3000/itens');
+    return this.http.get<any>('http://localhost:3000/itens');
   }
 
   private addDados(novoItem: Produto): Observable<any> {
-    return this.http.post('https://localhost:3000/itens', novoItem);
+    return this.http.post('http://localhost:3000/itens', novoItem);
   }
 
   private atualizarItem(itemAtualizado: Produto): Observable<any> {
-    return this.http.patch(`https://localhost:3000/itens/${this.item.getId()}`,
+    return this.http.patch(`http://localhost:3000/itens/${this.item.getId()}`,
       {
         titulo: itemAtualizado.getTitulo(),
         descricao: itemAtualizado.getDescricao(),
@@ -152,7 +152,7 @@ export class ProdutoService {
   }
 
   private deletarItem(itemId: number): Observable<any> {
-    return this.http.delete(`https://localhost:3000/itens/${itemId}`);
+    return this.http.delete(`http://localhost:3000/itens/${itemId}`);
   }
 
   constructor(private http: HttpClient, private usuarioService: UsuarioService) {
