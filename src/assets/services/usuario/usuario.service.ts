@@ -35,7 +35,7 @@ export class UsuarioService {
   }
 
   getUsuarioById(usuarioId: number): Observable<Usuario> {
-    return this.http.get<any>(`https://json-server-antiquary.vercel.app/usuarios/${usuarioId}`);
+    return this.http.get<any>(`https://localhost:3000/usuarios/${usuarioId}`);
   }
 
   criarUsuario(objeto: Object): void {
@@ -192,15 +192,15 @@ export class UsuarioService {
   }
 
   private getDados(): Observable<any> {
-    return this.http.get<any>('https://json-server-antiquary.vercel.app/usuarios');
+    return this.http.get<any>('https://localhost:3000/usuarios');
   }
 
   private addDados(novoUsuario: Usuario): Observable<any> {
-    return this.http.post('https://json-server-antiquary.vercel.app/usuarios', novoUsuario);
+    return this.http.post('https://localhost:3000/usuarios', novoUsuario);
   }
 
   private atualizaDadosPessoais(usuarioAtualizado: Usuario): Observable<any> {
-    return this.http.patch(`https://json-server-antiquary.vercel.app/usuarios/${this.usuarioPincipal.getId()}`,
+    return this.http.patch(`https://localhost:3000/usuarios/${this.usuarioPincipal.getId()}`,
       {
         nome: usuarioAtualizado.getNome(),
         endereco: usuarioAtualizado.getEndereco(),
@@ -211,7 +211,7 @@ export class UsuarioService {
   }
 
   private atualizarSeguidores(usuarioAtualizado: Usuario): Observable<any> {
-    return this.http.patch(`https://json-server-antiquary.vercel.app/usuarios/${usuarioAtualizado.getId()}`,
+    return this.http.patch(`https://localhost:3000/usuarios/${usuarioAtualizado.getId()}`,
       {
         seguidores: usuarioAtualizado.getSeguidores(),
         seguindo: usuarioAtualizado.getSeguindo()
