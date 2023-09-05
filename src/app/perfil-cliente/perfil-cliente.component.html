@@ -125,7 +125,8 @@
           data-bs-target="#confirmacao"><i class="bi bi-x-lg"></i></button>
 
         <!-- Botão editar -->
-        <button class="btn edit" (click)="this.produtoService.selecionarItem(item.getId())" [routerLink]="'/cadastro-item/' + item.getId()"><i class="bi bi-pencil"></i></button>
+        <button class="btn edit" (click)="this.produtoService.selecionarItem(item.getId())"
+          [routerLink]="'/cadastro-item/' + item.getId()"><i class="bi bi-pencil"></i></button>
       </div>
       <!-- Inicio do card -->
       <div class="card mb-4">
@@ -155,8 +156,8 @@
         <!-- Seguidires -->
         <section *ngIf="seguidores" style="overflow-x: hidden;">
           <div class="row" *ngFor="let seguidor of this.usuarioService.getSeguidores()">
-            <button class="btn" (click)="this.produtoService.selecionaVendedor(seguidor.getId())" [routerLink]="'/perfil/' + seguidor.getId()"
-              data-bs-dismiss="modal">{{ seguidor.getNome() }}</button>
+            <button class="btn" (click)="this.produtoService.selecionaVendedor(seguidor.getId())"
+              [routerLink]="'/perfil/' + seguidor.getId()" data-bs-dismiss="modal">{{ seguidor.getNome() }}</button>
             <hr>
           </div>
         </section>
@@ -164,7 +165,8 @@
         <!-- Seguindo -->
         <section *ngIf="!seguidores" style="overflow-x: hidden;">
           <div class="row" *ngFor="let seguidor of this.usuarioService.getSeguindo()">
-            <button class="btn" [routerLink]="'/perfil/' + seguidor.getSeguindo()"
+            <button class="btn" (click)="this.produtoService.selecionaVendedor(seguidor.getId())"
+              [routerLink]="'/perfil/' + seguidor.getSeguindo()"
               data-bs-dismiss="modal">{{ seguidor.getNome() }}</button>
             <hr>
           </div>
