@@ -1,6 +1,7 @@
 # Antiquary
 ## Projeto final Start<Tech>
 Projeto desenvolvido em Angular, utilizando conceitos que aprendemos durante todo o decorrer do curso de programação front-end com Framework Angular.
+![Imagem do Site](https://i.ibb.co/c81Zy7x/Captura-de-tela-2023-09-28-173253.png)
 ## Tecnologias Aplicadas
 - Angular
 - SCSS
