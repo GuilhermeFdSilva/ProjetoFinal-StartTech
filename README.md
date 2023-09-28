@@ -25,4 +25,12 @@ Rode o servidor:
 ```sh
 ng serve
 ```
+É necessario fazer a instalação do Json-server:
+```sh
+npm i -g json-server
+```
+para rodar o servidor:
+```sh
+json-server --watch dummy.json
+```
 Agora é só acessar [http://localhost:4200](http://localhost:4200)
