@@ -1,27 +1,27 @@
 # Antiquary
-
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.6.
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
-
-## Build
-
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Running unit tests
-
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Projeto final Start<Tech>
+Projeto desenvolvido em Angular, utilizando conceitos que aprendemos durante todo o decorrer do curso de programação front-end com Framework Angular.
+## Tecnologias Aplicadas
+- Angular
+- SCSS
+- Bootstrap
+## Instalação
+Necessário ter o [Node.js](https://nodejs.org/) v16+ instalado para funcionar.
+Clone o projeto:
+```sh
+git clone https://github.com/GuilhermeFdSilva/ProjetoFinal-StarTech.git
+```
+Acesse a pasta:
+```sh
+cd Antiquar/
+```
+Instale o Angular e demais dependências:
+```sh
+npm i -g @angular/cli
+npm i
+```
+Rode o servidor:
+```sh
+ng serve
+```
+Agora é só acessar [http://localhost:4200](http://localhost:4200)
