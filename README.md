@@ -26,7 +26,11 @@ O intuito desse site, é fornecer uma ferramenta de aproximação entre apreciad
 
 ## Só acredito vendo 👀
 
-Para rodar esse projeto em sua máquina você vai precisar de:
+Você pode [acessar aqui](http://antiquary-deploy.s3-website-sa-east-1.amazonaws.com/home)!
+
+**Ou**
+
+Rodar esse projeto em sua máquina, você vai precisar de:
 
 * [Node.js](https://nodejs.org/en) v16+
 * [NPM](https://docs.npmjs.com/cli/v6/commands/npm-install) v8+
